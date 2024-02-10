@@ -4,7 +4,7 @@ project:
 
 website:
   title: "CSS and Digital Behavioral Data"
-  site-url: "https://gesiscss.github.io/quarto-workshop/"
+  site-url: "https://github.com/sebstier/ma_css24/"
   search: false
   navbar:
     left:
