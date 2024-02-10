@@ -3,7 +3,7 @@ project:
   lib-dir: "libs"
 
 website:
-  title: "Quarto Workshop"
+  title: "CSS and Digital Behavioral Data"
   site-url: "https://gesiscss.github.io/quarto-workshop/"
   search: false
   navbar:
@@ -12,16 +12,14 @@ website:
         text: Home
       - href: material.qmd
         text: Material
+      - href: slides.qmd
+        text: Slides
     right:
-      - text: GESIS training
-        href: "https://training.gesis.org/?site=pDetails&child=full&pID=0x8298CEAADF6C457B8FBE9EE3FC092E47"
-      - text: Quarto
-        href: "https://quarto.org"
-      - icon: github
-        href: "https://github.com/gesiscss/quarto-workshop"
+      - text: ILIAS
+        href: "https://ilias.uni-mannheim.de/goto.php?target=crs_1463271&client_id=ILIAS"
   page-footer:
-    left: "by David Schoch and Chung-hong Chan 2023"
-    right: "powered by [Quarto](https://quarto.org)"
+    left: "Sebastian Stier 2024"
+    right: "Powered by [Quarto](https://quarto.org)"
 
 format:
   html:

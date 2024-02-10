@@ -1,11 +1,11 @@
 ---
 title: "Let's make a presentation with Quarto"
-author: "David Schoch"
+author: "Sebastian Stier"
 lesson: 5
-institute: GESIS
+institute: University of Mannheim & GESIS
 date: "2023-06-20"
 date-format: "YYYY-MM-DD"
-footer: "[Automated Reports & Co with Quarto and Markdown](https://gesiscss.github.io/quarto-workshop/)"
+footer: "[CSS and Digital Behavioral Data](XXX)"
 format: fakegesis-revealjs
 ---
 
