@@ -13,3 +13,5 @@ listing:
 
 :::{#material}
 :::
+
+quarto create-project ma_css24 --type website
