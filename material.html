@@ -61,9 +61,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -153,95 +153,9 @@ ul.task-list li input[type="checkbox"] {
 <table class="quarto-listing-table table">
 <thead>
 <tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-<th>
-Author
-</th>
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-date-sort="1687125600000" data-listing-file-modified-sort="1707644284064" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Setup" data-listing-filename-sort="01_introduction.qmd">
-<td>
-<span class="listing-date">Jun 19, 2023</span>
-</td>
-<td>
-<a href="./material/01_introduction.html" class="title listing-title">Setup</a>
-</td>
-<td>
-<span class="listing-author">David Schoch</span>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1687125600000" data-listing-file-modified-sort="1707644284064" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Markdown" data-listing-filename-sort="02_first_doc.qmd">
-<td>
-<span class="listing-date">Jun 19, 2023</span>
-</td>
-<td>
-<a href="./material/02_first_doc.html" class="title listing-title">Markdown</a>
-</td>
-<td>
-<span class="listing-author">Chung-hong Chan</span>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1687125600000" data-listing-file-modified-sort="1707644284064" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Computation" data-listing-filename-sort="03_combine_with_R.qmd">
-<td>
-<span class="listing-date">Jun 19, 2023</span>
-</td>
-<td>
-<a href="./material/03_combine_with_R.html" class="title listing-title">Computation</a>
-</td>
-<td>
-<span class="listing-author">Chung-hong Chan</span>
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="1687125600000" data-listing-file-modified-sort="1707644284064" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="YAML" data-listing-filename-sort="04_exporting.qmd">
-<td>
-<span class="listing-date">Jun 19, 2023</span>
-</td>
-<td>
-<a href="./material/04_exporting.html" class="title listing-title">YAML</a>
-</td>
-<td>
-<span class="listing-author">David Schoch</span>
-</td>
-</tr>
-<tr data-index="4" data-listing-date-sort="1687212000000" data-listing-file-modified-sort="1707644284064" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Presentation" data-listing-filename-sort="05_presentations.qmd">
-<td>
-<span class="listing-date">Jun 20, 2023</span>
-</td>
-<td>
-<a href="./material/05_presentations.html" class="title listing-title">Presentation</a>
-</td>
-<td>
-<span class="listing-author">David Schoch</span>
-</td>
-</tr>
-<tr data-index="5" data-listing-date-sort="1687212000000" data-listing-file-modified-sort="1707644284064" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Website" data-listing-filename-sort="06_websites.qmd">
-<td>
-<span class="listing-date">Jun 20, 2023</span>
-</td>
-<td>
-<a href="./material/06_websites.html" class="title listing-title">Website</a>
-</td>
-<td>
-<span class="listing-author">David Schoch</span>
-</td>
-</tr>
-<tr data-index="6" data-listing-date-sort="1687212000000" data-listing-file-modified-sort="1707644284064" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Academic paper" data-listing-filename-sort="07_paper.qmd">
-<td>
-<span class="listing-date">Jun 20, 2023</span>
-</td>
-<td>
-<a href="./material/07_paper.html" class="title listing-title">Academic paper</a>
-</td>
-<td>
-<span class="listing-author">Chung-hong Chan</span>
-</td>
-</tr>
 </tbody>
 
 </table>
@@ -249,7 +163,6 @@ Author
 No matching items
 </div>
 </div>
-<p>quarto create-project ma_css24 –type website</p>
 
 
 

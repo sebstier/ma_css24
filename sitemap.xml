@@ -1,55 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>sebstier.github.io/ma_css24/material/slides_in_progress/05_presentations.html</loc>
-    <lastmod>2024-02-11T09:38:13.793Z</lastmod>
-  </url>
-  <url>
-    <loc>sebstier.github.io/ma_css24/material/05_presentations.html</loc>
-    <lastmod>2024-02-11T09:38:12.630Z</lastmod>
-  </url>
-  <url>
-    <loc>sebstier.github.io/ma_css24/material/03_combine_with_R.html</loc>
-    <lastmod>2024-02-11T09:38:11.804Z</lastmod>
-  </url>
-  <url>
-    <loc>sebstier.github.io/ma_css24/material/06_websites.html</loc>
-    <lastmod>2024-02-11T09:38:09.879Z</lastmod>
-  </url>
-  <url>
-    <loc>sebstier.github.io/ma_css24/material/01_introduction.html</loc>
-    <lastmod>2024-02-11T09:38:08.922Z</lastmod>
-  </url>
-  <url>
-    <loc>sebstier.github.io/ma_css24/index.html</loc>
-    <lastmod>2024-02-11T09:38:07.595Z</lastmod>
-  </url>
-  <url>
-    <loc>sebstier.github.io/ma_css24/slides.html</loc>
-    <lastmod>2024-02-11T09:38:06.902Z</lastmod>
+    <loc>sebstier.github.io/ma_css24/material/slides/01_introduction.html</loc>
+    <lastmod>2024-02-11T09:58:48.596Z</lastmod>
   </url>
   <url>
     <loc>sebstier.github.io/ma_css24/material.html</loc>
-    <lastmod>2024-02-11T09:38:07.225Z</lastmod>
+    <lastmod>2024-02-11T09:58:47.579Z</lastmod>
   </url>
   <url>
-    <loc>sebstier.github.io/ma_css24/material/07_paper.html</loc>
-    <lastmod>2024-02-11T09:38:08.347Z</lastmod>
+    <loc>sebstier.github.io/ma_css24/slides.html</loc>
+    <lastmod>2024-02-11T09:58:47.340Z</lastmod>
   </url>
   <url>
-    <loc>sebstier.github.io/ma_css24/material/slides/01_introduction.html</loc>
-    <lastmod>2024-02-11T09:38:09.504Z</lastmod>
-  </url>
-  <url>
-    <loc>sebstier.github.io/ma_css24/material/04_exporting.html</loc>
-    <lastmod>2024-02-11T09:38:10.398Z</lastmod>
-  </url>
-  <url>
-    <loc>sebstier.github.io/ma_css24/material/02_first_doc.html</loc>
-    <lastmod>2024-02-11T09:38:12.336Z</lastmod>
-  </url>
-  <url>
-    <loc>sebstier.github.io/ma_css24/material/slides_in_progress/06_websites.html</loc>
-    <lastmod>2024-02-11T09:38:13.173Z</lastmod>
+    <loc>sebstier.github.io/ma_css24/index.html</loc>
+    <lastmod>2024-02-11T09:58:47.949Z</lastmod>
   </url>
 </urlset>
