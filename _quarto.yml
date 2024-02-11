@@ -3,7 +3,7 @@ project:
   lib-dir: "libs"
 
 website:
-  title: "CSS and Digital Behavioral Data"
+  title: "Computational Social Science and Digital Behavioral Data"
   site-url: "sebstier.github.io/ma_css24/"
   search: false
   navbar:
