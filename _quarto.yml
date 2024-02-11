@@ -4,7 +4,7 @@ project:
 
 website:
   title: "CSS and Digital Behavioral Data"
-  site-url: "https://sebastianstier.com/ma_css24/"
+  site-url: "sebstier.github.io/ma_css24/"
   search: false
   navbar:
     left:
