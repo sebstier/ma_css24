@@ -1,8 +1,6 @@
 ---
 title: Computational Social Science Methods and Digital Behavioral Data
 subtitle: "University of Mannheim<br>Spring Semester 2024"
-description: |
-    This website contains slides, materials and scripts for the course. 
 section-divs: false
 toc: false
 title-block-banner: "#58748F"
@@ -35,24 +33,17 @@ The course will be application oriented. Students will familiarize themselves wi
 library(openxlsx)
 library(tidyverse)
 library(gt)
-read.xlsx("material/data/schedule.xlsx") %>%  
-    rename(`Required reading` = "Required.reading") %>% 
-    gt() %>% 
-    tab_header("Seminar dates and topics") %>% 
-    fmt_markdown(columns = TRUE) %>% 
-    cols_width(Date ~ px(125),
-               Topics ~ px(300),
-               Topics ~ px(5000)) %>% 
-    tab_options(data_row.padding = px(12)) %>%  
-    tab_options(
-              # table.font.names = 'Georgia',
-              # column_labels.font.weight = 'bold',
-               heading.title.font.size = 14,
-              # heading.subtitle.font.size = 14,
-              # table.font.color = 'steelblue',
-              # source_notes.font.size = 10,
-              # #source_notes.
-              table.font.size = 12)
+read.xlsx("material/data/schedule.xlsx") %>%
+  rename(`Required reading` = "Required.reading") %>%
+  gt() %>%
+  tab_header(md("**Seminar dates and topics**")) %>%
+  fmt_markdown(columns = TRUE) %>%
+  cols_width(Date ~ px(125),
+             Topics ~ px(300),
+             Topics ~ px(5000)) %>% 
+  tab_options(data_row.padding = px(12)) %>%  
+  tab_options(heading.title.font.size = 14,
+              table.font.size = 12) 
 
 ```
 

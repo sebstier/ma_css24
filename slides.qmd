@@ -2,7 +2,7 @@
 page-title: "Slides"
 listing:
   - id: slides
-    contents: "material/slides/*.qmd"
+    contents: "slides/*.qmd"
     type: table
     sort: "lesson"
     sort-ui: false
