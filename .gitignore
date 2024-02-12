@@ -2,6 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
+.Rprofile
+
+data
+plots
 
 /.quarto/
 _site/

@@ -6,21 +6,31 @@ institute: University of Mannheim & GESIS
 date: "2023-02-14"
 date-format: "YYYY-MM-DD"
 footer: "[Computational Social Science and Digital Behavioral Data, University of Mannheim](https://sebastianstier.com/ma_css24/)"
-format: fakegesis-revealjs
+format: 
+  fakegesis-revealjs: 
+    code-line-numbers: false
+
 ---
+
+
 
 ## About me
 
 - Dr. in Political Science in 2016 at the University of Heidelberg
-- Since 2016, Postdoc/Senior Researcher at GESIS -- Leibniz Institute for the Social Sciences
 - No R or programming training during my studies
-- Since 2023 Scientific Director Department Computation Social Science, GESIS -- Leibniz Institute for the Social Sciences & Professor of Computation Social Science
+- 2016-2023, Postdoc/Senior Researcher at GESIS -- Leibniz Institute for the Social Sciences
+- Since November 2023 Scientific Director Department Computation Social Science, GESIS -- Leibniz Institute for the Social Sciences & Professor of Computation Social Science
+
+
+```{css echo=FALSE}
+.small-code{
+  font-size: 70%  
+}
+```
 
 ## My research interests
 
-::: {#my-image .center}
 ![](../material/img/network_sst)
-:::
 
 
 ## About you
@@ -30,6 +40,18 @@ format: fakegesis-revealjs
 - What are your experiences with programming? If applicable, which R packages have you used?
 - What are your motivations for taking the class?
 - Why this course? Which topics/methods/data do you want to learn more about?
+
+## Agenda for today
+
+1. Logistics
+
+2. Warmup session in R, introduction to *tidyverse*
+
+3. Introduction to Computational Social Science
+
+4. First digital behavioral data and data visualization
+
+# 1. Logistics {background-color="#58748F"} 
 
 
 ## Learning objectives
@@ -48,32 +70,37 @@ format: fakegesis-revealjs
 
 
 ## Requirements for examination/grades
+:::{.incremental}
 - Regular participation in class
-- Writing a review of the two required readings for **two** classes to be submitted on Monday before the selected sessions (*Studienleistung/Coursework*)
+- Writing a review of the two required readings for **two** classes to be submitted on Monday before the respective session (**Studienleistung/Coursework**)
 - Presentation of your own research idea for your term paper in the last session on 22 May 2024
-- Written term paper based on an analysis in R (max. 5,000 words), deadline: 31 July 2024 (*Prüfungsleistung/Examination*)
+- Written term paper based on an analysis in R (max. 5,000 words), deadline: 31 July 2024 (**Prüfungsleistung/Examination**)
 
+:::
 
 ## Information management and communication
-- Slides and materials will be available online: [http://sebastianstier.com/ma_css24/](http://sebastianstier.com/ma_css24)
-- Data might be shared via Cryptshare
-- Submit reviews for class and term paper to [sebastian.stier@gesis.org](mailto:sebastian.stier@gesis.org)
+:::{.incremental}
+- Slides and materials will be online: [http://sebastianstier.com/ma_css24/](http://sebastianstier.com/ma_css24)
+- Data might be shared via separate channels (Cryptshare)
 - Communication
-    - Via [sebastian.stier@gesis.org](mailto:sebastian.stier@gesis.org)
+    - Via [email](mailto:sebastian.stier@gesis.org)
     - In person after the class
     - Via Zoom
+- Submit the final term paper to [sebastian.stier@gesis.org](mailto:sebastian.stier@gesis.org)
 
+
+:::
 
 ## Format of reviews
-- Review of the two required readings needs to be submitted before **two** classes of the semester
-- Some questions you could ask:
+- Review of the two required readings needs to be submitted to ILIAS before **two** classes of the semester
+- Questions you could seek to answer:
 
 ::: {style="font-size: 90%;"}
     - Describe what problem or question these papers address and the main contributions that they make towards a solution or answer. 
     
     - Reflect on the main strengths and weaknesses of these papers.
     
-    - What are the concepts, hypothesized social mechanisms and operationalizations used in the papers?
+    - What are the concepts, assumed social mechanisms and operationalizations used in the papers?
     
     - What are the data in use? How are the data analyzed? Does this seem appropriate?
     
@@ -99,7 +126,7 @@ format: fakegesis-revealjs
 
 ##
 
-```{r, echo=FALSE, warning=FALSE, out.width="80%", message=FALSE}
+```{r, echo=FALSE, warning=FALSE, out.width="105%", message=FALSE}
 library(openxlsx)
 library(tidyverse)
 library(gt)
@@ -109,9 +136,9 @@ read.xlsx("../material/data/schedule.xlsx") %>%
     tab_header(md("**Seminar dates and topics**")) %>%
     fmt_markdown(columns = TRUE) %>%
     cols_width(Date ~ px(200),
-               Topics ~ px(270),
-               Topics ~ px(460)) %>%
-    tab_options(data_row.padding = px(5)) %>%
+               Topics ~ px(250),
+               Topics ~ px(500)) %>%
+    tab_options(data_row.padding = px(5.4)) %>%
     tab_options(
               # table.font.names = 'Georgia',
               # column_labels.font.weight = 'bold',
@@ -125,562 +152,129 @@ read.xlsx("../material/data/schedule.xlsx") %>%
 ```
 
 
-## The elephant in the room: LLMs, ChatGPT et al.
-
-## Heterogeneity of previous 
+## The elephant in the room: AI, LLMs, ChatGPT et al.
 
 
-## Before we get started with coding...
+:::: {.columns}
+
+::: {.column width="60%"}
+![](../material/img/chat_gpt_academia.png){.figure width="710"}
+
+::: {style="font-size: 26%;"}
+Meyer, J. G., Urbanowicz, R. J., Martin, P. C. N., et al. (2023). ChatGPT and large language models in academia: Opportunities and challenges. *BioData Mining*, 16(1), 20. [https://doi.org/10.1186/s13040-023-00339-9](https://doi.org/10.1186/s13040-023-00339-9)
+
+:::
+
+:::
+
+::: {.column width="40%"}
+
+::: {style="font-size: 72%;"}
+
+:::{.incremental}
+
+- It's fine to look for help online but without an understanding of the R code base the use of AI is inefficient.
+- We will code in class $\rightarrow$ applied programming.
+- Term paper: 
+  - Synthesis of theory, research question and code.
+  - Documentation of code: tell me why each step is needed and what it does.
+:::
+
+:::
+
+:::
+
+::::
 
 
+# 2. Warmup session in R, introduction to *tidyverse* {background-color="#58748F"} 
+
+
+## *tidyverse*: the Swiss Army knife of R 
+
+![](../material/img/tidyverse){.figure width="300"}
+
+::: {style="font-size: 32%;"}
+Çetinkaya-Rundel, M., et al. (2021). An educator's perspective of the tidyverse. [arXiv Preprint.](https://doi.org/10.48550/ARXIV.2108.03510)
+
+:::
+
+Introduction to *tidyverse*: [https://www.tidyverse.org/packages](https://www.tidyverse.org/packages)
+
+
+## First exercises
+
+- Download file **1_session_one.R** from [https://sebastianstier.com/ma_css24/material.html](https://sebastianstier.com/ma_css24/material.html)
+- Do the first exercises.
+- I'll answer questions and help.
+
+
+## Before we really get started with coding...
+
+A simple ggplot figure.
+
+<div class=small-code>
 ```{r}
 #| echo: fenced
 #| output-location: column
-#| code-line-numbers: "|3|5"
 
 library(ggplot2)
-
-mtcars %>% 
+mtcars %>%
   ggplot(aes(x = disp, y = mpg)) +
   geom_point() +
   geom_smooth(method = "loess", formula = "y ~ x") +
   theme_minimal()
+
 ```
-
-. . .
-
-[https://style.tidyverse.org/index.html](https://style.tidyverse.org/index.html)
-
-
-:::{.aside}
-Switching between formats is THAT easy as long as you do not have any "fancy" features included
-:::
-
-## HTML divs and spans with Pandoc
-
-```{.markdown  code-line-numbers="false"}
-::: {.class}
-Content in a div with a class
-:::
-
-Some text with a specific [span]{.span-class}
-```
-
-Pandoc translates this to
-```{.html code-line-numbers="false"}
-<div class="class">
-   Content in a div with a class
-</div>
-Some text with a specific <span class="span-class">span</span>
-```
-
-## Incremental lists
-
-```{.markdown code-line-numbers="false"}
-:::{.incremental}
-- item 1
-- item 2
-- item 3
-:::
-```
-
-:::{.incremental}
-- item 1
-- item 2
-- item 3
-:::
-
-## Incremental Slides
-
-Use `. . .` syntax  
-
-```{.markdown code-line-numbers="false"}
-This appears first 
-
-. . .
-
-This second
-```
-
-<br>
-
-. . .
-
-This appears first 
-
-. . .
-
-This second
-
-## Fragments, Basics
-
-```{.markdown code-line-numbers="false"}
-
-::: {.fragment}
-Fade in
-:::
-
-::: {.fragment .fade-out}
-Fade out
-:::
-
-::: {.fragment .highlight-red}
-Highlight red
-:::
-
-::: {.fragment .fade-in-then-out}
-Fade in, then out
-:::
-
-::: {.fragment .fade-up}
-Slide up while fading in
-:::
-```
-
-## Fragments, Basics
-
-::: {.fragment}
-Fade in
-:::
-
-::: {.fragment .fade-out}
-Fade out
-:::
-
-::: {.fragment .highlight-red}
-Highlight red
-:::
-
-::: {.fragment .fade-in-then-out}
-Fade in, then out
-:::
-
-::: {.fragment .fade-up}
-Slide up while fading in
-:::
-
-## Fragments, More
-
-This is an [important sentence!]{.fragment .highlight-red}
-```{.markdown code-line-numbers="false"}
-This is an [important sentence!]{.fragment .highlight-red}
-```
-
-::: {.fragment .fade-in}
-::: {.fragment .highlight-red}
-::: {.fragment .semi-fade-out}
-Fade in > Turn red > Semi fade out
-:::
-:::
-:::
-
-. . .
-
-```{.markdown code-line-numbers="false"}
-::: {.fragment .fade-in}
-::: {.fragment .highlight-red}
-::: {.fragment .semi-fade-out}
-Fade in > Turn red > Semi fade out
-:::
-:::
-:::
-```
-
-## Slide Transition {transition="fade"}
-
-:::{.r-fit-text}
-fade
-:::
-
-:::{.aside}
-```{.markdown code-line-numbers="false"}
-## Slide Transition {transition="fade"}
-```
-:::
-
-## Slide Transition {transition="slide"}
-
-:::{.r-fit-text}
-slide
-:::
-
-:::{.aside}
-```{.markdown code-line-numbers="false"}
-## Slide Transition {transition="slide"}
-```
-:::
-
-## Slide Transition {transition="convex"}
-
-:::{.r-fit-text}
-convex
-:::
-
-
-:::{.aside}
-```{.markdown code-line-numbers="false"}
-## Slide Transition {transition="convex"}
-```
-:::
-
-## Slide Transition {transition="concave"}
-
-:::{.r-fit-text}
-concave
-:::
-
-
-:::{.aside}
-```{.markdown code-line-numbers="false"}
-## Slide Transition {transition="concave"}
-```
-:::
-
-## Slide Transition {transition="zoom"}
-
-:::{.r-fit-text}
-zoom
-:::
-
-
-:::{.aside}
-```{.markdown code-line-numbers="false"}
-## Slide Transition {transition="zoom"}
-```
-:::
-
-## Slide Transition, global
-
-```{.yaml code-line-numbers="false"}
----
-title: "Presentation"
-format:
-  revealjs:
-    transition: slide
-    background-transition: fade
-    transition-speed: fast
----
-```
-
-## Column layout
-
-```{.markdown code-line-numbers="false"}
-:::: {.columns}
-
-::: {.column width="40%"}
-Left column
-:::
-
-::: {.column width="60%"}
-Right column
-:::
-
-::::
-```
-
-:::: {.columns}
-
-::: {.column width="40%"}
-Left column
-:::
-
-::: {.column width="60%"}
-Right column
-:::
-
-::::
-
-
-
-## Column layout
-
-:::: {.columns}
-
-::: {.column width="40%"}
-
-```{r}
-#| echo: fenced
-#| eval: false
-dplyr::glimpse(mtcars)
-```
-:::
-
-::: {.column width="60%"}
-```{r}
-#| echo: false
-dplyr::glimpse(mtcars)
-```
-:::
-
-::::
-
-## Output location, `column-fragment`
-
-```{r}
-#| echo: fenced
-#| output-location: column-fragment
-#| code-line-numbers: "|2"
-
-library(ggplot2)
-
-mtcars |> 
-  ggplot(aes(x = disp, y = mpg)) +
-  geom_point() +
-  geom_smooth(method = "loess", formula = "y~x")
-```
-
-## Output location, `column`
-
-```{r}
-#| echo: fenced
-#| output-location: column
-#| code-line-numbers: "|2"
-
-library(ggplot2)
-
-mtcars |> 
-  ggplot(aes(x = disp, y = mpg)) +
-  geom_point() +
-  geom_smooth(method = "loess", formula = "y~x")
-```
-
-## Output location, `fragment`
-
-```{r}
-#| echo: fenced
-#| output-location: fragment
-#| code-line-numbers: "|2"
-
-library(ggplot2)
-
-mtcars |> 
-  ggplot(aes(x = disp, y = mpg)) +
-  geom_point() +
-  geom_smooth(method = "loess", formula = "y~x")
-```
-
-## Output location, `slide`
-
-```{r}
-#| echo: fenced
-#| output-location: slide
-#| code-line-numbers: "|2"
-
-library(ggplot2)
-
-mtcars |> 
-  ggplot(aes(x = disp, y = mpg)) +
-  geom_point() +
-  geom_smooth(method = "loess", formula = "y~x")
-```
-
-## Code line-highlighting
-
-Use `#| code-line-numbers: "3"` syntax - will highlight line 3 and fade others
-
-```{r}
-#| echo: fenced
-#| output-location: column
-#| code-line-numbers: "3"
-
-library(ggplot2)
-
-mtcars |> 
-  ggplot(aes(x = disp, y = mpg)) +
-  geom_point() +
-  geom_smooth(method = "loess", formula = "y~x")
-```
-
-## Code line-highlighting
-
-with a "fragment style"
-
-```{r}
-#| echo: fenced
-#| output-location: column
-#| code-line-numbers: "|3"
-
-library(ggplot2)
-
-mtcars |> 
-  ggplot(aes(x = disp, y = mpg)) +
-  geom_point() +
-  geom_smooth(method = "loess", formula = "y~x")
-```
-
-## Code line-highlighting
-
-highlight different line ranges progressively
-
-```{r}
-#| echo: fenced
-#| output-location: column
-#| code-line-numbers: "|3|5|8|10"
-
-library(ggplot2)
-
-mtcars |> 
-  ggplot(aes(x = disp, y = mpg)) +
-  geom_point() +
-  geom_smooth(method = "loess", formula = "y~x")
-```
-
-
-
-## Stack images
-
-::: {.r-stack}
-![](../img/kitten1.jpeg){.fragment width="450"}
-
-![](../img/kitten2.jpeg){.fragment width="400"}
-
-![](../img/kitten3.jpeg){.fragment width="300"}
-:::
-
-## Stack images
-
-```{.markdown code-line-numbers="false"}
-::: {.r-stack}
-![](../img/kitten1.jpeg){.fragment width="450"}
-
-![](../img/kitten2.jpeg){.fragment width="400"}
-
-![](../img/kitten3.jpeg){.fragment width="300"}
-:::
-```
-
-# Themes, Colors and other bling {background-color="#F06400"} 
-
-## Background color and image  {background-color="red"} 
-
-Background color:
-```{.markdown code-line-numbers="false"}
-## Background color and image  {background-color="red"} 
-```
-
-. . .
-
-<br>
-
-Background image:
-```{.markdown code-line-numbers="false"}
-## Background color and image  {background-image="<link-to-image>"} 
-```
-
-## Themes
-
-see [https://quarto.org/docs/presentations/revealjs/themes.html](https://quarto.org/docs/presentations/revealjs/themes.html){preview-link="true"}
-
-```{.yaml code-line-numbers="false"}
----
-title: "Presentation"
-format:
-  revealjs: 
-    theme: dark
----
-```
-
-. . .
-
-```{.yaml code-line-numbers="false"}
----
-title: "Presentation"
-format:
-  revealjs: 
-    theme: beige
----
-```
-
-. . .
-
-```{.yaml code-line-numbers="false"}
----
-title: "Presentation"
-format:
-  revealjs: 
-    theme: simple
----
-```
-
-
-
-## Themes via custom SASS
-
-```{.yaml code-line-numbers="false"}
----
-title: "Presentation"
-format:
-  revealjs: 
-    theme: [default,custom.scss]
----
-```
-
-`custom.scss`:
-```{.css code-line-numbers="false"}
-/*-- scss:defaults --*/
-
-$body-bg: #191919;
-$body-color: #fff;
-$link-color: #42affa;
-
-/*-- scss:rules --*/
-
-.reveal .slide blockquote {
-  border-left: 3px solid $text-muted;
-  padding-left: 0.5em;
-}
-```
-
-
-## Themes via Extensions
-
-Install Extension (**in the folder of your presentation**):
-```{.bash code-line-numbers="false"}
-quarto use template gesiscss/quarto-revealjs-fakegesis
-```
-
-. . .
-
-<br>
-
-use in yaml header:
-
-```{.yaml code-line-numbers="false"}
----
-title: "Let's make a presentation with Quarto"
-author: "David Schoch"
-lesson: 5
-institute: GESIS
-date: "2023-06-20"
-date-format: "YYYY-MM-DD"
-footer: "[Automated Reports & Co with Quarto and Markdown](https://gesiscss.github.io/quarto-workshop/)"
-format: fakegesis-revealjs
----
-```
-
-. . .
-
-Very creative themes can be found [here](https://quarto.org/docs/extensions/listing-revealjs.html){preview-link="true"}
-
-## Examples
-
-:::{.r-stack}
-![](https://github.com/schochastics/quarto-blackboard-theme/raw/main/title.png){.fragment width=900}
-
-![](https://github.com/schochastics/quarto-blackboard-theme/raw/main/ggplot.png){.fragment width=900}
-
-![](https://user-images.githubusercontent.com/14034784/187721198-04400c7a-4432-4c90-9344-f1cf938be3b1.gif){.fragment width=900}
-:::
-
 
 ##
 
-<br><br><br>
+```{r, eval=FALSE}
+#| echo: fenced
+#| output-location: fragment
 
-:::{.r-fit-text}
-[Give me more](https://quarto.org/docs/presentations/revealjs/){preview-link="true"}
-:::
+library(ggplot2)
+    mtcars %>%ggplot(aes(x = disp, y = mpg))+geom_point() +geom_smooth(method = "loess", formula = "y ~ x")+theme_minimal()
+    
+```
 
-:::{.aside}
-These slides are based on an [RStudio Workshop](https://rstudio-conf-2022.github.io/get-started-quarto/materials/05-presentations.html)
-:::
+```{r, eval=FALSE}
+#| echo: fenced
+#| output-location: fragment
+
+library(ggplot2)
+  ggplot(mtcars,aes(x=disp, y=mpg))+geom_point()+
+      geom_smooth(method="loess",formula="y~x")+theme_minimal()
+
+```
+
+```{r, eval=FALSE}
+#| echo: fenced
+#| output-location: fragment
+
+library(ggplot2)
+mtcars %>%
+  ggplot(aes(x = disp, y = mpg)) +
+  geom_point() +
+  geom_smooth(method = "loess", formula = "y ~ x")
+
+```
+
+. . .
+
+Luckily, there is guidance: [https://style.tidyverse.org/index.html](https://style.tidyverse.org/index.html)
+
+```{r, eval=FALSE,echo=FALSE,message=FALSE}
+#setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+```
+
+# 3. Introduction to Computational Social Science {background-color="#58748F"} 
+
+
+# 4. First exploration of digital behavioral data and data visualization {background-color="#58748F"} 
+
+## Back to coding
+- Go back to file **1_session_one.R** in [https://sebastianstier.com/ma_css24/material.html](https://sebastianstier.com/ma_css24/material.html)
+
+
+# Thank you for your attention! See you on 6th of March {background-color="#58748F"} 
