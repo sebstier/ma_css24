@@ -1,231 +1,301 @@
 [
   {
-    "objectID": "material/slides/01_introduction.html#about-me",
-    "href": "material/slides/01_introduction.html#about-me",
+    "objectID": "slides/01_introduction.html#about-me",
+    "href": "slides/01_introduction.html#about-me",
     "title": "Introduction",
     "section": "About me",
-    "text": "About me\n\n\nPromotion in Politikwissenschaft 2016 an der Universität Heidelberg\nSeit 2016 Wissenschaftlicher Mitarbeiter bei GESIS – Leibniz-Institut für Sozialwissenschaften\nSeit April 2018 Vertretungsprofessor an der Universität Duisburg-Essen \nForschungsinteressen: Internet und Politik, Politische Kommunikation, Parteienforschung, Populismus, Computational Social Science, Quantitative Methoden \nKeinerlei R- oder Programmierausbildung während meines Studiums"
+    "text": "About me\n\nDr. in Political Science in 2016 at the University of Heidelberg\nSince 2016, Postdoc/Senior Researcher at GESIS – Leibniz Institute for the Social Sciences\nNo R or programming training during my studies\nSince 2023 Scientific Director Department Computation Social Science, GESIS – Leibniz Institute for the Social Sciences & Professor of Computation Social Science"
   },
   {
-    "objectID": "material/slides/01_introduction.html#about-me-1",
-    "href": "material/slides/01_introduction.html#about-me-1",
+    "objectID": "slides/01_introduction.html#my-research-interests",
+    "href": "slides/01_introduction.html#my-research-interests",
     "title": "Introduction",
-    "section": "About me",
-    "text": "About me"
+    "section": "My research interests",
+    "text": "My research interests"
   },
   {
-    "objectID": "material/slides/01_introduction.html#no-need-to-learn-new-syntax",
-    "href": "material/slides/01_introduction.html#no-need-to-learn-new-syntax",
+    "objectID": "slides/01_introduction.html#about-you",
+    "href": "slides/01_introduction.html#about-you",
     "title": "Introduction",
-    "section": "No need to learn new syntax",
-    "text": "No need to learn new syntax\n---\nformat: revealjs\n---\n\n## Slide 1\nAdd some content\n\n## Slide 2\n- and \n- maybe\n- a \n- list\nRender to pptx? set format: pptx\nRender to beamer? set format: beamer\n\n\nSwitching between formats is THAT easy as long as you do not have any “fancy” features included"
+    "section": "About you",
+    "text": "About you\n\nWho are you?\nWhat’s your study program and which semester are you in?\nWhat are your experiences with programming? If applicable, which R packages have you used?\nWhat are your motivations for taking the class?\nWhy this course? Which topics/methods/data do you want to learn more about?"
   },
   {
-    "objectID": "material/slides/01_introduction.html#html-divs-and-spans-with-pandoc",
-    "href": "material/slides/01_introduction.html#html-divs-and-spans-with-pandoc",
+    "objectID": "slides/01_introduction.html#learning-objectives",
+    "href": "slides/01_introduction.html#learning-objectives",
+    "title": "Introduction",
+    "section": "Learning objectives",
+    "text": "Learning objectives\n\nAdvanced understanding of concepts, methods, data used and challenges in CSS\nCritical reflection of the applicability of CSS in social science research\nLearning to use CSS methods in R\nApplication of CSS methods in R for own research question"
+  },
+  {
+    "objectID": "slides/01_introduction.html#modus-operandi-in-the-class",
+    "href": "slides/01_introduction.html#modus-operandi-in-the-class",
+    "title": "Introduction",
+    "section": "Modus operandi in the class",
+    "text": "Modus operandi in the class\n\nRequired reading: (mostly) applications\nWe’ll discuss these papers in the class\nWe’ll code in the class \\(\\rightarrow\\) please bring your laptop\nQuestions are always possible, this is supposed to be interactive"
+  },
+  {
+    "objectID": "slides/01_introduction.html#requirements-for-examinationgrades",
+    "href": "slides/01_introduction.html#requirements-for-examinationgrades",
+    "title": "Introduction",
+    "section": "Requirements for examination/grades",
+    "text": "Requirements for examination/grades\n\nRegular participation in class\nWriting a review of the two required readings for two classes to be submitted on Monday before the selected sessions (Studienleistung/Coursework)\nPresentation of your own research idea for your term paper in the last session on 22 May 2024\nWritten term paper based on an analysis in R (max. 5,000 words), deadline: 31 July 2024 (Prüfungsleistung/Examination)"
+  },
+  {
+    "objectID": "slides/01_introduction.html#information-management-and-communication",
+    "href": "slides/01_introduction.html#information-management-and-communication",
+    "title": "Introduction",
+    "section": "Information management and communication",
+    "text": "Information management and communication\n\nSlides and materials will be available online: http://sebastianstier.com/ma_css24/\nData might be shared via Cryptshare\nSubmit reviews for class and term paper to sebastian.stier@gesis.org\nCommunication\n\nVia sebastian.stier@gesis.org\nIn person after the class\nVia Zoom"
+  },
+  {
+    "objectID": "slides/01_introduction.html#format-of-reviews",
+    "href": "slides/01_introduction.html#format-of-reviews",
+    "title": "Introduction",
+    "section": "Format of reviews",
+    "text": "Format of reviews\n\nReview of the two required readings needs to be submitted before two classes of the semester\nSome questions you could ask:\n\n\n- Describe what problem or question these papers address and the main contributions that they make towards a solution or answer. \n\n- Reflect on the main strengths and weaknesses of these papers.\n\n- What are the concepts, hypothesized social mechanisms and operationalizations used in the papers?\n\n- What are the data in use? How are the data analyzed? Does this seem appropriate?\n\n- How convincing do you find the arguments presented by the authors? Are the conclusions backed up by the empirical results?\n\n- Do you see any ethical concerns?\n\n- How do you judge the replicability of these papers?\n\n- If applicable, are there commonalities or differences between the two papers?"
+  },
+  {
+    "objectID": "slides/01_introduction.html#format-of-term-paper-5000-words",
+    "href": "slides/01_introduction.html#format-of-term-paper-5000-words",
+    "title": "Introduction",
+    "section": "Format of term paper (~5,000 words)",
+    "text": "Format of term paper (~5,000 words)\n\nBrief motivation and research question\nConcise theoretical overview: for what conceptual and theoretical reasons do I choose these data and methods?\nResearch design\nData and variables\nMethod: no detailed mathematical description needed, but why does this method fit my research question and my data?\nResults\nAnalysis code as an R script: needs to be fully reproducible"
+  },
+  {
+    "objectID": "slides/01_introduction.html#section",
+    "href": "slides/01_introduction.html#section",
+    "title": "Introduction",
+    "section": "",
+    "text": "Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    14 February 2024\n\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n    6 March 2024\n\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n    13 March 2024\n\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14). \nSilber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n    27 March 2024\n(Easter break)\nMove to: 20 March 2024?\n\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n    3 April 2024\n(Easter break)\nMove to: 10 April 2024?\n\n\nLarge Language Models\nNetwork Analysis\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n    17 April 2024\n\n\nOpen science and reproducibility in CSS\nData quality and validation in CSS\nCoding: open questions\n\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n    22 May 2024\n\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
+  },
+  {
+    "objectID": "slides/01_introduction.html#the-elephant-in-the-room-llms-chatgpt-et-al.",
+    "href": "slides/01_introduction.html#the-elephant-in-the-room-llms-chatgpt-et-al.",
+    "title": "Introduction",
+    "section": "The elephant in the room: LLMs, ChatGPT et al.",
+    "text": "The elephant in the room: LLMs, ChatGPT et al."
+  },
+  {
+    "objectID": "slides/01_introduction.html#heterogeneity-of-previous",
+    "href": "slides/01_introduction.html#heterogeneity-of-previous",
+    "title": "Introduction",
+    "section": "Heterogeneity of previous",
+    "text": "Heterogeneity of previous"
+  },
+  {
+    "objectID": "slides/01_introduction.html#before-we-get-started-with-coding",
+    "href": "slides/01_introduction.html#before-we-get-started-with-coding",
+    "title": "Introduction",
+    "section": "Before we get started with coding…",
+    "text": "Before we get started with coding…\n\n\n```{r}\n#| output-location: column\n#| code-line-numbers: \"|3|5\"\n\nlibrary(ggplot2)\n\nmtcars %&gt;% \n  ggplot(aes(x = disp, y = mpg)) +\n  geom_point() +\n  geom_smooth(method = \"loess\", formula = \"y ~ x\") +\n  theme_minimal()\n```\n\n\n\n\n\n\n\nhttps://style.tidyverse.org/index.html\n\n\n\nSwitching between formats is THAT easy as long as you do not have any “fancy” features included"
+  },
+  {
+    "objectID": "slides/01_introduction.html#html-divs-and-spans-with-pandoc",
+    "href": "slides/01_introduction.html#html-divs-and-spans-with-pandoc",
     "title": "Introduction",
     "section": "HTML divs and spans with Pandoc",
     "text": "HTML divs and spans with Pandoc\n::: {.class}\nContent in a div with a class\n:::\n\nSome text with a specific [span]{.span-class}\nPandoc translates this to\n&lt;div class=\"class\"&gt;\n   Content in a div with a class\n&lt;/div&gt;\nSome text with a specific &lt;span class=\"span-class\"&gt;span&lt;/span&gt;"
   },
   {
-    "objectID": "material/slides/01_introduction.html#incremental-lists",
-    "href": "material/slides/01_introduction.html#incremental-lists",
+    "objectID": "slides/01_introduction.html#incremental-lists",
+    "href": "slides/01_introduction.html#incremental-lists",
     "title": "Introduction",
     "section": "Incremental lists",
     "text": "Incremental lists\n:::{.incremental}\n- item 1\n- item 2\n- item 3\n:::\n\n\nitem 1\nitem 2\nitem 3"
   },
   {
-    "objectID": "material/slides/01_introduction.html#incremental-slides",
-    "href": "material/slides/01_introduction.html#incremental-slides",
+    "objectID": "slides/01_introduction.html#incremental-slides",
+    "href": "slides/01_introduction.html#incremental-slides",
     "title": "Introduction",
     "section": "Incremental Slides",
     "text": "Incremental Slides\nUse . . . syntax\nThis appears first \n\n. . .\n\nThis second\n\n\nThis appears first\n\n\nThis second"
   },
   {
-    "objectID": "material/slides/01_introduction.html#fragments-basics",
-    "href": "material/slides/01_introduction.html#fragments-basics",
+    "objectID": "slides/01_introduction.html#fragments-basics",
+    "href": "slides/01_introduction.html#fragments-basics",
     "title": "Introduction",
     "section": "Fragments, Basics",
     "text": "Fragments, Basics\n\n::: {.fragment}\nFade in\n:::\n\n::: {.fragment .fade-out}\nFade out\n:::\n\n::: {.fragment .highlight-red}\nHighlight red\n:::\n\n::: {.fragment .fade-in-then-out}\nFade in, then out\n:::\n\n::: {.fragment .fade-up}\nSlide up while fading in\n:::"
   },
   {
-    "objectID": "material/slides/01_introduction.html#fragments-basics-1",
-    "href": "material/slides/01_introduction.html#fragments-basics-1",
+    "objectID": "slides/01_introduction.html#fragments-basics-1",
+    "href": "slides/01_introduction.html#fragments-basics-1",
     "title": "Introduction",
     "section": "Fragments, Basics",
     "text": "Fragments, Basics\n\nFade in\n\n\nFade out\n\n\nHighlight red\n\n\nFade in, then out\n\n\nSlide up while fading in"
   },
   {
-    "objectID": "material/slides/01_introduction.html#fragments-more",
-    "href": "material/slides/01_introduction.html#fragments-more",
+    "objectID": "slides/01_introduction.html#fragments-more",
+    "href": "slides/01_introduction.html#fragments-more",
     "title": "Introduction",
     "section": "Fragments, More",
     "text": "Fragments, More\nThis is an important sentence!\nThis is an [important sentence!]{.fragment .highlight-red}\n\n\n\nFade in &gt; Turn red &gt; Semi fade out\n\n\n\n\n::: {.fragment .fade-in}\n::: {.fragment .highlight-red}\n::: {.fragment .semi-fade-out}\nFade in &gt; Turn red &gt; Semi fade out\n:::\n:::\n:::"
   },
   {
-    "objectID": "material/slides/01_introduction.html#slide-transition",
-    "href": "material/slides/01_introduction.html#slide-transition",
+    "objectID": "slides/01_introduction.html#slide-transition",
+    "href": "slides/01_introduction.html#slide-transition",
     "title": "Introduction",
     "section": "Slide Transition",
     "text": "Slide Transition\n\nfade\n\n\n\n## Slide Transition {transition=\"fade\"}"
   },
   {
-    "objectID": "material/slides/01_introduction.html#slide-transition-1",
-    "href": "material/slides/01_introduction.html#slide-transition-1",
+    "objectID": "slides/01_introduction.html#slide-transition-1",
+    "href": "slides/01_introduction.html#slide-transition-1",
     "title": "Introduction",
     "section": "Slide Transition",
     "text": "Slide Transition\n\nslide\n\n\n\n## Slide Transition {transition=\"slide\"}"
   },
   {
-    "objectID": "material/slides/01_introduction.html#slide-transition-2",
-    "href": "material/slides/01_introduction.html#slide-transition-2",
+    "objectID": "slides/01_introduction.html#slide-transition-2",
+    "href": "slides/01_introduction.html#slide-transition-2",
     "title": "Introduction",
     "section": "Slide Transition",
     "text": "Slide Transition\n\nconvex\n\n\n\n## Slide Transition {transition=\"convex\"}"
   },
   {
-    "objectID": "material/slides/01_introduction.html#slide-transition-3",
-    "href": "material/slides/01_introduction.html#slide-transition-3",
+    "objectID": "slides/01_introduction.html#slide-transition-3",
+    "href": "slides/01_introduction.html#slide-transition-3",
     "title": "Introduction",
     "section": "Slide Transition",
     "text": "Slide Transition\n\nconcave\n\n\n\n## Slide Transition {transition=\"concave\"}"
   },
   {
-    "objectID": "material/slides/01_introduction.html#slide-transition-4",
-    "href": "material/slides/01_introduction.html#slide-transition-4",
+    "objectID": "slides/01_introduction.html#slide-transition-4",
+    "href": "slides/01_introduction.html#slide-transition-4",
     "title": "Introduction",
     "section": "Slide Transition",
     "text": "Slide Transition\n\nzoom\n\n\n\n## Slide Transition {transition=\"zoom\"}"
   },
   {
-    "objectID": "material/slides/01_introduction.html#slide-transition-global",
-    "href": "material/slides/01_introduction.html#slide-transition-global",
+    "objectID": "slides/01_introduction.html#slide-transition-global",
+    "href": "slides/01_introduction.html#slide-transition-global",
     "title": "Introduction",
     "section": "Slide Transition, global",
     "text": "Slide Transition, global\n---\ntitle: \"Presentation\"\nformat:\n  revealjs:\n    transition: slide\n    background-transition: fade\n    transition-speed: fast\n---"
   },
   {
-    "objectID": "material/slides/01_introduction.html#column-layout",
-    "href": "material/slides/01_introduction.html#column-layout",
+    "objectID": "slides/01_introduction.html#column-layout",
+    "href": "slides/01_introduction.html#column-layout",
     "title": "Introduction",
     "section": "Column layout",
     "text": "Column layout\n:::: {.columns}\n\n::: {.column width=\"40%\"}\nLeft column\n:::\n\n::: {.column width=\"60%\"}\nRight column\n:::\n\n::::\n\n\nLeft column\n\nRight column"
   },
   {
-    "objectID": "material/slides/01_introduction.html#column-layout-1",
-    "href": "material/slides/01_introduction.html#column-layout-1",
+    "objectID": "slides/01_introduction.html#column-layout-1",
+    "href": "slides/01_introduction.html#column-layout-1",
     "title": "Introduction",
     "section": "Column layout",
     "text": "Column layout\n\n\n\n```{r}\n#| eval: false\ndplyr::glimpse(mtcars)\n```\n\n\n\n\nRows: 32\nColumns: 11\n$ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…\n$ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…\n$ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…\n$ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…\n$ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…\n$ wt   &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…\n$ qsec &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…\n$ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…\n$ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…\n$ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…\n$ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…"
   },
   {
-    "objectID": "material/slides/01_introduction.html#output-location-column-fragment",
-    "href": "material/slides/01_introduction.html#output-location-column-fragment",
+    "objectID": "slides/01_introduction.html#output-location-column-fragment",
+    "href": "slides/01_introduction.html#output-location-column-fragment",
     "title": "Introduction",
     "section": "Output location, column-fragment",
     "text": "Output location, column-fragment\n\n\n```{r}\n#| output-location: column-fragment\n#| code-line-numbers: \"|2\"\n\nlibrary(ggplot2)\n\nmtcars |&gt; \n  ggplot(aes(x = disp, y = mpg)) +\n  geom_point() +\n  geom_smooth(method = \"loess\", formula = \"y~x\")\n```"
   },
   {
-    "objectID": "material/slides/01_introduction.html#output-location-column",
-    "href": "material/slides/01_introduction.html#output-location-column",
+    "objectID": "slides/01_introduction.html#output-location-column",
+    "href": "slides/01_introduction.html#output-location-column",
     "title": "Introduction",
     "section": "Output location, column",
     "text": "Output location, column\n\n\n```{r}\n#| output-location: column\n#| code-line-numbers: \"|2\"\n\nlibrary(ggplot2)\n\nmtcars |&gt; \n  ggplot(aes(x = disp, y = mpg)) +\n  geom_point() +\n  geom_smooth(method = \"loess\", formula = \"y~x\")\n```"
   },
   {
-    "objectID": "material/slides/01_introduction.html#output-location-fragment",
-    "href": "material/slides/01_introduction.html#output-location-fragment",
+    "objectID": "slides/01_introduction.html#output-location-fragment",
+    "href": "slides/01_introduction.html#output-location-fragment",
     "title": "Introduction",
     "section": "Output location, fragment",
     "text": "Output location, fragment\n\n```{r}\n#| output-location: fragment\n#| code-line-numbers: \"|2\"\n\nlibrary(ggplot2)\n\nmtcars |&gt; \n  ggplot(aes(x = disp, y = mpg)) +\n  geom_point() +\n  geom_smooth(method = \"loess\", formula = \"y~x\")\n```"
   },
   {
-    "objectID": "material/slides/01_introduction.html#output-location-slide",
-    "href": "material/slides/01_introduction.html#output-location-slide",
+    "objectID": "slides/01_introduction.html#output-location-slide",
+    "href": "slides/01_introduction.html#output-location-slide",
     "title": "Introduction",
     "section": "Output location, slide",
     "text": "Output location, slide\n\n```{r}\n#| output-location: slide\n#| code-line-numbers: \"|2\"\n\nlibrary(ggplot2)\n\nmtcars |&gt; \n  ggplot(aes(x = disp, y = mpg)) +\n  geom_point() +\n  geom_smooth(method = \"loess\", formula = \"y~x\")\n```"
   },
   {
-    "objectID": "material/slides/01_introduction.html#output-location-slide-output",
-    "href": "material/slides/01_introduction.html#output-location-slide-output",
+    "objectID": "slides/01_introduction.html#output-location-slide-output",
+    "href": "slides/01_introduction.html#output-location-slide-output",
     "title": "Introduction",
     "section": "Output location, slide",
     "text": "Output location, slide"
   },
   {
-    "objectID": "material/slides/01_introduction.html#code-line-highlighting",
-    "href": "material/slides/01_introduction.html#code-line-highlighting",
+    "objectID": "slides/01_introduction.html#code-line-highlighting",
+    "href": "slides/01_introduction.html#code-line-highlighting",
     "title": "Introduction",
     "section": "Code line-highlighting",
     "text": "Code line-highlighting\nUse #| code-line-numbers: \"3\" syntax - will highlight line 3 and fade others\n\n\n```{r}\n#| output-location: column\n#| code-line-numbers: \"3\"\n\nlibrary(ggplot2)\n\nmtcars |&gt; \n  ggplot(aes(x = disp, y = mpg)) +\n  geom_point() +\n  geom_smooth(method = \"loess\", formula = \"y~x\")\n```"
   },
   {
-    "objectID": "material/slides/01_introduction.html#code-line-highlighting-1",
-    "href": "material/slides/01_introduction.html#code-line-highlighting-1",
+    "objectID": "slides/01_introduction.html#code-line-highlighting-1",
+    "href": "slides/01_introduction.html#code-line-highlighting-1",
     "title": "Introduction",
     "section": "Code line-highlighting",
     "text": "Code line-highlighting\nwith a “fragment style”\n\n\n```{r}\n#| output-location: column\n#| code-line-numbers: \"|3\"\n\nlibrary(ggplot2)\n\nmtcars |&gt; \n  ggplot(aes(x = disp, y = mpg)) +\n  geom_point() +\n  geom_smooth(method = \"loess\", formula = \"y~x\")\n```"
   },
   {
-    "objectID": "material/slides/01_introduction.html#code-line-highlighting-2",
-    "href": "material/slides/01_introduction.html#code-line-highlighting-2",
+    "objectID": "slides/01_introduction.html#code-line-highlighting-2",
+    "href": "slides/01_introduction.html#code-line-highlighting-2",
     "title": "Introduction",
     "section": "Code line-highlighting",
     "text": "Code line-highlighting\nhighlight different line ranges progressively\n\n\n```{r}\n#| output-location: column\n#| code-line-numbers: \"|3|5|8|10\"\n\nlibrary(ggplot2)\n\nmtcars |&gt; \n  ggplot(aes(x = disp, y = mpg)) +\n  geom_point() +\n  geom_smooth(method = \"loess\", formula = \"y~x\")\n```"
   },
   {
-    "objectID": "material/slides/01_introduction.html#stack-images",
-    "href": "material/slides/01_introduction.html#stack-images",
+    "objectID": "slides/01_introduction.html#stack-images",
+    "href": "slides/01_introduction.html#stack-images",
     "title": "Introduction",
     "section": "Stack images",
     "text": "Stack images"
   },
   {
-    "objectID": "material/slides/01_introduction.html#stack-images-1",
-    "href": "material/slides/01_introduction.html#stack-images-1",
+    "objectID": "slides/01_introduction.html#stack-images-1",
+    "href": "slides/01_introduction.html#stack-images-1",
     "title": "Introduction",
     "section": "Stack images",
     "text": "Stack images\n::: {.r-stack}\n![](../img/kitten1.jpeg){.fragment width=\"450\"}\n\n![](../img/kitten2.jpeg){.fragment width=\"400\"}\n\n![](../img/kitten3.jpeg){.fragment width=\"300\"}\n:::"
   },
   {
-    "objectID": "material/slides/01_introduction.html#background-color-and-image",
-    "href": "material/slides/01_introduction.html#background-color-and-image",
+    "objectID": "slides/01_introduction.html#background-color-and-image",
+    "href": "slides/01_introduction.html#background-color-and-image",
     "title": "Introduction",
     "section": "Background color and image",
     "text": "Background color and image\nBackground color:\n## Background color and image  {background-color=\"red\"} \n\n\nBackground image:\n## Background color and image  {background-image=\"&lt;link-to-image&gt;\"}"
   },
   {
-    "objectID": "material/slides/01_introduction.html#themes",
-    "href": "material/slides/01_introduction.html#themes",
+    "objectID": "slides/01_introduction.html#themes",
+    "href": "slides/01_introduction.html#themes",
     "title": "Introduction",
     "section": "Themes",
     "text": "Themes\nsee https://quarto.org/docs/presentations/revealjs/themes.html\n---\ntitle: \"Presentation\"\nformat:\n  revealjs: \n    theme: dark\n---\n\n---\ntitle: \"Presentation\"\nformat:\n  revealjs: \n    theme: beige\n---\n\n\n---\ntitle: \"Presentation\"\nformat:\n  revealjs: \n    theme: simple\n---"
   },
   {
-    "objectID": "material/slides/01_introduction.html#themes-via-custom-sass",
-    "href": "material/slides/01_introduction.html#themes-via-custom-sass",
+    "objectID": "slides/01_introduction.html#themes-via-custom-sass",
+    "href": "slides/01_introduction.html#themes-via-custom-sass",
     "title": "Introduction",
     "section": "Themes via custom SASS",
     "text": "Themes via custom SASS\n---\ntitle: \"Presentation\"\nformat:\n  revealjs: \n    theme: [default,custom.scss]\n---\ncustom.scss:\n/*-- scss:defaults --*/\n\n$body-bg: #191919;\n$body-color: #fff;\n$link-color: #42affa;\n\n/*-- scss:rules --*/\n\n.reveal .slide blockquote {\n  border-left: 3px solid $text-muted;\n  padding-left: 0.5em;\n}"
   },
   {
-    "objectID": "material/slides/01_introduction.html#themes-via-extensions",
-    "href": "material/slides/01_introduction.html#themes-via-extensions",
+    "objectID": "slides/01_introduction.html#themes-via-extensions",
+    "href": "slides/01_introduction.html#themes-via-extensions",
     "title": "Introduction",
     "section": "Themes via Extensions",
     "text": "Themes via Extensions\nInstall Extension (in the folder of your presentation):\nquarto use template gesiscss/quarto-revealjs-fakegesis\n\n\nuse in yaml header:\n---\ntitle: \"Let's make a presentation with Quarto\"\nauthor: \"David Schoch\"\nlesson: 5\ninstitute: GESIS\ndate: \"2023-06-20\"\ndate-format: \"YYYY-MM-DD\"\nfooter: \"[Automated Reports & Co with Quarto and Markdown](https://gesiscss.github.io/quarto-workshop/)\"\nformat: fakegesis-revealjs\n---\n\n\nVery creative themes can be found here"
   },
   {
-    "objectID": "material/slides/01_introduction.html#examples",
-    "href": "material/slides/01_introduction.html#examples",
+    "objectID": "slides/01_introduction.html#examples",
+    "href": "slides/01_introduction.html#examples",
     "title": "Introduction",
     "section": "Examples",
     "text": "Examples"
   },
   {
-    "objectID": "material/slides/01_introduction.html#section",
-    "href": "material/slides/01_introduction.html#section",
+    "objectID": "slides/01_introduction.html#section-1",
+    "href": "slides/01_introduction.html#section-1",
     "title": "Introduction",
     "section": "",
     "text": "Give me more\n\n\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\nThese slides are based on an RStudio Workshop"
@@ -263,6 +333,6 @@
     "href": "index.html",
     "title": "Computational Social Science Methods and Digital Behavioral Data",
     "section": "",
-    "text": "Lecturer\nSebastian Stier\nProfessor @ University of Mannheim & Scientific Director Department Computational Social Science @ GESIS\n\nAbout the course\nComputational Social Science (CSS) is a young research field at the intersection of various social science disciplines, data science and computer science. The goal is to gain new insights into society through large amounts of data and the direct observation of human behavior. CSS relies on two cornerstones: digital behavioral data, which can be collected from online platforms or sensors like smartphones, and computer science methods such as automated text analysis to create appropriate measures for social science research questions. In the course, students will get to know foundational studies, theories and methods used in the field of CSS. We will discuss infrastructural, ethical and legal challenges and how to navigate these to devise appropriate research designs in CSS.\nThe course will be application oriented. Students will familiarize themselves with the main applications of CSS methods and implement them in R. The range of applications will cover data management and preprocessing, the application of machine learning, data and results visualization, statistical data analysis and the validation of results. The hands-on application examples will cover questions from various research fields and different data types like social media data or web browsing histories. Equipped with this theoretical and methodological toolkit, students will develop their own CSS research projects.\nSchedule\n\n\n\n\n\n\n  \n    \n    \n    \n  \n  \n    \n      Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    14 February 2024\n\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n    6 March 2024\n\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n    13 March 2024\n\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14). \nSilber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n    27 March 2024\n(Easter break)\nMove to: 20 March 2024?\n\n\nAutomated text analysis\nMachine learning\n\n\nGrimmer, J., & Stewart, B. M. (2013). Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts. Political Analysis, 21(3), 267–297. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n    3 April 2024\n(Easter break)\nMove to: 10 April 2024?\n\n\nLarge Language Models\nNetwork Analysis\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n    17 April 2024\n\n\nOpen science and reproducibility in CSS\nData quality and validation in CSS\nCoding repetitions\nSomething else\n\n\nSchoch, D., Chan, C., Wagner, C., & Bleier, A. (2023). Computational Reproducibility in Computational Social Science. arXiv Preprint. \nSen, I., Flöck, F., Weller, K., Weiß, B., & Wagner, C. (2021). A Total Error Framework for Digital Traces of Human Behavior on Online Platforms. Public Opinion Quarterly, 85(S1), 399–422.\n\n    22 May 2024\n\n\nPresentations of thesis ideas\nCoding troubleshooting\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint.\n\n  \n  \n  \n\n\n\n\nSoftware\n\nR\nA text editor, e.g. RStudio\nQuarto"
+    "text": "Lecturer\nSebastian Stier\nProfessor @ University of Mannheim & Scientific Director Department Computational Social Science @ GESIS\n\nAbout the course\nComputational Social Science (CSS) is a young research field at the intersection of various social science disciplines, data science and computer science. The goal is to gain new insights into society through large amounts of data and the direct observation of human behavior. CSS relies on two cornerstones: digital behavioral data, which can be collected from online platforms or sensors like smartphones, and computer science methods such as automated text analysis to create appropriate measures for social science research questions. In the course, students will get to know foundational studies, theories and methods used in the field of CSS. We will discuss infrastructural, ethical and legal challenges and how to navigate these to devise appropriate research designs in CSS.\nThe course will be application oriented. Students will familiarize themselves with the main applications of CSS methods and implement them in R. The range of applications will cover data management and preprocessing, the application of machine learning, data and results visualization, statistical data analysis and the validation of results. The hands-on application examples will cover questions from various research fields and different data types like social media data or web browsing histories. Equipped with this theoretical and methodological toolkit, students will develop their own CSS research projects.\nSchedule\n\n\n\n\n\n\n  \n    \n    \n    \n  \n  \n    \n      Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    14 February 2024\n\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n    6 March 2024\n\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n    13 March 2024\n\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14). \nSilber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n    27 March 2024\n(Easter break)\nMove to: 20 March 2024?\n\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n    3 April 2024\n(Easter break)\nMove to: 10 April 2024?\n\n\nLarge Language Models\nNetwork Analysis\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n    17 April 2024\n\n\nOpen science and reproducibility in CSS\nData quality and validation in CSS\nCoding: open questions\n\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n    22 May 2024\n\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint.\n\n  \n  \n  \n\n\n\n\nSoftware\n\nR\nA text editor, e.g. RStudio\nQuarto"
   }
 ]
