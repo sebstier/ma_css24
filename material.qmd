@@ -2,7 +2,7 @@
 page-title: "Material"
 listing:
   - id: material
-    contents: "material/*.qmd"
+    contents: "material/*.R"
     type: table
     sort: "lesson"
     sort-ui: false
