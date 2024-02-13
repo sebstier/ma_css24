@@ -95,7 +95,26 @@
     code span.va { color: #e36209; } /* Variable */
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../libs/revealjs/dist/theme/quarto.css">
   <link href="../libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -410,17 +429,22 @@ Sebastian Stier
 <h2>About me</h2>
 <ul>
 <li>Dr.&nbsp;in Political Science in 2016 at the University of Heidelberg</li>
-<li>Since 2016, Postdoc/Senior Researcher at GESIS – Leibniz Institute for the Social Sciences</li>
 <li>No R or programming training during my studies</li>
-<li>Since 2023 Scientific Director Department Computation Social Science, GESIS – Leibniz Institute for the Social Sciences &amp; Professor of Computation Social Science</li>
+<li>2016-2023, Postdoc/Senior Researcher at GESIS – Leibniz Institute for the Social Sciences</li>
+<li>Since November 2023 Scientific Director Department Computation Social Science at GESIS &amp; Professor of Computation Social Science, University of Mannheim</li>
 </ul>
+<div class="cell">
+<style type="text/css">
+.small-code{
+  font-size: 70%  
+}
+</style>
+</div>
 </section>
 <section id="my-research-interests" class="slide level2">
 <h2>My research interests</h2>
-<div id="my-image" class="center">
-<p><img data-src="../material/img/network_sst.png"></p>
-</div>
-</section>
+
+<img data-src="../material/img/network_sst.png" class="r-stretch"></section>
 <section id="about-you" class="slide level2">
 <h2>About you</h2>
 <ul>
@@ -431,19 +455,34 @@ Sebastian Stier
 <li>Why this course? Which topics/methods/data do you want to learn more about?</li>
 </ul>
 </section>
+<section id="agenda-for-today" class="slide level2">
+<h2>Agenda for today</h2>
+<ol type="1">
+<li><p>Logistics</p></li>
+<li><p>Warmup session in R, introduction to <em>tidyverse</em></p></li>
+<li><p>Introduction to Computational Social Science</p></li>
+<li><p>First exploration of digital behavioral data and data visualization</p></li>
+</ol>
+</section>
+<section>
+<section id="logistics" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>1. Logistics</h1>
+
+</section>
 <section id="learning-objectives" class="slide level2">
 <h2>Learning objectives</h2>
-<ul>
+<ol type="1">
 <li>Advanced understanding of concepts, methods, data used and challenges in CSS</li>
 <li>Critical reflection of the applicability of CSS in social science research</li>
 <li>Learning to use CSS methods in R</li>
 <li>Application of CSS methods in R for own research question</li>
-</ul>
+</ol>
 </section>
 <section id="modus-operandi-in-the-class" class="slide level2">
 <h2>Modus operandi in the class</h2>
 <ul>
-<li>Required reading: (mostly) applications</li>
+<li>Introduction to the session’s topic by instructor</li>
+<li>Required reading: (mostly) applied papers</li>
 <li>We’ll discuss these papers in the class</li>
 <li>We’ll code in the class <span class="math inline">\(\rightarrow\)</span> please bring your laptop</li>
 <li>Questions are always possible, this is supposed to be interactive</li>
@@ -451,39 +490,27 @@ Sebastian Stier
 </section>
 <section id="requirements-for-examinationgrades" class="slide level2">
 <h2>Requirements for examination/grades</h2>
+<div>
 <ul>
-<li>Regular participation in class</li>
-<li>Writing a review of the two required readings for <strong>two</strong> classes to be submitted on Monday before the selected sessions (<em>Studienleistung/Coursework</em>)</li>
-<li>Presentation of your own research idea for your term paper in the last session on 22 May 2024</li>
-<li>Written term paper based on an analysis in R (max. 5,000 words), deadline: 31 July 2024 (<em>Prüfungsleistung/Examination</em>)</li>
+<li class="fragment">Regular participation in class</li>
+<li class="fragment">Writing a review of the two required readings for <strong>two</strong> classes to be submitted on Monday before the respective session (<strong>Studienleistung/Coursework</strong>)</li>
+<li class="fragment">Presentation of your own research idea for your term paper in the last session on 22 May 2024</li>
+<li class="fragment">Written term paper based on an analysis in R (max. 5,000 words), deadline: 31 July 2024 (<strong>Prüfungsleistung/Examination</strong>)</li>
 </ul>
-</section>
-<section id="information-management-and-communication" class="slide level2">
-<h2>Information management and communication</h2>
-<ul>
-<li>Slides and materials will be available online: <a href="http://sebastianstier.com/ma_css24">http://sebastianstier.com/ma_css24/</a></li>
-<li>Data might be shared via Cryptshare</li>
-<li>Submit reviews for class and term paper to <a href="mailto:sebastian.stier@gesis.org">sebastian.stier@gesis.org</a></li>
-<li>Communication
-<ul>
-<li>Via <a href="mailto:sebastian.stier@gesis.org">sebastian.stier@gesis.org</a></li>
-<li>In person after the class</li>
-<li>Via Zoom</li>
-</ul></li>
-</ul>
+</div>
 </section>
 <section id="format-of-reviews" class="slide level2">
 <h2>Format of reviews</h2>
 <ul>
-<li>Review of the two required readings needs to be submitted before <strong>two</strong> classes of the semester</li>
-<li>Some questions you could ask:</li>
+<li>Review of the two required readings needs to be submitted to ILIAS on Monday before <strong>two</strong> classes of the semester</li>
+<li>Questions you could seek to answer:</li>
 </ul>
 <div style="font-size: 90%;">
 <pre><code>- Describe what problem or question these papers address and the main contributions that they make towards a solution or answer. 
 
 - Reflect on the main strengths and weaknesses of these papers.
 
-- What are the concepts, hypothesized social mechanisms and operationalizations used in the papers?
+- What are the concepts, assumed social mechanisms and operationalizations used in the papers?
 
 - What are the data in use? How are the data analyzed? Does this seem appropriate?
 
@@ -508,28 +535,42 @@ Sebastian Stier
 <li>Analysis code as an R script: needs to be fully reproducible</li>
 </ul>
 </section>
+<section id="information-management-and-communication" class="slide level2">
+<h2>Information management and communication</h2>
+<ul>
+<li>Slides and materials will be online: <a href="http://sebastianstier.com/ma_css24">http://sebastianstier.com/ma_css24/</a></li>
+<li>(Data might be shared via the secure platform Cryptshare)</li>
+<li>Communication
+<ul>
+<li>Via <a href="mailto:sebastian.stier@gesis.org">email</a></li>
+<li>In person after the class</li>
+<li>Via Zoom</li>
+</ul></li>
+<li>Submit the final term paper to <a href="mailto:sebastian.stier@gesis.org">sebastian.stier@gesis.org</a></li>
+</ul>
+</section>
 <section id="section" class="slide level2">
 <h2></h2>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="neenfmdxqc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#neenfmdxqc table {
+<div id="tfkhrsznby" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tfkhrsznby table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#neenfmdxqc thead, #neenfmdxqc tbody, #neenfmdxqc tfoot, #neenfmdxqc tr, #neenfmdxqc td, #neenfmdxqc th {
+#tfkhrsznby thead, #tfkhrsznby tbody, #tfkhrsznby tfoot, #tfkhrsznby tr, #tfkhrsznby td, #tfkhrsznby th {
   border-style: none;
 }
 
-#neenfmdxqc p {
+#tfkhrsznby p {
   margin: 0;
   padding: 0;
 }
 
-#neenfmdxqc .gt_table {
+#tfkhrsznby .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -555,12 +596,12 @@ Sebastian Stier
   border-left-color: #D3D3D3;
 }
 
-#neenfmdxqc .gt_caption {
+#tfkhrsznby .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#neenfmdxqc .gt_title {
+#tfkhrsznby .gt_title {
   color: #333333;
   font-size: 14px;
   font-weight: initial;
@@ -572,7 +613,7 @@ Sebastian Stier
   border-bottom-width: 0;
 }
 
-#neenfmdxqc .gt_subtitle {
+#tfkhrsznby .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -584,7 +625,7 @@ Sebastian Stier
   border-top-width: 0;
 }
 
-#neenfmdxqc .gt_heading {
+#tfkhrsznby .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -596,13 +637,13 @@ Sebastian Stier
   border-right-color: #D3D3D3;
 }
 
-#neenfmdxqc .gt_bottom_border {
+#tfkhrsznby .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#neenfmdxqc .gt_col_headings {
+#tfkhrsznby .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -617,7 +658,7 @@ Sebastian Stier
   border-right-color: #D3D3D3;
 }
 
-#neenfmdxqc .gt_col_heading {
+#tfkhrsznby .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -637,7 +678,7 @@ Sebastian Stier
   overflow-x: hidden;
 }
 
-#neenfmdxqc .gt_column_spanner_outer {
+#tfkhrsznby .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -649,15 +690,15 @@ Sebastian Stier
   padding-right: 4px;
 }
 
-#neenfmdxqc .gt_column_spanner_outer:first-child {
+#tfkhrsznby .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#neenfmdxqc .gt_column_spanner_outer:last-child {
+#tfkhrsznby .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#neenfmdxqc .gt_column_spanner {
+#tfkhrsznby .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -669,11 +710,11 @@ Sebastian Stier
   width: 100%;
 }
 
-#neenfmdxqc .gt_spanner_row {
+#tfkhrsznby .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#neenfmdxqc .gt_group_heading {
+#tfkhrsznby .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -699,7 +740,7 @@ Sebastian Stier
   text-align: left;
 }
 
-#neenfmdxqc .gt_empty_group_heading {
+#tfkhrsznby .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -714,17 +755,17 @@ Sebastian Stier
   vertical-align: middle;
 }
 
-#neenfmdxqc .gt_from_md > :first-child {
+#tfkhrsznby .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#neenfmdxqc .gt_from_md > :last-child {
+#tfkhrsznby .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#neenfmdxqc .gt_row {
-  padding-top: 5px;
-  padding-bottom: 5px;
+#tfkhrsznby .gt_row {
+  padding-top: 5.4px;
+  padding-bottom: 5.4px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
@@ -741,7 +782,7 @@ Sebastian Stier
   overflow-x: hidden;
 }
 
-#neenfmdxqc .gt_stub {
+#tfkhrsznby .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -754,7 +795,7 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#neenfmdxqc .gt_stub_row_group {
+#tfkhrsznby .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -768,15 +809,15 @@ Sebastian Stier
   vertical-align: top;
 }
 
-#neenfmdxqc .gt_row_group_first td {
+#tfkhrsznby .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#neenfmdxqc .gt_row_group_first th {
+#tfkhrsznby .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#neenfmdxqc .gt_summary_row {
+#tfkhrsznby .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -786,16 +827,16 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#neenfmdxqc .gt_first_summary_row {
+#tfkhrsznby .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#neenfmdxqc .gt_first_summary_row.thick {
+#tfkhrsznby .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#neenfmdxqc .gt_last_summary_row {
+#tfkhrsznby .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -805,7 +846,7 @@ Sebastian Stier
   border-bottom-color: #D3D3D3;
 }
 
-#neenfmdxqc .gt_grand_summary_row {
+#tfkhrsznby .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -815,7 +856,7 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#neenfmdxqc .gt_first_grand_summary_row {
+#tfkhrsznby .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -825,7 +866,7 @@ Sebastian Stier
   border-top-color: #D3D3D3;
 }
 
-#neenfmdxqc .gt_last_grand_summary_row_top {
+#tfkhrsznby .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -835,11 +876,11 @@ Sebastian Stier
   border-bottom-color: #D3D3D3;
 }
 
-#neenfmdxqc .gt_striped {
+#tfkhrsznby .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#neenfmdxqc .gt_table_body {
+#tfkhrsznby .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -848,7 +889,7 @@ Sebastian Stier
   border-bottom-color: #D3D3D3;
 }
 
-#neenfmdxqc .gt_footnotes {
+#tfkhrsznby .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -862,7 +903,7 @@ Sebastian Stier
   border-right-color: #D3D3D3;
 }
 
-#neenfmdxqc .gt_footnote {
+#tfkhrsznby .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -871,7 +912,7 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#neenfmdxqc .gt_sourcenotes {
+#tfkhrsznby .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -885,7 +926,7 @@ Sebastian Stier
   border-right-color: #D3D3D3;
 }
 
-#neenfmdxqc .gt_sourcenote {
+#tfkhrsznby .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -893,70 +934,70 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#neenfmdxqc .gt_left {
+#tfkhrsznby .gt_left {
   text-align: left;
 }
 
-#neenfmdxqc .gt_center {
+#tfkhrsznby .gt_center {
   text-align: center;
 }
 
-#neenfmdxqc .gt_right {
+#tfkhrsznby .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#neenfmdxqc .gt_font_normal {
+#tfkhrsznby .gt_font_normal {
   font-weight: normal;
 }
 
-#neenfmdxqc .gt_font_bold {
+#tfkhrsznby .gt_font_bold {
   font-weight: bold;
 }
 
-#neenfmdxqc .gt_font_italic {
+#tfkhrsznby .gt_font_italic {
   font-style: italic;
 }
 
-#neenfmdxqc .gt_super {
+#tfkhrsznby .gt_super {
   font-size: 65%;
 }
 
-#neenfmdxqc .gt_footnote_marks {
+#tfkhrsznby .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#neenfmdxqc .gt_asterisk {
+#tfkhrsznby .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#neenfmdxqc .gt_indent_1 {
+#tfkhrsznby .gt_indent_1 {
   text-indent: 5px;
 }
 
-#neenfmdxqc .gt_indent_2 {
+#tfkhrsznby .gt_indent_2 {
   text-indent: 10px;
 }
 
-#neenfmdxqc .gt_indent_3 {
+#tfkhrsznby .gt_indent_3 {
   text-indent: 15px;
 }
 
-#neenfmdxqc .gt_indent_4 {
+#tfkhrsznby .gt_indent_4 {
   text-indent: 20px;
 }
 
-#neenfmdxqc .gt_indent_5 {
+#tfkhrsznby .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 <table class="gt_table" style="table-layout: fixed;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <colgroup>
     <col style="width:200px;">
-    <col style="width:270px;">
+    <col style="width:250px;">
     <col>
   </colgroup>
   <thead>
@@ -1090,536 +1131,290 @@ Nyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023).
 </div>
 </div>
 </section>
-<section id="the-elephant-in-the-room-llms-chatgpt-et-al." class="slide level2">
-<h2>The elephant in the room: LLMs, ChatGPT et al.</h2>
-</section>
-<section id="heterogeneity-of-previous" class="slide level2">
-<h2>Heterogeneity of previous</h2>
-</section>
-<section id="before-we-get-started-with-coding" class="slide level2">
-<h2>Before we get started with coding…</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="|3|5"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a><span class="in">```{r}</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#| output-location: column</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#| code-line-numbers: "|3|5"</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a>mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb2-8"><a href="#cb2-8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y ~ x"</span>) <span class="sc">+</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<p><img data-src="01_introduction_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+<section id="the-elephant-in-the-room-ai-llms-chatgpt-et-al." class="slide level2">
+<h2>The elephant in the room: AI, LLMs, ChatGPT et al.</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="../material/img/chat_gpt_academia.png" class="figure" width="710"></p>
+<div style="font-size: 26%;">
+<p>Meyer, J. G., Urbanowicz, R. J., Martin, P. C. N., et al.&nbsp;(2023). ChatGPT and large language models in academia: Opportunities and challenges. <em>BioData Mining</em>, 16(1), 20. <a href="https://doi.org/10.1186/s13040-023-00339-9">https://doi.org/10.1186/s13040-023-00339-9</a></p>
 </div>
-</div>
-</div>
-<div class="fragment">
-<p><a href="https://style.tidyverse.org/index.html">https://style.tidyverse.org/index.html</a></p>
-
-</div>
-<aside><div>
-<p>Switching between formats is THAT easy as long as you do not have any “fancy” features included</p>
-</div></aside></section>
-<section id="html-divs-and-spans-with-pandoc" class="slide level2">
-<h2>HTML divs and spans with Pandoc</h2>
-<div class="sourceCode" id="cb3" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>::: {.class}</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Content in a div with a class</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>Some text with a specific <span class="co">[</span><span class="ot">span</span><span class="co">]</span>{.span-class}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Pandoc translates this to</p>
-<div class="sourceCode" id="cb4" data-code-line-numbers="false"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"class"</span><span class="kw">&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>   Content in a div with a class</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>Some text with a specific <span class="kw">&lt;span</span> <span class="er">class</span><span class="ot">=</span><span class="st">"span-class"</span><span class="kw">&gt;</span>span<span class="kw">&lt;/span&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="incremental-lists" class="slide level2">
-<h2>Incremental lists</h2>
-<div class="sourceCode" id="cb5" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>:::{.incremental}</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>item 1</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>item 2</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>item 3</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:40%;">
+<div style="font-size: 72%;">
 <div>
 <ul>
-<li class="fragment">item 1</li>
-<li class="fragment">item 2</li>
-<li class="fragment">item 3</li>
+<li class="fragment">It’s fine to look for help online but without an understanding of the R code base the use of AI is inefficient.</li>
+<li class="fragment">We will code in class <span class="math inline">\(\rightarrow\)</span> applied programming.</li>
+<li class="fragment">Term paper:
+<ul>
+<li class="fragment">Synthesis of theory, research question and code.</li>
+<li class="fragment">Documentation of code: tell me why each step is needed and what it does.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="warmup-session-in-r-introduction-to-tidyverse" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>2. Warmup session in R, introduction to <em>tidyverse</em></h1>
+
+</section>
+<section id="tidyverse-the-swiss-army-knife-of-r" class="slide level2">
+<h2><em>tidyverse</em>: the Swiss Army knife of R</h2>
+
+<img data-src="../material/img/tidyverse.png" class="figure r-stretch" width="300"><div style="font-size: 32%;">
+<p>Çetinkaya-Rundel, M., et al.&nbsp;(2021). An educator’s perspective of the tidyverse. <a href="https://doi.org/10.48550/ARXIV.2108.03510">arXiv Preprint.</a></p>
+</div>
+<p>Introduction to <em>tidyverse</em>: <a href="https://www.tidyverse.org/packages">https://www.tidyverse.org/packages</a></p>
+</section>
+<section id="first-exercises" class="slide level2">
+<h2>First exercises</h2>
+<ul>
+<li>Download file <strong>1_session_one.R</strong> from <a href="https://sebastianstier.com/ma_css24/material.html">https://sebastianstier.com/ma_css24/material.html</a></li>
+<li>Do the first exercises.</li>
+<li>I’ll answer questions and help.</li>
+</ul>
+</section>
+<section id="before-we-really-get-started-with-coding" class="slide level2">
+<h2>Before we really get started with coding…</h2>
+<p>A simple ggplot figure.</p>
+<div class="small-code">
+
+
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y ~ x"</span>) <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="01_introduction_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
+</div>
+</div>
+</div>
+</div></section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    mtcars <span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg))<span class="sc">+</span><span class="fu">geom_point</span>() <span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y ~ x"</span>)<span class="sc">+</span><span class="fu">theme_minimal</span>()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(mtcars,<span class="fu">aes</span>(<span class="at">x=</span>disp, <span class="at">y=</span>mpg))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"loess"</span>,<span class="at">formula=</span><span class="st">"y~x"</span>)<span class="sc">+</span><span class="fu">theme_minimal</span>()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y ~ x"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+<div class="fragment">
+<p>Luckily, there is guidance: <a href="https://style.tidyverse.org/index.html">https://style.tidyverse.org/index.html</a></p>
+</div>
+</section></section>
+<section>
+<section id="introduction-to-computational-social-science" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>3. Introduction to Computational Social Science</h1>
+
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+
+<img data-src="../material/img/CSS_themes.png" class="figure r-stretch" width="300"></section>
+<section id="computational-social-science" class="slide level2">
+<h2>Computational Social Science</h2>
+<p>What is Computational Social Science?</p>
+<p>And what is the scientific benefit of CSS?</p>
+</section>
+<section id="some-definitions-i" class="slide level2">
+<h2>Some definitions I</h2>
+<p>We define CSS as the development and application of computational methods to complex, typically large-scale, human (sometimes simulated) behavioral data (1). […] Whereas traditional quantitative social science has focused on rows of cases and columns of variables, typically with assumptions of independence among observations, CSS encompasses language, location and movement, networks, images, and video, with the application of statistical models that capture multifarious dependencies within data.</p>
+<div style="font-size: 40%;">
+<p>Lazer, D. M. J., et al.&nbsp;(2020). <a href="https://doi.org/10.1126/science.aaz8170">Computational social science: Obstacles and opportunities. <em>Science</em>, 369(6507), 1060–1062: 1060.</a></p>
+</div>
+</section>
+<section id="some-definitions-ii" class="slide level2">
+<h2>Some definitions II</h2>
+<p>Computational social science is an interdisciplinary field that advances theories of human behavior by applying computational techniques to large datasets from social media sites, the Internet, or other digitized archives such as administrative records. Our definition forefronts sociological theory because we believe the future of the field within sociology depends not only on novel data sources and methods, but also on its capacity to produce new theories of human behavior or elaborate on existing explanations of the social world.</p>
+<div style="font-size: 40%;">
+<p>Edelmann, A., Wolff, T., Montagne, D., &amp; Bail, C. A. (2020). Computational Social Science and Sociology. <a href="https://doi.org/10.1146/annurev-soc-121919-054621"><em>Annual Review of Sociology</em>, 46(1), 61–81: 62.</a></p>
+</div>
+</section>
+<section id="vast-amounts-of-data" class="slide level2">
+<h2>Vast amounts of data</h2>
+
+<img data-src="../material/img/one_minute_internet.png" class="figure r-stretch" width="300"><div style="font-size: 40%;">
+<p><a href="https://www.forbes.com/sites/bernardmarr/2018/05/21/how-much-data-do-we-create-every-day-the-mind-blowing-stats-everyone-should-read/#44598c0460ba">https://www.forbes.com/sites/bernardmarr/2018/05/21/how-much-data-do-we-create-every-day-the-mind-blowing-stats-everyone-should-read/#44598c0460ba</a></p>
+</div>
+</section>
+<section id="digital-behavioral-data" class="slide level2">
+<h2>Digital behavioral data</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><img data-src="../material/img/platform_pics.png" class="figure" width="710"></p>
+</div><div class="column" style="width:40%;">
+<div style="font-size: 85%;">
+<p>“Records of activity (trace data) undertaken through an online information system (thus, digital)” (Howison et al., 2011: 769) that can be collected from a multitude of technical systems, such as websites, social media platforms, smartphone apps, or sensors.</p>
+</div>
+<div style="font-size: 35%;">
+<p>Howison, J., Wiggins, A., &amp; Crowston, K. (2011). Validity issues in the use of social network analysis with digital trace data. <a href="https://aisel.aisnet.org/cgi/viewcontent.cgi?article=1594&amp;context=jais"><em>Journal of the Association for Information Systems</em>, 12(12), 767–797, 769.</a></p>
+<p>Stier, S., Breuer, J., Siegers, P., &amp; Thorson, K. (2020). Integrating Survey Data and Digital Trace Data: Key Issues in Developing an Emerging Field. <a href="https://journals.sagepub.com/doi/epub/10.1177/0894439319843669"><em>Social Science Computer Review</em>, 38(5), 503–516, 504.</a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="how-does-css-relate-to-established-social-science" class="slide level2">
+<h2>How does CSS relate to established social science?</h2>
+
+<img data-src="../material/img/CSS_intro_questions.png" class="figure r-stretch" width="300"></section>
+<section id="measurement-problems-in-the-social-sciences" class="slide level2">
+<h2>Measurement problems in the social sciences</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="../material/img/scharkow.png" class="figure" width="710"></p>
+<div style="font-size: 70%;">
+<p>“This study compares self-reports of Internet use with client log files from a large household sample. Results show that the accuracy of self reported frequency and duration of Internet use is quite low, and that survey data are only moderately correlated with log file data.”</p>
+</div>
+<div style="font-size: 26%;">
+<p>Scharkow, M. (2016). The Accuracy of Self-Reported Internet Use—A Validation Study Using Client Log Data. <a href="https://doi.org/10.1080/19312458.2015.1118446"><em>Communication Methods and Measures</em>, 10(1), 13–27.</a></p>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="../material/img/parry.png" style="width:85.0%"></p>
+<div style="font-size: 70%;">
+<p>“Based on 106 effect sizes, we found that self-reported media use correlates only moderately with logged measurements […] These findings raise concerns about the validity of findings relying solely on self-reported measures of media use.”</p>
+</div>
+<div style="font-size: 26%;">
+<p>Parry, D. A., Davidson, B. I., Sewall, C. J. R., Fisher, J. T., Mieczkowski, H., &amp; Quintana, D. S. (2021). A systematic review and meta-analysis of discrepancies between logged and self-reported digital media use. <a href="https://doi.org/10.1038/s41562-021-01117-5"><em>Nature Human Behaviour</em>, 5, 1535–154.</a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="advantages-of-digital-behavioral-data" class="slide level2">
+<h2>Advantages of digital behavioral data</h2>
+<div>
+<p>Digital behavioral data capture human behavior…</p>
+<ul>
+<li class="fragment"><p>non-intrusively,</p></li>
+<li class="fragment"><p>reliably,</p></li>
+<li class="fragment"><p>with fine-grained and multi-dimensional features,</p></li>
+<li class="fragment"><p>across time and contexts.</p></li>
 </ul>
 </div>
 </section>
-<section id="incremental-slides" class="slide level2">
-<h2>Incremental Slides</h2>
-<p>Use <code>. . .</code> syntax</p>
-<div class="sourceCode" id="cb6" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>This appears first </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>. . .</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>This second</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br></p>
-<div class="fragment">
-<p>This appears first</p>
+<section id="downsides-of-digital-behavioral-data" class="slide level2">
+<h2>Downsides of digital behavioral data</h2>
+<div>
+<p>But, digital behavioral data…</p>
+<ul>
+<li class="fragment"><p>come in large volumes,</p></li>
+<li class="fragment"><p>are unstructured,</p></li>
+<li class="fragment"><p>are multi-dimensional (text, images, videos, sound, …),</p></li>
+<li class="fragment"><p>are often produced and provided with minimal or no information on the data generating process.</p></li>
+</ul>
 </div>
 <div class="fragment">
-<p>This second</p>
+<p><span class="math inline">\(\rightarrow\)</span> analyzing digital behavioral data in a scientifically meaningful way is an immense challenge</p>
 </div>
 </section>
-<section id="fragments-basics" class="slide level2">
-<h2>Fragments, Basics</h2>
-<div class="sourceCode" id="cb7" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>::: {.fragment}</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Fade in</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>::: {.fragment .fade-out}</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>Fade out</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>::: {.fragment .highlight-red}</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>Highlight red</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>::: {.fragment .fade-in-then-out}</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>Fade in, then out</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>::: {.fragment .fade-up}</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>Slide up while fading in</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="the-role-of-theory-and-existing-knowledge" class="slide level2">
+<h2>The role of theory and existing knowledge</h2>
+<p>“Our definition forefronts sociological theory because we believe the future of the field within sociology depends not only on novel data sources and methods, but also on its capacity to produce new theories of human behavior or elaborate on existing explanations of the social world.” <span class="citation" data-cites="edelmann_computational_2020">(<a href="#/references" role="doc-biblioref" onclick="">Edelmann et al. 2020</a>: 62)</span></p>
 </section>
-<section id="fragments-basics-1" class="slide level2">
-<h2>Fragments, Basics</h2>
-<div class="fragment">
-<p>Fade in</p>
-</div>
-<div class="fragment fade-out">
-<p>Fade out</p>
-</div>
-<div class="fragment highlight-red">
-<p>Highlight red</p>
-</div>
-<div class="fragment fade-in-then-out">
-<p>Fade in, then out</p>
-</div>
-<div class="fragment fade-up">
-<p>Slide up while fading in</p>
-</div>
-</section>
-<section id="fragments-more" class="slide level2">
-<h2>Fragments, More</h2>
-<p>This is an <span class="fragment highlight-red">important sentence!</span></p>
-<div class="sourceCode" id="cb8" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>This is an <span class="co">[</span><span class="ot">important sentence!</span><span class="co">]</span>{.fragment .highlight-red}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment fade-in">
-<div class="fragment highlight-red">
-<div class="fragment semi-fade-out">
-<p>Fade in &gt; Turn red &gt; Semi fade out</p>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="sourceCode" id="cb9" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>::: {.fragment .fade-in}</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>::: {.fragment .highlight-red}</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>::: {.fragment .semi-fade-out}</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>Fade in &gt; Turn red &gt; Semi fade out</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="slide-transition" class="slide level2" data-transition="fade">
-<h2>Slide Transition</h2>
-<div class="r-fit-text">
-<p>fade</p>
-</div>
-
-<aside><div>
-<div class="sourceCode" id="cb10" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Slide Transition {transition="fade"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></aside></section>
-<section id="slide-transition-1" class="slide level2" data-transition="slide">
-<h2>Slide Transition</h2>
-<div class="r-fit-text">
-<p>slide</p>
-</div>
-
-<aside><div>
-<div class="sourceCode" id="cb11" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Slide Transition {transition="slide"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></aside></section>
-<section id="slide-transition-2" class="slide level2" data-transition="convex">
-<h2>Slide Transition</h2>
-<div class="r-fit-text">
-<p>convex</p>
-</div>
-
-<aside><div>
-<div class="sourceCode" id="cb12" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Slide Transition {transition="convex"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></aside></section>
-<section id="slide-transition-3" class="slide level2" data-transition="concave">
-<h2>Slide Transition</h2>
-<div class="r-fit-text">
-<p>concave</p>
-</div>
-
-<aside><div>
-<div class="sourceCode" id="cb13" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Slide Transition {transition="concave"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></aside></section>
-<section id="slide-transition-4" class="slide level2" data-transition="zoom">
-<h2>Slide Transition</h2>
-<div class="r-fit-text">
-<p>zoom</p>
-</div>
-
-<aside><div>
-<div class="sourceCode" id="cb14" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Slide Transition {transition="zoom"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></aside></section>
-<section id="slide-transition-global" class="slide level2">
-<h2>Slide Transition, global</h2>
-<div class="sourceCode" id="cb15" data-code-line-numbers="false"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Presentation"</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">transition</span><span class="kw">:</span><span class="at"> slide</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">background-transition</span><span class="kw">:</span><span class="at"> fade</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">transition-speed</span><span class="kw">:</span><span class="at"> fast</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="column-layout" class="slide level2">
-<h2>Column layout</h2>
-<div class="sourceCode" id="cb16" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>:::: {.columns}</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>::: {.column width="40%"}</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>Left column</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>::: {.column width="60%"}</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>Right column</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>::::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="explanation-vs.-descriptionexploration-i" class="slide level2">
+<h2>Explanation vs.&nbsp;description+exploration I</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
-<p>Left column</p>
+<p><img data-src="../material/img/guess_quant_descr.png" style="width:80.0%"></p>
+<div style="font-size: 26%;">
+<p>Munger, K., Guess, A. M., &amp; Hargittai, E. (2021). Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing. <a href="https://doi.org/10.51685/jqd.2021.000"><em>Journal of Quantitative Description: Digital Media</em>, 1.</a></p>
+</div>
 </div><div class="column" style="width:60%;">
-<p>Right column</p>
+<div style="font-size: 72%;">
+<p>“First and foremost, we respond to an undersupply of quantitative descriptive research in social science. Causal research that asks the question why has largely taken the place of descriptive research that asks the question what. Gerring (2012) diagnosed a general tendency to dismiss ‘Mere Description’ as a ‘mundane task … of little intrinsic scientific value,’ advocating instead that it be taken seriously as part of the general social scientific method. We firmly agree. However, critique alone does not change the material conditions and incentives of practicing academics; we see this journal as a practical step towards raising the status of description as a method.” <span class="citation" data-cites="munger_quantitative_2021">(<a href="#/references" role="doc-biblioref" onclick="">Munger, Guess, and Hargittai 2021</a>: 3-4)</span></p>
+</div>
 </div>
 </div>
 </section>
-<section id="column-layout-1" class="slide level2">
-<h2>Column layout</h2>
+<section id="explanation-vs.-descriptionexploration-ii" class="slide level2">
+<h2>Explanation vs.&nbsp;description+exploration II</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1"></a><span class="in">```{r}</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="co">#| eval: false</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(mtcars)</span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img data-src="../material/img/guess_quant_descr.png" style="width:80.0%"></p>
+<div style="font-size: 26%;">
+<p>Munger, K., Guess, A. M., &amp; Hargittai, E. (2021). Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing. <a href="https://doi.org/10.51685/jqd.2021.000"><em>Journal of Quantitative Description: Digital Media</em>, 1.</a></p>
 </div>
 </div><div class="column" style="width:60%;">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 32
-Columns: 11
-$ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…
-$ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…
-$ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…
-$ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…
-$ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…
-$ wt   &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…
-$ qsec &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…
-$ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…
-$ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…
-$ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…
-$ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…</code></pre>
+<div style="font-size: 72%;">
+<p>Second, rather than define our new venue in terms of existing disciplinary boundaries, we instead embrace a topical focus on digital media, broadly construed. We argue that the centrality and dynamism of digital media — information and communication technologies, including social media, that increasingly structure the way people interact with the world — necessitates increased scholarly energy devoted to sustained, continuous, quantitative description. […] Today, there are more hours of video uploaded to YouTube every day than were broadcast in the 1950s U.S. in a year. The daily content of Twitter is different (and different in unpredictable ways) than it was the day before.” <span class="citation" data-cites="munger_quantitative_2021">(<a href="#/references" role="doc-biblioref" onclick="">Munger, Guess, and Hargittai 2021</a>: 3-4)</span></p>
 </div>
 </div>
 </div>
-</div>
-</section>
-<section id="output-location-column-fragment" class="slide level2">
-<h2>Output location, <code>column-fragment</code></h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="|2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1"></a><span class="in">```{r}</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="co">#| output-location: column-fragment</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a><span class="co">#| code-line-numbers: "|2"</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a></span>
-<span id="cb19-5"><a href="#cb19-5"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb19-6"><a href="#cb19-6"></a></span>
-<span id="cb19-7"><a href="#cb19-7"></a>mtcars <span class="sc">|&gt;</span> </span>
-<span id="cb19-8"><a href="#cb19-8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb19-9"><a href="#cb19-9"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb19-10"><a href="#cb19-10"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y~x"</span>)</span>
-<span id="cb19-11"><a href="#cb19-11"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column fragment">
-<div class="cell-output-display">
-<p><img data-src="01_introduction_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="output-location-column" class="slide level2">
-<h2>Output location, <code>column</code></h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="|2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="co">#| output-location: column</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a><span class="co">#| code-line-numbers: "|2"</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a></span>
-<span id="cb20-5"><a href="#cb20-5"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb20-6"><a href="#cb20-6"></a></span>
-<span id="cb20-7"><a href="#cb20-7"></a>mtcars <span class="sc">|&gt;</span> </span>
-<span id="cb20-8"><a href="#cb20-8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb20-9"><a href="#cb20-9"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb20-10"><a href="#cb20-10"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y~x"</span>)</span>
-<span id="cb20-11"><a href="#cb20-11"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<p><img data-src="01_introduction_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="output-location-fragment" class="slide level2">
-<h2>Output location, <code>fragment</code></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="|2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="co">#| code-line-numbers: "|2"</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a></span>
-<span id="cb21-5"><a href="#cb21-5"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb21-6"><a href="#cb21-6"></a></span>
-<span id="cb21-7"><a href="#cb21-7"></a>mtcars <span class="sc">|&gt;</span> </span>
-<span id="cb21-8"><a href="#cb21-8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb21-9"><a href="#cb21-9"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb21-10"><a href="#cb21-10"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y~x"</span>)</span>
-<span id="cb21-11"><a href="#cb21-11"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment">
-<div class="cell-output-display">
-<p><img data-src="01_introduction_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
-</div>
-</div>
-</section>
-<section id="output-location-slide" class="slide level2">
-<h2>Output location, <code>slide</code></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="|2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="co">#| output-location: slide</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="co">#| code-line-numbers: "|2"</span></span>
-<span id="cb22-4"><a href="#cb22-4"></a></span>
-<span id="cb22-5"><a href="#cb22-5"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb22-6"><a href="#cb22-6"></a></span>
-<span id="cb22-7"><a href="#cb22-7"></a>mtcars <span class="sc">|&gt;</span> </span>
-<span id="cb22-8"><a href="#cb22-8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb22-9"><a href="#cb22-9"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb22-10"><a href="#cb22-10"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y~x"</span>)</span>
-<span id="cb22-11"><a href="#cb22-11"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-
-</section>
-<section id="output-location-slide-output" class="slide level2 output-location-slide"><h2>Output location, <code>slide</code></h2><div class="cell output-location-slide">
-<div class="cell-output-display">
-<p><img data-src="01_introduction_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
-</div>
-</div></section><section id="code-line-highlighting" class="slide level2">
-<h2>Code line-highlighting</h2>
-<p>Use <code>#| code-line-numbers: "3"</code> syntax - will highlight line 3 and fade others</p>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb23" data-code-line-numbers="3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="co">#| output-location: column</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="co">#| code-line-numbers: "3"</span></span>
-<span id="cb23-4"><a href="#cb23-4"></a></span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb23-6"><a href="#cb23-6"></a></span>
-<span id="cb23-7"><a href="#cb23-7"></a>mtcars <span class="sc">|&gt;</span> </span>
-<span id="cb23-8"><a href="#cb23-8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb23-9"><a href="#cb23-9"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb23-10"><a href="#cb23-10"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y~x"</span>)</span>
-<span id="cb23-11"><a href="#cb23-11"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<p><img data-src="01_introduction_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="code-line-highlighting-1" class="slide level2">
-<h2>Code line-highlighting</h2>
-<p>with a “fragment style”</p>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="|3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="co">#| output-location: column</span></span>
-<span id="cb24-3"><a href="#cb24-3"></a><span class="co">#| code-line-numbers: "|3"</span></span>
-<span id="cb24-4"><a href="#cb24-4"></a></span>
-<span id="cb24-5"><a href="#cb24-5"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb24-6"><a href="#cb24-6"></a></span>
-<span id="cb24-7"><a href="#cb24-7"></a>mtcars <span class="sc">|&gt;</span> </span>
-<span id="cb24-8"><a href="#cb24-8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb24-9"><a href="#cb24-9"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb24-10"><a href="#cb24-10"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y~x"</span>)</span>
-<span id="cb24-11"><a href="#cb24-11"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<p><img data-src="01_introduction_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="code-line-highlighting-2" class="slide level2">
-<h2>Code line-highlighting</h2>
-<p>highlight different line ranges progressively</p>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="|3|5|8|10"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="co">#| output-location: column</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a><span class="co">#| code-line-numbers: "|3|5|8|10"</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a></span>
-<span id="cb25-5"><a href="#cb25-5"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb25-6"><a href="#cb25-6"></a></span>
-<span id="cb25-7"><a href="#cb25-7"></a>mtcars <span class="sc">|&gt;</span> </span>
-<span id="cb25-8"><a href="#cb25-8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb25-9"><a href="#cb25-9"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb25-10"><a href="#cb25-10"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y~x"</span>)</span>
-<span id="cb25-11"><a href="#cb25-11"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<p><img data-src="01_introduction_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="stack-images" class="slide level2">
-<h2>Stack images</h2>
-<div class="r-stack">
-<p><img data-src="../img/kitten1.jpeg" class="fragment" width="450"></p>
-<p><img data-src="../img/kitten2.jpeg" class="fragment" width="400"></p>
-<p><img data-src="../img/kitten3.jpeg" class="fragment" width="300"></p>
-</div>
-</section>
-<section id="stack-images-1" class="slide level2">
-<h2>Stack images</h2>
-<div class="sourceCode" id="cb26" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>::: {.r-stack}</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="al">![](../img/kitten1.jpeg)</span>{.fragment width="450"}</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="al">![](../img/kitten2.jpeg)</span>{.fragment width="400"}</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="al">![](../img/kitten3.jpeg)</span>{.fragment width="300"}</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+</section></section>
 <section>
-<section id="themes-colors-and-other-bling" class="title-slide slide level1 center" data-background-color="#F06400">
-<h1>Themes, Colors and other bling</h1>
+<section id="first-exploration-of-digital-behavioral-data-and-data-visualization" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>4. First exploration of digital behavioral data and data visualization</h1>
 
 </section>
-<section id="background-color-and-image" class="slide level2" data-background-color="red">
-<h2>Background color and image</h2>
-<p>Background color:</p>
-<div class="sourceCode" id="cb27" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Background color and image  {background-color="red"} </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p><br></p>
-<p>Background image:</p>
-<div class="sourceCode" id="cb28" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Background color and image  {background-image="&lt;link-to-image&gt;"} </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="back-to-coding" class="slide level2">
+<h2>Back to coding</h2>
+<ul>
+<li>Go back to file <strong>1_session_one.R</strong> in <a href="https://sebastianstier.com/ma_css24/material.html">https://sebastianstier.com/ma_css24/material.html</a></li>
+</ul>
+</section></section>
+<section>
+<section id="thank-you-for-your-attention-see-you-on-6th-of-march" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>Thank you for your attention! See you on 6th of March</h1>
+
 </section>
-<section id="themes" class="slide level2">
-<h2>Themes</h2>
-<p>see <a href="https://quarto.org/docs/presentations/revealjs/themes.html" data-preview-link="true">https://quarto.org/docs/presentations/revealjs/themes.html</a></p>
-<div class="sourceCode" id="cb29" data-code-line-numbers="false"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Presentation"</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> dark</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<div class="sourceCode" id="cb30" data-code-line-numbers="false"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Presentation"</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> beige</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<div class="sourceCode" id="cb31" data-code-line-numbers="false"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Presentation"</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> simple</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="themes-via-custom-sass" class="slide level2">
-<h2>Themes via custom SASS</h2>
-<div class="sourceCode" id="cb32" data-code-line-numbers="false"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Presentation"</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">default</span><span class="kw">,</span><span class="at">custom.scss</span><span class="kw">]</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>custom.scss</code>:</p>
-<div class="sourceCode" id="cb33" data-code-line-numbers="false"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>$body-bg<span class="in">: #191919;</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>$body-color<span class="in">: #fff</span>;</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>$link-color<span class="in">: #42affa;</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:rules --*/</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> <span class="fu">.slide</span> blockquote {</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-left</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> $text-muted<span class="op">;</span></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding-left</span>: <span class="dv">0.5</span><span class="dt">em</span><span class="op">;</span></span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="themes-via-extensions" class="slide level2">
-<h2>Themes via Extensions</h2>
-<p>Install Extension (<strong>in the folder of your presentation</strong>):</p>
-<div class="sourceCode" id="cb34" data-code-line-numbers="false"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> use template gesiscss/quarto-revealjs-fakegesis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p><br></p>
-<p>use in yaml header:</p>
-<div class="sourceCode" id="cb35" data-code-line-numbers="false"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Let's make a presentation with Quarto"</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"David Schoch"</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lesson</span><span class="kw">:</span><span class="at"> </span><span class="dv">5</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">institute</span><span class="kw">:</span><span class="at"> GESIS</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"2023-06-20"</span></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">date-format</span><span class="kw">:</span><span class="at"> </span><span class="st">"YYYY-MM-DD"</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">footer</span><span class="kw">:</span><span class="at"> </span><span class="st">"[Automated Reports &amp; Co with Quarto and Markdown](https://gesiscss.github.io/quarto-workshop/)"</span></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> fakegesis-revealjs</span></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<p>Very creative themes can be found <a href="https://quarto.org/docs/extensions/listing-revealjs.html" data-preview-link="true">here</a></p>
-</div>
-</section>
-<section id="examples" class="slide level2">
-<h2>Examples</h2>
-<div class="r-stack">
-<p><img data-src="https://github.com/schochastics/quarto-blackboard-theme/raw/main/title.png" class="fragment" width="900"></p>
-<p><img data-src="https://github.com/schochastics/quarto-blackboard-theme/raw/main/ggplot.png" class="fragment" width="900"></p>
-<p><img data-src="https://user-images.githubusercontent.com/14034784/187721198-04400c7a-4432-4c90-9344-f1cf938be3b1.gif" class="fragment" width="900"></p>
-</div>
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<p><br><br><br></p>
-<div class="r-fit-text">
-<p><a href="https://quarto.org/docs/presentations/revealjs/" data-preview-link="true">Give me more</a></p>
-</div>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
 
 
-<p><img src="_extensions/gesiscss/fakegesis/gesis-unima.png" class="slide-logo"></p>
-<div class="footer footer-default">
+<img src="_extensions/gesiscss/fakegesis/gesis-unima.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://sebastianstier.com/ma_css24/">Computational Social Science and Digital Behavioral Data, University of Mannheim</a></p>
 </div>
-<aside><div>
-<p>These slides are based on an <a href="https://rstudio-conf-2022.github.io/get-started-quarto/materials/05-presentations.html">RStudio Workshop</a></p>
-</div></aside></section></section>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-edelmann_computational_2020" class="csl-entry" role="listitem">
+Edelmann, Achim, Tom Wolff, Danielle Montagne, and Christopher A. Bail. 2020. <span>“Computational <span>Social</span> <span>Science</span> and <span>Sociology</span>.”</span> <em>Annual Review of Sociology</em> 46 (1): 61–81. <a href="https://doi.org/10.1146/annurev-soc-121919-054621">https://doi.org/10.1146/annurev-soc-121919-054621</a>.
+</div>
+<div id="ref-munger_quantitative_2021" class="csl-entry" role="listitem">
+Munger, Kevin, Andrew M. Guess, and Eszter Hargittai. 2021. <span>“Quantitative <span>Description</span> of <span>Digital</span> <span>Media</span>: <span>A</span> <span>Modest</span> <span>Proposal</span> to <span>Disrupt</span> <span>Academic</span> <span>Publishing</span>.”</span> <em>Journal of Quantitative Description: Digital Media</em> 1. <a href="https://doi.org/10.51685/jqd.2021.000">https://doi.org/10.51685/jqd.2021.000</a>.
+</div>
+</div>
+</section></section>
     </div>
   </div>
 
@@ -1831,44 +1626,6 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

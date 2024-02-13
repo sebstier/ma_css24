@@ -61,9 +61,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-filename','listing-file-modified',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-filename-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-filename","listing-file-modified"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -153,9 +153,23 @@ ul.task-list li input[type="checkbox"] {
 <table class="quarto-listing-table table">
 <thead>
 <tr>
+<th>
+File Name
+</th>
+<th>
+Modified
+</th>
 </tr>
 </thead>
 <tbody class="list">
+<tr data-index="0" data-listing-file-modified-sort="1707778324720" data-listing-filename-sort="1_session_one.R">
+<td>
+<a href="./material/1_session_one.R" class="filename listing-filename">1_session_one.R</a>
+</td>
+<td>
+<span class="listing-file-modified">2/12/24, 11:52:04 PM</span>
+</td>
+</tr>
 </tbody>
 
 </table>
