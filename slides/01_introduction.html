@@ -431,7 +431,11 @@ Sebastian Stier
 <li>Dr.&nbsp;in Political Science in 2016 at the University of Heidelberg</li>
 <li>No R or programming training during my studies</li>
 <li>2016-2023, Postdoc/Senior Researcher at GESIS – Leibniz Institute for the Social Sciences</li>
-<li>Since November 2023 Scientific Director Department Computation Social Science at GESIS &amp; Professor of Computation Social Science, University of Mannheim</li>
+<li>Since November 2023
+<ul>
+<li>Scientific Director Department Computation Social Science at GESIS</li>
+<li>Professor of Computation Social Science, University of Mannheim</li>
+</ul></li>
 </ul>
 <div class="cell">
 <style type="text/css">
@@ -459,9 +463,9 @@ Sebastian Stier
 <h2>Agenda for today</h2>
 <ol type="1">
 <li><p>Logistics</p></li>
-<li><p>Warmup session in R, introduction to <em>tidyverse</em></p></li>
+<li><p><em>R</em>: Warmup session, introduction to <em>tidyverse</em></p></li>
 <li><p>Introduction to Computational Social Science</p></li>
-<li><p>First exploration of digital behavioral data and data visualization</p></li>
+<li><p><em>R</em>: First exploration of digital behavioral data and data visualization</p></li>
 </ol>
 </section>
 <section>
@@ -469,108 +473,28 @@ Sebastian Stier
 <h1>1. Logistics</h1>
 
 </section>
-<section id="learning-objectives" class="slide level2">
-<h2>Learning objectives</h2>
-<ol type="1">
-<li>Advanced understanding of concepts, methods, data used and challenges in CSS</li>
-<li>Critical reflection of the applicability of CSS in social science research</li>
-<li>Learning to use CSS methods in R</li>
-<li>Application of CSS methods in R for own research question</li>
-</ol>
-</section>
-<section id="modus-operandi-in-the-class" class="slide level2">
-<h2>Modus operandi in the class</h2>
-<ul>
-<li>Introduction to the session’s topic by instructor</li>
-<li>Required reading: (mostly) applied papers</li>
-<li>We’ll discuss these papers in the class</li>
-<li>We’ll code in the class <span class="math inline">\(\rightarrow\)</span> please bring your laptop</li>
-<li>Questions are always possible, this is supposed to be interactive</li>
-</ul>
-</section>
-<section id="requirements-for-examinationgrades" class="slide level2">
-<h2>Requirements for examination/grades</h2>
-<div>
-<ul>
-<li class="fragment">Regular participation in class</li>
-<li class="fragment">Writing a review of the two required readings for <strong>two</strong> classes to be submitted on Monday before the respective session (<strong>Studienleistung/Coursework</strong>)</li>
-<li class="fragment">Presentation of your own research idea for your term paper in the last session on 22 May 2024</li>
-<li class="fragment">Written term paper based on an analysis in R (max. 5,000 words), deadline: 31 July 2024 (<strong>Prüfungsleistung/Examination</strong>)</li>
-</ul>
-</div>
-</section>
-<section id="format-of-reviews" class="slide level2">
-<h2>Format of reviews</h2>
-<ul>
-<li>Review of the two required readings needs to be submitted to ILIAS on Monday before <strong>two</strong> classes of the semester</li>
-<li>Questions you could seek to answer:</li>
-</ul>
-<div style="font-size: 90%;">
-<pre><code>- Describe what problem or question these papers address and the main contributions that they make towards a solution or answer. 
-
-- Reflect on the main strengths and weaknesses of these papers.
-
-- What are the concepts, assumed social mechanisms and operationalizations used in the papers?
-
-- What are the data in use? How are the data analyzed? Does this seem appropriate?
-
-- How convincing do you find the arguments presented by the authors? Are the conclusions backed up by the empirical results?
-
-- Do you see any ethical concerns?
-
-- How do you judge the replicability of these papers?
-
-- If applicable, are there commonalities or differences between the two papers?</code></pre>
-</div>
-</section>
-<section id="format-of-term-paper-5000-words" class="slide level2">
-<h2>Format of term paper (~5,000 words)</h2>
-<ul>
-<li>Brief motivation and research question</li>
-<li>Concise theoretical overview: for what conceptual and theoretical reasons do I choose these data and methods?</li>
-<li>Research design</li>
-<li>Data and variables</li>
-<li>Method: no detailed mathematical description needed, but why does this method fit my research question and my data?</li>
-<li>Results</li>
-<li>Analysis code as an R script: needs to be fully reproducible</li>
-</ul>
-</section>
-<section id="information-management-and-communication" class="slide level2">
-<h2>Information management and communication</h2>
-<ul>
-<li>Slides and materials will be online: <a href="http://sebastianstier.com/ma_css24">http://sebastianstier.com/ma_css24/</a></li>
-<li>(Data might be shared via the secure platform Cryptshare)</li>
-<li>Communication
-<ul>
-<li>Via <a href="mailto:sebastian.stier@gesis.org">email</a></li>
-<li>In person after the class</li>
-<li>Via Zoom</li>
-</ul></li>
-<li>Submit the final term paper to <a href="mailto:sebastian.stier@gesis.org">sebastian.stier@gesis.org</a></li>
-</ul>
-</section>
 <section id="section" class="slide level2">
 <h2></h2>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="tfkhrsznby" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tfkhrsznby table {
+<div id="gpvixtomjp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gpvixtomjp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tfkhrsznby thead, #tfkhrsznby tbody, #tfkhrsznby tfoot, #tfkhrsznby tr, #tfkhrsznby td, #tfkhrsznby th {
+#gpvixtomjp thead, #gpvixtomjp tbody, #gpvixtomjp tfoot, #gpvixtomjp tr, #gpvixtomjp td, #gpvixtomjp th {
   border-style: none;
 }
 
-#tfkhrsznby p {
+#gpvixtomjp p {
   margin: 0;
   padding: 0;
 }
 
-#tfkhrsznby .gt_table {
+#gpvixtomjp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -596,12 +520,12 @@ Sebastian Stier
   border-left-color: #D3D3D3;
 }
 
-#tfkhrsznby .gt_caption {
+#gpvixtomjp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tfkhrsznby .gt_title {
+#gpvixtomjp .gt_title {
   color: #333333;
   font-size: 14px;
   font-weight: initial;
@@ -613,7 +537,7 @@ Sebastian Stier
   border-bottom-width: 0;
 }
 
-#tfkhrsznby .gt_subtitle {
+#gpvixtomjp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -625,7 +549,7 @@ Sebastian Stier
   border-top-width: 0;
 }
 
-#tfkhrsznby .gt_heading {
+#gpvixtomjp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -637,13 +561,13 @@ Sebastian Stier
   border-right-color: #D3D3D3;
 }
 
-#tfkhrsznby .gt_bottom_border {
+#gpvixtomjp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tfkhrsznby .gt_col_headings {
+#gpvixtomjp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -658,7 +582,7 @@ Sebastian Stier
   border-right-color: #D3D3D3;
 }
 
-#tfkhrsznby .gt_col_heading {
+#gpvixtomjp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -678,7 +602,7 @@ Sebastian Stier
   overflow-x: hidden;
 }
 
-#tfkhrsznby .gt_column_spanner_outer {
+#gpvixtomjp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -690,15 +614,15 @@ Sebastian Stier
   padding-right: 4px;
 }
 
-#tfkhrsznby .gt_column_spanner_outer:first-child {
+#gpvixtomjp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tfkhrsznby .gt_column_spanner_outer:last-child {
+#gpvixtomjp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tfkhrsznby .gt_column_spanner {
+#gpvixtomjp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -710,11 +634,11 @@ Sebastian Stier
   width: 100%;
 }
 
-#tfkhrsznby .gt_spanner_row {
+#gpvixtomjp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tfkhrsznby .gt_group_heading {
+#gpvixtomjp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -740,7 +664,7 @@ Sebastian Stier
   text-align: left;
 }
 
-#tfkhrsznby .gt_empty_group_heading {
+#gpvixtomjp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -755,15 +679,15 @@ Sebastian Stier
   vertical-align: middle;
 }
 
-#tfkhrsznby .gt_from_md > :first-child {
+#gpvixtomjp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tfkhrsznby .gt_from_md > :last-child {
+#gpvixtomjp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tfkhrsznby .gt_row {
+#gpvixtomjp .gt_row {
   padding-top: 5.4px;
   padding-bottom: 5.4px;
   padding-left: 5px;
@@ -782,7 +706,7 @@ Sebastian Stier
   overflow-x: hidden;
 }
 
-#tfkhrsznby .gt_stub {
+#gpvixtomjp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -795,7 +719,7 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#tfkhrsznby .gt_stub_row_group {
+#gpvixtomjp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -809,15 +733,15 @@ Sebastian Stier
   vertical-align: top;
 }
 
-#tfkhrsznby .gt_row_group_first td {
+#gpvixtomjp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tfkhrsznby .gt_row_group_first th {
+#gpvixtomjp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tfkhrsznby .gt_summary_row {
+#gpvixtomjp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -827,16 +751,16 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#tfkhrsznby .gt_first_summary_row {
+#gpvixtomjp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tfkhrsznby .gt_first_summary_row.thick {
+#gpvixtomjp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tfkhrsznby .gt_last_summary_row {
+#gpvixtomjp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -846,7 +770,7 @@ Sebastian Stier
   border-bottom-color: #D3D3D3;
 }
 
-#tfkhrsznby .gt_grand_summary_row {
+#gpvixtomjp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -856,7 +780,7 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#tfkhrsznby .gt_first_grand_summary_row {
+#gpvixtomjp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -866,7 +790,7 @@ Sebastian Stier
   border-top-color: #D3D3D3;
 }
 
-#tfkhrsznby .gt_last_grand_summary_row_top {
+#gpvixtomjp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -876,11 +800,11 @@ Sebastian Stier
   border-bottom-color: #D3D3D3;
 }
 
-#tfkhrsznby .gt_striped {
+#gpvixtomjp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tfkhrsznby .gt_table_body {
+#gpvixtomjp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -889,7 +813,7 @@ Sebastian Stier
   border-bottom-color: #D3D3D3;
 }
 
-#tfkhrsznby .gt_footnotes {
+#gpvixtomjp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -903,7 +827,7 @@ Sebastian Stier
   border-right-color: #D3D3D3;
 }
 
-#tfkhrsznby .gt_footnote {
+#gpvixtomjp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -912,7 +836,7 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#tfkhrsznby .gt_sourcenotes {
+#gpvixtomjp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -926,7 +850,7 @@ Sebastian Stier
   border-right-color: #D3D3D3;
 }
 
-#tfkhrsznby .gt_sourcenote {
+#gpvixtomjp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -934,63 +858,63 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#tfkhrsznby .gt_left {
+#gpvixtomjp .gt_left {
   text-align: left;
 }
 
-#tfkhrsznby .gt_center {
+#gpvixtomjp .gt_center {
   text-align: center;
 }
 
-#tfkhrsznby .gt_right {
+#gpvixtomjp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tfkhrsznby .gt_font_normal {
+#gpvixtomjp .gt_font_normal {
   font-weight: normal;
 }
 
-#tfkhrsznby .gt_font_bold {
+#gpvixtomjp .gt_font_bold {
   font-weight: bold;
 }
 
-#tfkhrsznby .gt_font_italic {
+#gpvixtomjp .gt_font_italic {
   font-style: italic;
 }
 
-#tfkhrsznby .gt_super {
+#gpvixtomjp .gt_super {
   font-size: 65%;
 }
 
-#tfkhrsznby .gt_footnote_marks {
+#gpvixtomjp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tfkhrsznby .gt_asterisk {
+#gpvixtomjp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tfkhrsznby .gt_indent_1 {
+#gpvixtomjp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tfkhrsznby .gt_indent_2 {
+#gpvixtomjp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tfkhrsznby .gt_indent_3 {
+#gpvixtomjp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tfkhrsznby .gt_indent_4 {
+#gpvixtomjp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tfkhrsznby .gt_indent_5 {
+#gpvixtomjp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1131,19 +1055,102 @@ Nyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023).
 </div>
 </div>
 </section>
+<section id="learning-objectives" class="slide level2">
+<h2>Learning objectives</h2>
+<ol type="1">
+<li>Advanced understanding of concepts, methods, data used and challenges in CSS</li>
+<li>Critical reflection of the applicability of CSS in social science research</li>
+<li>Learning to use CSS methods in R</li>
+<li>Application of CSS methods in R for own research question</li>
+</ol>
+</section>
+<section id="modus-operandi-in-the-class" class="slide level2">
+<h2>Modus operandi in the class</h2>
+<ul>
+<li>Introduction to the session’s topic by instructor</li>
+<li>Required reading: (mostly) applied papers
+<ul>
+<li>We’ll discuss these papers in the class</li>
+</ul></li>
+<li>We’ll code in the class <span class="math inline">\(\rightarrow\)</span> please bring your laptop</li>
+<li>Questions are always possible, this is supposed to be interactive</li>
+</ul>
+</section>
+<section id="requirements-for-examinationgrades" class="slide level2">
+<h2>Requirements for examination/grades</h2>
+<div>
+<ul>
+<li class="fragment">Regular participation in class</li>
+<li class="fragment">Writing a review of the two required readings for <strong>two</strong> classes to be submitted on Monday before the respective session (<strong>Studienleistung/Coursework</strong>)</li>
+<li class="fragment">Presentation of your own research idea for your term paper in the last session on 22 May 2024</li>
+<li class="fragment">Written term paper based on an analysis in R (max. 5,000 words), deadline: 31 July 2024 (<strong>Prüfungsleistung/Examination</strong>)</li>
+</ul>
+</div>
+</section>
+<section id="format-of-the-reviews" class="slide level2">
+<h2>Format of the reviews</h2>
+<ul>
+<li>Review of the two required readings needs to be submitted to ILIAS on Monday before <strong>two</strong> classes of the semester</li>
+<li>Guiding questions:</li>
+</ul>
+<div style="font-size: 90%;">
+<pre><code>- Describe what problem or question these papers address and the main contributions that they make towards a solution or answer. 
+
+- Reflect on the main strengths and weaknesses of these papers.
+
+- What are the concepts, assumed social mechanisms and operationalizations used in the papers?
+
+- What are the data in use? How are the data analyzed? Does this seem appropriate?
+
+- How convincing do you find the arguments presented by the authors? Are the conclusions backed up by the empirical results?
+
+- Do you see any ethical concerns?
+
+- How do you judge the replicability of these papers?
+
+- If applicable, are there commonalities or differences between the two papers?</code></pre>
+</div>
+</section>
+<section id="format-of-term-paper-5000-words" class="slide level2">
+<h2>Format of term paper (~5,000 words)</h2>
+<ul>
+<li>Brief motivation and research question</li>
+<li>Concise theoretical overview: for what conceptual and theoretical reasons do I choose these data and methods?</li>
+<li>Research design</li>
+<li>Data and variables</li>
+<li>Method: no detailed mathematical description needed, but why does this method fit my research question and my data?</li>
+<li>Results</li>
+<li>Analysis code as an R script: needs to be fully reproducible</li>
+</ul>
+</section>
+<section id="information-management-and-communication" class="slide level2">
+<h2>Information management and communication</h2>
+<ul>
+<li>Slides and materials will be online: <a href="https://sebastianstier.com/ma_css24">https://sebastianstier.com/ma_css24/</a></li>
+<li>(Data might be shared via the secure platform Cryptshare)</li>
+<li>Communication
+<ul>
+<li>Via <a href="mailto:sebastian.stier@gesis.org">email</a></li>
+<li>In person after the class</li>
+<li>Via Zoom</li>
+</ul></li>
+<li>Submit the final term paper to <a href="mailto:sebastian.stier@gesis.org">sebastian.stier@gesis.org</a></li>
+</ul>
+</section>
 <section id="the-elephant-in-the-room-ai-llms-chatgpt-et-al." class="slide level2">
 <h2>The elephant in the room: AI, LLMs, ChatGPT et al.</h2>
 <div class="columns">
-<div class="column" style="width:60%;">
+<div class="column" style="width:55%;">
 <p><img data-src="../material/img/chat_gpt_academia.png" class="figure" width="710"></p>
 <div style="font-size: 26%;">
 <p>Meyer, J. G., Urbanowicz, R. J., Martin, P. C. N., et al.&nbsp;(2023). ChatGPT and large language models in academia: Opportunities and challenges. <em>BioData Mining</em>, 16(1), 20. <a href="https://doi.org/10.1186/s13040-023-00339-9">https://doi.org/10.1186/s13040-023-00339-9</a></p>
 </div>
-</div><div class="column" style="width:40%;">
-<div style="font-size: 72%;">
+</div><div class="column" style="width:45%;">
+<div style="font-size: 68%;">
 <div>
 <ul>
 <li class="fragment">It’s fine to look for help online but without an understanding of the R code base the use of AI is inefficient.</li>
+<li class="fragment">You’ll learn much more if you try to find a solution within-R, e.g., <em>?mean</em></li>
 <li class="fragment">We will code in class <span class="math inline">\(\rightarrow\)</span> applied programming.</li>
 <li class="fragment">Term paper:
 <ul>
@@ -1182,22 +1189,23 @@ Nyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023).
 <p>A simple ggplot figure.</p>
 <div class="small-code">
 
-
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: column</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y ~ x"</span>) <span class="sc">+</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="6|7|8|9|10|11"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#| output-location: column</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#| code-line-numbers: "6|7|8|9|10|11"</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="co"># ggplot(data = mtcars, aes(x = disp, y = mpg)) +    </span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y ~ x"</span>) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<p><img data-src="01_introduction_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
+<p><img data-src="01_introduction_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1250,34 +1258,38 @@ Nyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023).
 <h1>3. Introduction to Computational Social Science</h1>
 
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-2" class="slide level2 center">
+<h2></h2>
+<ol type="1">
+<li><p>What is Computational Social Science?</p></li>
+<li><p>And what is the scientific benefit of CSS?</p></li>
+</ol>
+</section>
+<section id="vast-amounts-of-data" class="slide level2">
+<h2>Vast amounts of data</h2>
+<div class="fragment">
+<p><img data-src="../material/img/one_minute_internet.png" style="width:68.0%"></p>
+<div style="font-size: 45%;">
+<p><a href="https://www.forbes.com/sites/bernardmarr/2018/05/21/how-much-data-do-we-create-every-day-the-mind-blowing-stats-everyone-should-read/#44598c0460ba">https://www.forbes.com/sites/bernardmarr/2018/05/21/how-much-data-do-we-create-every-day-the-mind-blowing-stats-everyone-should-read/#44598c0460ba</a></p>
+</div>
+</div>
+</section>
+<section id="section-3" class="slide level2">
 <h2></h2>
 
 <img data-src="../material/img/CSS_themes.png" class="figure r-stretch" width="300"></section>
-<section id="computational-social-science" class="slide level2">
-<h2>Computational Social Science</h2>
-<p>What is Computational Social Science?</p>
-<p>And what is the scientific benefit of CSS?</p>
-</section>
 <section id="some-definitions-i" class="slide level2">
 <h2>Some definitions I</h2>
 <p>We define CSS as the development and application of computational methods to complex, typically large-scale, human (sometimes simulated) behavioral data (1). […] Whereas traditional quantitative social science has focused on rows of cases and columns of variables, typically with assumptions of independence among observations, CSS encompasses language, location and movement, networks, images, and video, with the application of statistical models that capture multifarious dependencies within data.</p>
-<div style="font-size: 40%;">
-<p>Lazer, D. M. J., et al.&nbsp;(2020). <a href="https://doi.org/10.1126/science.aaz8170">Computational social science: Obstacles and opportunities. <em>Science</em>, 369(6507), 1060–1062: 1060.</a></p>
+<div style="font-size: 50%;">
+<p>Lazer, D. M. J., et al.&nbsp;(2020). Computational social science: Obstacles and opportunities. <a href="https://doi.org/10.1126/science.aaz8170"><em>Science</em>, 369(6507), 1060–1062: 1060.</a></p>
 </div>
 </section>
 <section id="some-definitions-ii" class="slide level2">
 <h2>Some definitions II</h2>
 <p>Computational social science is an interdisciplinary field that advances theories of human behavior by applying computational techniques to large datasets from social media sites, the Internet, or other digitized archives such as administrative records. Our definition forefronts sociological theory because we believe the future of the field within sociology depends not only on novel data sources and methods, but also on its capacity to produce new theories of human behavior or elaborate on existing explanations of the social world.</p>
-<div style="font-size: 40%;">
+<div style="font-size: 50%;">
 <p>Edelmann, A., Wolff, T., Montagne, D., &amp; Bail, C. A. (2020). Computational Social Science and Sociology. <a href="https://doi.org/10.1146/annurev-soc-121919-054621"><em>Annual Review of Sociology</em>, 46(1), 61–81: 62.</a></p>
-</div>
-</section>
-<section id="vast-amounts-of-data" class="slide level2">
-<h2>Vast amounts of data</h2>
-
-<img data-src="../material/img/one_minute_internet.png" class="figure r-stretch" width="300"><div style="font-size: 40%;">
-<p><a href="https://www.forbes.com/sites/bernardmarr/2018/05/21/how-much-data-do-we-create-every-day-the-mind-blowing-stats-everyone-should-read/#44598c0460ba">https://www.forbes.com/sites/bernardmarr/2018/05/21/how-much-data-do-we-create-every-day-the-mind-blowing-stats-everyone-should-read/#44598c0460ba</a></p>
 </div>
 </section>
 <section id="digital-behavioral-data" class="slide level2">
@@ -1289,17 +1301,19 @@ Nyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023).
 <div style="font-size: 85%;">
 <p>“Records of activity (trace data) undertaken through an online information system (thus, digital)” (Howison et al., 2011: 769) that can be collected from a multitude of technical systems, such as websites, social media platforms, smartphone apps, or sensors.</p>
 </div>
-<div style="font-size: 35%;">
+<div style="font-size: 40%;">
 <p>Howison, J., Wiggins, A., &amp; Crowston, K. (2011). Validity issues in the use of social network analysis with digital trace data. <a href="https://aisel.aisnet.org/cgi/viewcontent.cgi?article=1594&amp;context=jais"><em>Journal of the Association for Information Systems</em>, 12(12), 767–797, 769.</a></p>
 <p>Stier, S., Breuer, J., Siegers, P., &amp; Thorson, K. (2020). Integrating Survey Data and Digital Trace Data: Key Issues in Developing an Emerging Field. <a href="https://journals.sagepub.com/doi/epub/10.1177/0894439319843669"><em>Social Science Computer Review</em>, 38(5), 503–516, 504.</a></p>
 </div>
 </div>
 </div>
 </section>
-<section id="how-does-css-relate-to-established-social-science" class="slide level2">
-<h2>How does CSS relate to established social science?</h2>
-
-<img data-src="../material/img/CSS_intro_questions.png" class="figure r-stretch" width="300"></section>
+<section id="how-does-css-relate-to-established-social-science-methods" class="slide level2">
+<h2>How does CSS relate to established social science methods?</h2>
+<div class="fragment">
+<p><img data-src="../material/img/CSS_intro_questions.png" style="width:80.0%"></p>
+</div>
+</section>
 <section id="measurement-problems-in-the-social-sciences" class="slide level2">
 <h2>Measurement problems in the social sciences</h2>
 <div class="columns">
@@ -1341,20 +1355,20 @@ Nyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023).
 <ul>
 <li class="fragment"><p>come in large volumes,</p></li>
 <li class="fragment"><p>are unstructured,</p></li>
-<li class="fragment"><p>are multi-dimensional (text, images, videos, sound, …),</p></li>
+<li class="fragment"><p>are multi-dimensional (text, images, videos, audio, …),</p></li>
 <li class="fragment"><p>are often produced and provided with minimal or no information on the data generating process.</p></li>
 </ul>
 </div>
 <div class="fragment">
-<p><span class="math inline">\(\rightarrow\)</span> analyzing digital behavioral data in a scientifically meaningful way is an immense challenge</p>
+<p><span class="math inline">\(\rightarrow\)</span> Analyzing digital behavioral data in a scientifically meaningful way is an immense challenge</p>
 </div>
 </section>
 <section id="the-role-of-theory-and-existing-knowledge" class="slide level2">
 <h2>The role of theory and existing knowledge</h2>
 <p>“Our definition forefronts sociological theory because we believe the future of the field within sociology depends not only on novel data sources and methods, but also on its capacity to produce new theories of human behavior or elaborate on existing explanations of the social world.” <span class="citation" data-cites="edelmann_computational_2020">(<a href="#/references" role="doc-biblioref" onclick="">Edelmann et al. 2020</a>: 62)</span></p>
 </section>
-<section id="explanation-vs.-descriptionexploration-i" class="slide level2">
-<h2>Explanation vs.&nbsp;description+exploration I</h2>
+<section id="explanation-vs.-description-i" class="slide level2">
+<h2>Explanation vs.&nbsp;description I</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
 <p><img data-src="../material/img/guess_quant_descr.png" style="width:80.0%"></p>
@@ -1363,13 +1377,14 @@ Nyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023).
 </div>
 </div><div class="column" style="width:60%;">
 <div style="font-size: 72%;">
-<p>“First and foremost, we respond to an undersupply of quantitative descriptive research in social science. Causal research that asks the question why has largely taken the place of descriptive research that asks the question what. Gerring (2012) diagnosed a general tendency to dismiss ‘Mere Description’ as a ‘mundane task … of little intrinsic scientific value,’ advocating instead that it be taken seriously as part of the general social scientific method. We firmly agree. However, critique alone does not change the material conditions and incentives of practicing academics; we see this journal as a practical step towards raising the status of description as a method.” <span class="citation" data-cites="munger_quantitative_2021">(<a href="#/references" role="doc-biblioref" onclick="">Munger, Guess, and Hargittai 2021</a>: 3-4)</span></p>
+<p>“First and foremost, we respond to an undersupply of quantitative descriptive research in social science. Causal research that asks the question why has largely taken the place of descriptive research that asks the question what. Gerring (2012) diagnosed a general tendency to dismiss ‘Mere Description’ as a ‘mundane task … of little intrinsic scientific value,’ advocating instead that it be taken seriously as part of the general social scientific method.</p>
+<p>We firmly agree. However, critique alone does not change the material conditions and incentives of practicing academics; we see this journal as a practical step towards raising the status of description as a method.” <span class="citation" data-cites="munger_quantitative_2021">(<a href="#/references" role="doc-biblioref" onclick="">Munger, Guess, and Hargittai 2021</a>: 3-4)</span></p>
 </div>
 </div>
 </div>
 </section>
-<section id="explanation-vs.-descriptionexploration-ii" class="slide level2">
-<h2>Explanation vs.&nbsp;description+exploration II</h2>
+<section id="explanation-vs.-description-ii" class="slide level2">
+<h2>Explanation vs.&nbsp;description II</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
 <p><img data-src="../material/img/guess_quant_descr.png" style="width:80.0%"></p>
@@ -1378,10 +1393,26 @@ Nyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023).
 </div>
 </div><div class="column" style="width:60%;">
 <div style="font-size: 72%;">
-<p>Second, rather than define our new venue in terms of existing disciplinary boundaries, we instead embrace a topical focus on digital media, broadly construed. We argue that the centrality and dynamism of digital media — information and communication technologies, including social media, that increasingly structure the way people interact with the world — necessitates increased scholarly energy devoted to sustained, continuous, quantitative description. […] Today, there are more hours of video uploaded to YouTube every day than were broadcast in the 1950s U.S. in a year. The daily content of Twitter is different (and different in unpredictable ways) than it was the day before.” <span class="citation" data-cites="munger_quantitative_2021">(<a href="#/references" role="doc-biblioref" onclick="">Munger, Guess, and Hargittai 2021</a>: 3-4)</span></p>
+<p>Second, rather than define our new venue in terms of existing disciplinary boundaries, we instead embrace a topical focus on digital media, broadly construed. We argue that the centrality and dynamism of digital media — information and communication technologies, including social media, that increasingly structure the way people interact with the world — necessitates increased scholarly energy devoted to sustained, continuous, quantitative description. […]</p>
+<p>Today, there are more hours of video uploaded to YouTube every day than were broadcast in the 1950s U.S. in a year. The daily content of Twitter is different (and different in unpredictable ways) than it was the day before.” <span class="citation" data-cites="munger_quantitative_2021">(<a href="#/references" role="doc-biblioref" onclick="">Munger, Guess, and Hargittai 2021</a>: 3-4)</span></p>
 </div>
 </div>
 </div>
+</section>
+<section id="examples-of-novel-sociotechnical-phenomena" class="slide level2">
+<h2>Examples of novel sociotechnical phenomena</h2>
+<ul>
+<li>Harmful online communication
+<ul>
+<li>E.g., misinformation and deception</li>
+<li>E.g., violent language, harassment, racism</li>
+</ul></li>
+<li>Algorithmic influence, bias and discrimination</li>
+<li>Filter bubbles and echo chambers</li>
+<li>Social bots</li>
+<li>Virality of online content and memes</li>
+<li>Online inequalities</li>
+</ul>
 </section></section>
 <section>
 <section id="first-exploration-of-digital-behavioral-data-and-data-visualization" class="title-slide slide level1 center" data-background-color="#58748F">
@@ -1626,6 +1657,44 @@ Munger, Kevin, Andrew M. Guess, and Eszter Hargittai. 2021. <span>“Quantitativ
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
