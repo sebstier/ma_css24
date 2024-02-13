@@ -1,1 +1,1 @@
-Sitemap: sebstier.github.io/ma_css24/sitemap.xml
+Sitemap: https://sebstier.github.io/ma_css24/sitemap.xml
