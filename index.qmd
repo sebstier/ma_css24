@@ -43,12 +43,12 @@ read.xlsx("material/data/schedule.xlsx") %>%
              Topics ~ px(5000)) %>% 
   tab_options(data_row.padding = px(12)) %>%  
   tab_options(heading.title.font.size = 14,
-              table.font.size = 12) 
+              table.font.size = 12)
 
 ```
 
 
 ## Software
 - [R](https://cran.rstudio.com)
-- A text editor, e.g. [RStudio](https://posit.co/download/rstudio-desktop/)
+- A text editor, e.g. [RStudio](https://posit.co/download/rstudio-desktop)
 - [Quarto](https://quarto.org)

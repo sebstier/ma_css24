@@ -2,7 +2,7 @@
 title: "Introduction"
 author: "Sebastian Stier"
 lesson: 1
-institute: University of Mannheim & GESIS
+institute: University of Mannheim & GESIS -- Leibniz Institute for the Social Sciences
 date: "2023-02-14"
 date-format: "YYYY-MM-DD"
 bibliography: references.bib
@@ -21,8 +21,8 @@ format:
 - No R or programming training during my studies
 - 2016-2023, Postdoc/Senior Researcher at GESIS -- Leibniz Institute for the Social Sciences
 - Since November 2023 
-  - Scientific Director Department Computation Social Science at GESIS 
-  - Professor of Computation Social Science, University of Mannheim
+  - Scientific Director Department Computational Social Science at GESIS 
+  - Professor of Computational Social Science, University of Mannheim
 
 
 ```{css echo=FALSE}
@@ -511,6 +511,6 @@ Today, there are more hours of video uploaded to YouTube every day than were bro
 - Go back to file **1_session_one.R** in [https://sebastianstier.com/ma_css24/material.html](https://sebastianstier.com/ma_css24/material.html)
 
 
-# Thank you for your attention! See you on 6th of March {background-color="#58748F"} 
+# Thank you for your attention! See you on February 28th {background-color="#58748F"} 
 
 ## References
