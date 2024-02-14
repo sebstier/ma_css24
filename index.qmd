@@ -29,6 +29,7 @@ The course will be application oriented. Students will familiarize themselves wi
 
 ## Schedule
 
+
 ```{r, echo=FALSE, warning=FALSE, out.width="80%", message=FALSE}
 library(openxlsx)
 library(tidyverse)
