@@ -38,8 +38,8 @@ read.xlsx("material/data/schedule.xlsx") %>%
   gt() %>%
   tab_header(md("**Seminar dates and topics**")) %>%
   fmt_markdown(columns = TRUE) %>%
-  cols_width(Date ~ px(125),
-             Topics ~ px(300),
+  cols_width(Date ~ px(135),
+             Topics ~ px(250),
              Topics ~ px(5000)) %>% 
   tab_options(data_row.padding = px(12)) %>%  
   tab_options(heading.title.font.size = 14,
