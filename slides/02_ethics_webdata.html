@@ -11,8 +11,8 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Sebastian Stier">
-  <meta name="dcterms.date" content="2023-02-14">
-  <title>Computational Social Science and Digital Behavioral Data - Introduction</title>
+  <meta name="dcterms.date" content="2023-02-28">
+  <title>Computational Social Science and Digital Behavioral Data - Research Ethics and Web Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -410,7 +410,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Introduction</h1>
+  <h1 class="title">Research Ethics and Web Data</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -423,78 +423,124 @@ Sebastian Stier
     </div>
 </div>
 
-  <p class="date">2023-02-14</p>
-</section>
-<section id="about-me" class="slide level2">
-<h2>About me</h2>
-<ul>
-<li>Dr.&nbsp;in Political Science in 2016 at the University of Heidelberg</li>
-<li>No R or programming training during my studies</li>
-<li>2016-2023, Postdoc/Senior Researcher at GESIS – Leibniz Institute for the Social Sciences</li>
-<li>Since November 2023
-<ul>
-<li>Scientific Director Department Computational Social Science at GESIS</li>
-<li>Professor of Computational Social Science, University of Mannheim</li>
-</ul></li>
-</ul>
-<div class="cell">
-<style type="text/css">
-.small-code{
-  font-size: 70%  
-}
-</style>
-</div>
-</section>
-<section id="my-research-interests" class="slide level2">
-<h2>My research interests</h2>
-
-<img data-src="../material/img/network_sst.png" class="r-stretch"></section>
-<section id="about-you" class="slide level2">
-<h2>About you</h2>
-<ul>
-<li>Who are you?</li>
-<li>What’s your study program and which semester are you in?</li>
-<li>What are your experiences with programming? If applicable, which R packages have you used?</li>
-<li>What are your motivations for taking the class?</li>
-<li>Why this course? Which topics/methods/data do you want to learn more about?</li>
-</ul>
+  <p class="date">2023-02-28</p>
 </section>
 <section id="agenda-for-today" class="slide level2">
 <h2>Agenda for today</h2>
 <ol type="1">
-<li><p>Logistics</p></li>
-<li><p><em>R</em>: Warmup session, introduction to <em>tidyverse</em></p></li>
-<li><p>Introduction to Computational Social Science</p></li>
-<li><p><em>R</em>: First exploration of digital behavioral data and data visualization</p></li>
+<li><p>Recap</p></li>
+<li><p>Warmup session in <em>R</em></p></li>
+<li><p>Research ethics and web data</p></li>
+<li><p><em>R</em>: First exploration of digital behavioral data</p></li>
 </ol>
 </section>
 <section>
-<section id="logistics" class="title-slide slide level1 center" data-background-color="#58748F">
-<h1>1. Logistics</h1>
+<section id="recap" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>1. Recap</h1>
 
+</section>
+<section id="what-are-digital-behavioral-data" class="slide level2">
+<h2>What are digital behavioral data?</h2>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><img data-src="../material/img/platform_pics.png" class="figure" width="710"></p>
+</div><div class="column" style="width:40%;">
+<div style="font-size: 85%;">
+<p>“Records of activity (trace data) undertaken through an online information system (thus, digital)” (Howison et al., 2011: 769) that can be collected from a multitude of technical systems, such as websites, social media platforms, smartphone apps, or sensors.</p>
+</div>
+<div style="font-size: 40%;">
+<p>Howison, J., Wiggins, A., &amp; Crowston, K. (2011). Validity issues in the use of social network analysis with digital trace data. <a href="https://aisel.aisnet.org/cgi/viewcontent.cgi?article=1594&amp;context=jais"><em>Journal of the Association for Information Systems</em>, 12(12), 767–797, 769.</a></p>
+<p>Stier, S., Breuer, J., Siegers, P., &amp; Thorson, K. (2020). Integrating Survey Data and Digital Trace Data: Key Issues in Developing an Emerging Field. <a href="https://journals.sagepub.com/doi/epub/10.1177/0894439319843669"><em>Social Science Computer Review</em>, 38(5), 503–516, 504.</a></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-is-computational-social-science" class="slide level2">
+<h2>What is computational social science?</h2>
+<div class="fragment">
+<p>Computational social science is an interdisciplinary field that advances theories of human behavior by applying computational techniques to large datasets from social media sites, the Internet, or other digitized archives such as administrative records. Our definition forefronts sociological theory because we believe the future of the field within sociology depends not only on novel data sources and methods, but also on its capacity to produce new theories of human behavior or elaborate on existing explanations of the social world.</p>
+<div style="font-size: 50%;">
+<p>Edelmann, A., Wolff, T., Montagne, D., &amp; Bail, C. A. (2020). Computational Social Science and Sociology. <a href="https://doi.org/10.1146/annurev-soc-121919-054621"><em>Annual Review of Sociology</em>, 46(1), 61–81: 62.</a></p>
+</div>
+</div>
+</section>
+<section id="the-role-of-theory-and-existing-knowledge" class="slide level2">
+<h2>The role of theory and existing knowledge</h2>
+<p>“Our definition forefronts sociological theory because we believe the future of the field within sociology depends not only on novel data sources and methods, but also on its capacity to produce new theories of human behavior or elaborate on existing explanations of the social world.” <span class="citation" data-cites="edelmann_computational_2020">(<a href="#/references" role="doc-biblioref" onclick="">Edelmann et al. 2020</a>: 62)</span></p>
+</section>
+<section id="explanation-vs.-description-i" class="slide level2">
+<h2>Explanation vs.&nbsp;description I</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="../material/img/guess_quant_descr.png" style="width:80.0%"></p>
+<div style="font-size: 26%;">
+<p>Munger, K., Guess, A. M., &amp; Hargittai, E. (2021). Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing. <a href="https://doi.org/10.51685/jqd.2021.000"><em>Journal of Quantitative Description: Digital Media</em>, 1.</a></p>
+</div>
+</div><div class="column" style="width:60%;">
+<div style="font-size: 72%;">
+<p>“First and foremost, we respond to an undersupply of quantitative descriptive research in social science. Causal research that asks the question why has largely taken the place of descriptive research that asks the question what. Gerring (2012) diagnosed a general tendency to dismiss ‘Mere Description’ as a ‘mundane task … of little intrinsic scientific value,’ advocating instead that it be taken seriously as part of the general social scientific method.</p>
+<p>We firmly agree. However, critique alone does not change the material conditions and incentives of practicing academics; we see this journal as a practical step towards raising the status of description as a method.” <span class="citation" data-cites="munger_quantitative_2021">(<a href="#/references" role="doc-biblioref" onclick="">Munger, Guess, and Hargittai 2021</a>: 3-4)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="explanation-vs.-description-ii" class="slide level2">
+<h2>Explanation vs.&nbsp;description II</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="../material/img/guess_quant_descr.png" style="width:80.0%"></p>
+<div style="font-size: 26%;">
+<p>Munger, K., Guess, A. M., &amp; Hargittai, E. (2021). Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing. <a href="https://doi.org/10.51685/jqd.2021.000"><em>Journal of Quantitative Description: Digital Media</em>, 1.</a></p>
+</div>
+</div><div class="column" style="width:60%;">
+<div style="font-size: 72%;">
+<p>Second, rather than define our new venue in terms of existing disciplinary boundaries, we instead embrace a topical focus on digital media, broadly construed. We argue that the centrality and dynamism of digital media — information and communication technologies, including social media, that increasingly structure the way people interact with the world — necessitates increased scholarly energy devoted to sustained, continuous, quantitative description. […]</p>
+<p>Today, there are more hours of video uploaded to YouTube every day than were broadcast in the 1950s U.S. in a year. The daily content of Twitter is different (and different in unpredictable ways) than it was the day before.” <span class="citation" data-cites="munger_quantitative_2021">(<a href="#/references" role="doc-biblioref" onclick="">Munger, Guess, and Hargittai 2021</a>: 3-4)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="examples-of-novel-sociotechnical-phenomena" class="slide level2 incremental">
+<h2>Examples of novel sociotechnical phenomena</h2>
+<div class="fragment">
+<ul>
+<li>Harmful online communication
+<ul>
+<li>E.g., misinformation and deception</li>
+<li>E.g., violent language, harassment, racism</li>
+</ul></li>
+<li>Algorithmic influence, bias and discrimination</li>
+<li>Filter bubbles and echo chambers</li>
+<li>Social bots</li>
+<li>Virality of online content and memes</li>
+<li>Online inequalities</li>
+</ul>
+</div>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="rhqhsmeyem" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rhqhsmeyem table {
+<div id="oygjtldlzt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oygjtldlzt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rhqhsmeyem thead, #rhqhsmeyem tbody, #rhqhsmeyem tfoot, #rhqhsmeyem tr, #rhqhsmeyem td, #rhqhsmeyem th {
+#oygjtldlzt thead, #oygjtldlzt tbody, #oygjtldlzt tfoot, #oygjtldlzt tr, #oygjtldlzt td, #oygjtldlzt th {
   border-style: none;
 }
 
-#rhqhsmeyem p {
+#oygjtldlzt p {
   margin: 0;
   padding: 0;
 }
 
-#rhqhsmeyem .gt_table {
+#oygjtldlzt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -520,12 +566,12 @@ Sebastian Stier
   border-left-color: #D3D3D3;
 }
 
-#rhqhsmeyem .gt_caption {
+#oygjtldlzt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rhqhsmeyem .gt_title {
+#oygjtldlzt .gt_title {
   color: #333333;
   font-size: 14px;
   font-weight: initial;
@@ -537,7 +583,7 @@ Sebastian Stier
   border-bottom-width: 0;
 }
 
-#rhqhsmeyem .gt_subtitle {
+#oygjtldlzt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -549,7 +595,7 @@ Sebastian Stier
   border-top-width: 0;
 }
 
-#rhqhsmeyem .gt_heading {
+#oygjtldlzt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -561,13 +607,13 @@ Sebastian Stier
   border-right-color: #D3D3D3;
 }
 
-#rhqhsmeyem .gt_bottom_border {
+#oygjtldlzt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rhqhsmeyem .gt_col_headings {
+#oygjtldlzt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -582,7 +628,7 @@ Sebastian Stier
   border-right-color: #D3D3D3;
 }
 
-#rhqhsmeyem .gt_col_heading {
+#oygjtldlzt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -602,7 +648,7 @@ Sebastian Stier
   overflow-x: hidden;
 }
 
-#rhqhsmeyem .gt_column_spanner_outer {
+#oygjtldlzt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -614,15 +660,15 @@ Sebastian Stier
   padding-right: 4px;
 }
 
-#rhqhsmeyem .gt_column_spanner_outer:first-child {
+#oygjtldlzt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rhqhsmeyem .gt_column_spanner_outer:last-child {
+#oygjtldlzt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rhqhsmeyem .gt_column_spanner {
+#oygjtldlzt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -634,11 +680,11 @@ Sebastian Stier
   width: 100%;
 }
 
-#rhqhsmeyem .gt_spanner_row {
+#oygjtldlzt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rhqhsmeyem .gt_group_heading {
+#oygjtldlzt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -664,7 +710,7 @@ Sebastian Stier
   text-align: left;
 }
 
-#rhqhsmeyem .gt_empty_group_heading {
+#oygjtldlzt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -679,15 +725,15 @@ Sebastian Stier
   vertical-align: middle;
 }
 
-#rhqhsmeyem .gt_from_md > :first-child {
+#oygjtldlzt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rhqhsmeyem .gt_from_md > :last-child {
+#oygjtldlzt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rhqhsmeyem .gt_row {
+#oygjtldlzt .gt_row {
   padding-top: 5.4px;
   padding-bottom: 5.4px;
   padding-left: 5px;
@@ -706,7 +752,7 @@ Sebastian Stier
   overflow-x: hidden;
 }
 
-#rhqhsmeyem .gt_stub {
+#oygjtldlzt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -719,7 +765,7 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#rhqhsmeyem .gt_stub_row_group {
+#oygjtldlzt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -733,15 +779,15 @@ Sebastian Stier
   vertical-align: top;
 }
 
-#rhqhsmeyem .gt_row_group_first td {
+#oygjtldlzt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rhqhsmeyem .gt_row_group_first th {
+#oygjtldlzt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rhqhsmeyem .gt_summary_row {
+#oygjtldlzt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -751,16 +797,16 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#rhqhsmeyem .gt_first_summary_row {
+#oygjtldlzt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rhqhsmeyem .gt_first_summary_row.thick {
+#oygjtldlzt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rhqhsmeyem .gt_last_summary_row {
+#oygjtldlzt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -770,7 +816,7 @@ Sebastian Stier
   border-bottom-color: #D3D3D3;
 }
 
-#rhqhsmeyem .gt_grand_summary_row {
+#oygjtldlzt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -780,7 +826,7 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#rhqhsmeyem .gt_first_grand_summary_row {
+#oygjtldlzt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -790,7 +836,7 @@ Sebastian Stier
   border-top-color: #D3D3D3;
 }
 
-#rhqhsmeyem .gt_last_grand_summary_row_top {
+#oygjtldlzt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -800,11 +846,11 @@ Sebastian Stier
   border-bottom-color: #D3D3D3;
 }
 
-#rhqhsmeyem .gt_striped {
+#oygjtldlzt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rhqhsmeyem .gt_table_body {
+#oygjtldlzt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -813,7 +859,7 @@ Sebastian Stier
   border-bottom-color: #D3D3D3;
 }
 
-#rhqhsmeyem .gt_footnotes {
+#oygjtldlzt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -827,7 +873,7 @@ Sebastian Stier
   border-right-color: #D3D3D3;
 }
 
-#rhqhsmeyem .gt_footnote {
+#oygjtldlzt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -836,7 +882,7 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#rhqhsmeyem .gt_sourcenotes {
+#oygjtldlzt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -850,7 +896,7 @@ Sebastian Stier
   border-right-color: #D3D3D3;
 }
 
-#rhqhsmeyem .gt_sourcenote {
+#oygjtldlzt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -858,63 +904,63 @@ Sebastian Stier
   padding-right: 5px;
 }
 
-#rhqhsmeyem .gt_left {
+#oygjtldlzt .gt_left {
   text-align: left;
 }
 
-#rhqhsmeyem .gt_center {
+#oygjtldlzt .gt_center {
   text-align: center;
 }
 
-#rhqhsmeyem .gt_right {
+#oygjtldlzt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rhqhsmeyem .gt_font_normal {
+#oygjtldlzt .gt_font_normal {
   font-weight: normal;
 }
 
-#rhqhsmeyem .gt_font_bold {
+#oygjtldlzt .gt_font_bold {
   font-weight: bold;
 }
 
-#rhqhsmeyem .gt_font_italic {
+#oygjtldlzt .gt_font_italic {
   font-style: italic;
 }
 
-#rhqhsmeyem .gt_super {
+#oygjtldlzt .gt_super {
   font-size: 65%;
 }
 
-#rhqhsmeyem .gt_footnote_marks {
+#oygjtldlzt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rhqhsmeyem .gt_asterisk {
+#oygjtldlzt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rhqhsmeyem .gt_indent_1 {
+#oygjtldlzt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rhqhsmeyem .gt_indent_2 {
+#oygjtldlzt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rhqhsmeyem .gt_indent_3 {
+#oygjtldlzt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rhqhsmeyem .gt_indent_4 {
+#oygjtldlzt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rhqhsmeyem .gt_indent_5 {
+#oygjtldlzt .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -950,9 +996,9 @@ Sebastian Stier
 </div></div></td>
 <td headers="Required reading" class="gt_row gt_left"><div data-qmd="Lazer, D., &amp; Radford, J. (2017). Data ex Machina: Introduction to Big Data. [*Annual Review of Sociology*, 43(1), 19–39.](https://doi.org/10.1146/annurev-soc-060116-053457)"><div class="gt_from_md"><p>Lazer, D., &amp; Radford, J. (2017). Data ex Machina: Introduction to Big Data. <a href="https://doi.org/10.1146/annurev-soc-060116-053457"><em>Annual Review of Sociology</em>, 43(1), 19–39.</a></p>
 </div></div></td></tr>
-    <tr><td headers="Date" class="gt_row gt_left"><div data-qmd="28 February 2024"><div class="gt_from_md"><p>28 February 2024</p>
+    <tr><td headers="Date" class="gt_row gt_left" style="background-color: rgba(173,216,230,0.8); color: #000000; font-weight: bold;"><div data-qmd="28 February 2024"><div class="gt_from_md"><p>28 February 2024</p>
 </div></div></td>
-<td headers="Topics" class="gt_row gt_left"><div data-qmd="- Research ethics in CSS 
+<td headers="Topics" class="gt_row gt_left" style="background-color: rgba(173,216,230,0.8); color: #000000; font-weight: bold;"><div data-qmd="- Research ethics in CSS 
 - Social media and web data 
 - APIs
 - Web scraping"><div class="gt_from_md"><ul>
@@ -962,7 +1008,7 @@ Sebastian Stier
 <li>Web scraping</li>
 </ul>
 </div></div></td>
-<td headers="Required reading" class="gt_row gt_left"><div data-qmd="Fiesler, C., &amp; Proferes, N. (2018). 'Participant' Perceptions of Twitter Research Ethics. [*Social Media + Society*, 4(1).](https://doi.org/10.1177/2056305118763366) <br/><br/>
+<td headers="Required reading" class="gt_row gt_left" style="background-color: rgba(173,216,230,0.8); color: #000000; font-weight: bold;"><div data-qmd="Fiesler, C., &amp; Proferes, N. (2018). 'Participant' Perceptions of Twitter Research Ethics. [*Social Media + Society*, 4(1).](https://doi.org/10.1177/2056305118763366) <br/><br/>
 Freelon, D. (2018). Computational Research in the Post-API Age. [*Political Communication*, 35(4), 665–668.](https://osf.io/preprints/socarxiv/56f4q)"><div class="gt_from_md"><p>Fiesler, C., &amp; Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. <a href="https://doi.org/10.1177/2056305118763366"><em>Social Media + Society</em>, 4(1).</a> <br><br>
 Freelon, D. (2018). Computational Research in the Post-API Age. <a href="https://osf.io/preprints/socarxiv/56f4q"><em>Political Communication</em>, 35(4), 665–668.</a></p>
 </div></div></td></tr>
@@ -1042,43 +1088,114 @@ Nyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023).
 </div>
 </div>
 </div>
+</section></section>
+<section>
+<section id="warmup-session-in-r" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>2. Warmup session in R</h1>
+
 </section>
-<section id="learning-objectives" class="slide level2">
-<h2>Learning objectives</h2>
-<ol type="1">
-<li>Advanced understanding of concepts, methods, data used and challenges in CSS</li>
-<li>Critical reflection of the applicability of CSS in social science research</li>
-<li>Learning to use CSS methods in R</li>
-<li>Application of CSS methods in R for own research question</li>
-</ol>
+<section id="styleguide" class="slide level2">
+<h2>Styleguide</h2>
+<p>Guidance for coding in <em>R</em>: <a href="https://style.tidyverse.org/index.html">https://style.tidyverse.org/index.html</a></p>
+</section></section>
+<section>
+<section id="research-ethics-and-web-data" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>3. Research ethics and web data</h1>
+
 </section>
-<section id="modus-operandi-in-the-class" class="slide level2">
-<h2>Modus operandi in the class</h2>
-<ul>
-<li>Introduction to the session’s topic by instructor</li>
-<li>Required reading: (mostly) applied papers
-<ul>
-<li>We’ll discuss these papers in the class</li>
-</ul></li>
-<li>We’ll code in the class <span class="math inline">\(\rightarrow\)</span> please bring your laptop</li>
-<li>Questions are always possible, this is supposed to be interactive</li>
-</ul>
-</section>
-<section id="requirements-for-examinationgrades" class="slide level2">
-<h2>Requirements for examination/grades</h2>
+<section id="research-ethics" class="slide level2">
+<h2>Research ethics?</h2>
 <div>
+<p><em>Research ethics</em></p>
 <ul>
-<li class="fragment">Regular participation in class</li>
-<li class="fragment">Writing a review of the two required readings for <strong>two</strong> classes to be submitted on Monday before the respective session (<strong>Studienleistung/Coursework</strong>)</li>
-<li class="fragment">Presentation of your own research idea for your term paper in the last session on 22 May 2024</li>
-<li class="fragment">Written term paper based on an analysis in R (max. 5,000 words), deadline: 31 July 2024 (<strong>Prüfungsleistung/Examination</strong>)</li>
+<li class="fragment"><p>Moral principles and actions guiding and shaping research</p>
+<ul>
+<li class="fragment">from inception to completion,</li>
+<li class="fragment">through dissemination and sharing of findings,</li>
+<li class="fragment">including archiving and future use.</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<div>
+<p><em>Research ethics in the social sciences</em></p>
+<ul>
+<li class="fragment">Initially “patient protection” model of medical research</li>
+<li class="fragment">Today broader scope including consideration of benefits, risks and harms to all persons connected with the research</li>
+<li class="fragment">Including social responsibilities of researchers</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="who-are-the-relevant-actors" class="slide level2">
+<h2>Who are the relevant actors?</h2>
+<div class="fragment">
+<p><img data-src="../material/img/actors_data_protection.png" style="width:100.0%"></p>
+</div>
+</section>
+<section id="data-protection" class="slide level2">
+<h2>Data protection</h2>
+<ul>
+<li>Data protection
+<ul>
+<li>Part of fundamental right to privacy (or “informational freedom”)</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>“Privacy is a personal condition of life characterised by seclusion from, and therefore absence of acquaintance by, the public” <span class="citation" data-cites="neethling2005personality">(<a href="#/references" role="doc-biblioref" onclick="">Neethling 2005</a>: 233)</span></li>
+<li>Prevention of unwanted disclosure of personal information or the misuse of such information</li>
 </ul>
 </div>
 </section>
-<section id="format-of-the-reviews" class="slide level2">
-<h2>Format of the reviews</h2>
+<section id="data-protection-legal-foundations" class="slide level2">
+<h2>Data protection: legal foundations</h2>
 <ul>
-<li>Review of the two required readings needs to be submitted to ILIAS on Monday before <strong>two</strong> classes of the semester</li>
+<li>Prevention of unwanted disclosure of personal information or the misuse of such information
+<ul>
+<li>Core of data protection</li>
+</ul></li>
+<li>Legal framework in the European Union
+<ul>
+<li>Charter of Fundamental Rights of the EU (Art. 8)</li>
+<li>General Data Protection Regulation (GDPR)</li>
+<li>National and sub-national data protection acts</li>
+<li>Specialized laws</li>
+</ul></li>
+</ul>
+</section>
+<section id="informed-consent" class="slide level2">
+<h2>Informed consent</h2>
+
+<img data-src="../material/img/informed_consent.png" class="r-stretch quarto-figure-center"><ul>
+<li>Bridge between data protection and research ethics</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Informed consent means for example:
+<ul>
+<li>information</li>
+<li>transparency</li>
+<li>minimal requirement <span class="math inline">\(\rightarrow\)</span> chance <em>not</em> to consent</li>
+</ul></li>
+<li>Status quo in social media research: lack of informed consent</li>
+</ul>
+</div>
+</section>
+<section id="social-networking-sites" class="slide level2">
+<h2>Social networking sites</h2>
+<p>“We define social network sites as web-based services that allow individuals to</p>
+<ol type="1">
+<li>construct a public or semi-public profile within a bounded system,</li>
+<li>articulate a list of other users with whom they share a connection, and</li>
+<li>view and traverse their list of connections and those made by others within the system.</li>
+</ol>
+<p>The nature and nomenclature of these connections may vary from site to site.” <span class="citation" data-cites="boyd.2007">(<a href="#/references" role="doc-biblioref" onclick="">boyd and Ellison 2007</a>: 211)</span></p>
+<p><span class="math inline">\(\rightarrow\)</span> <strong>widely differing platform affordances</strong></p>
+</section>
+<section id="our-two-required-readings" class="slide level2">
+<h2>Our two required readings</h2>
+<ul>
 <li>Guiding questions:</li>
 </ul>
 <div style="font-size: 90%;">
@@ -1094,328 +1211,157 @@ Nyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023).
 
 - Do you see any ethical concerns?
 
-- How do you judge the replicability of these papers?
-
 - If applicable, are there commonalities or differences between the two papers?</code></pre>
 </div>
 </section>
-<section id="format-of-term-paper-5000-words" class="slide level2">
-<h2>Format of term paper (~5,000 words)</h2>
-<ul>
-<li>Brief motivation and research question</li>
-<li>Concise theoretical overview: for what conceptual and theoretical reasons do I choose these data and methods?</li>
-<li>Research design</li>
-<li>Data and variables</li>
-<li>Method: no detailed mathematical description needed, but why does this method fit my research question and my data?</li>
-<li>Results</li>
-<li>Analysis code as an R script: needs to be fully reproducible</li>
-</ul>
-</section>
-<section id="information-management-and-communication" class="slide level2">
-<h2>Information management and communication</h2>
-<ul>
-<li>Slides and materials will be online: <a href="https://sebastianstier.com/ma_css24">https://sebastianstier.com/ma_css24/</a></li>
-<li>(Data might be shared via the secure platform Cryptshare)</li>
-<li>Communication
-<ul>
-<li>Via <a href="mailto:sebastian.stier@gesis.org">email</a></li>
-<li>In person after the class</li>
-<li>Via Zoom</li>
-</ul></li>
-<li>Submit the final term paper to <a href="mailto:sebastian.stier@gesis.org">sebastian.stier@gesis.org</a></li>
-</ul>
-</section>
-<section id="the-elephant-in-the-room-ai-llms-chatgpt-et-al." class="slide level2">
-<h2>The elephant in the room: AI, LLMs, ChatGPT et al.</h2>
+<section id="are-all-of-these-researchers-bad-people" class="slide level2">
+<h2>Are all of these researchers bad people?</h2>
 <div class="columns">
-<div class="column" style="width:55%;">
-<p><img data-src="../material/img/chat_gpt_academia.png" class="figure" width="710"></p>
-<div style="font-size: 26%;">
-<p>Meyer, J. G., Urbanowicz, R. J., Martin, P. C. N., et al.&nbsp;(2023). ChatGPT and large language models in academia: Opportunities and challenges. <em>BioData Mining</em>, 16(1), 20. <a href="https://doi.org/10.1186/s13040-023-00339-9">https://doi.org/10.1186/s13040-023-00339-9</a></p>
-</div>
-</div><div class="column" style="width:45%;">
-<div style="font-size: 68%;">
-<div>
-<ul>
-<li class="fragment">It’s fine to look for help online but without an understanding of the R code base the use of AI is inefficient.</li>
-<li class="fragment">You’ll learn much more if you try to find a solution within-R, e.g., <em>?mean</em></li>
-<li class="fragment">We will code in class <span class="math inline">\(\rightarrow\)</span> applied programming.</li>
-<li class="fragment">Term paper:
-<ul>
-<li class="fragment">Synthesis of theory, research question and code.</li>
-<li class="fragment">Documentation of code: tell me why each step is needed and what it does.</li>
-</ul></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="warmup-session-in-r-introduction-to-tidyverse" class="title-slide slide level1 center" data-background-color="#58748F">
-<h1>2. Warmup session in R, introduction to <em>tidyverse</em></h1>
-
-</section>
-<section id="tidyverse-the-swiss-army-knife-of-r" class="slide level2">
-<h2><em>tidyverse</em>: the Swiss Army knife of R</h2>
-
-<img data-src="../material/img/tidyverse.png" class="figure r-stretch" width="300"><div style="font-size: 32%;">
-<p>Çetinkaya-Rundel, M., et al.&nbsp;(2021). An educator’s perspective of the tidyverse. <a href="https://doi.org/10.48550/ARXIV.2108.03510">arXiv Preprint.</a></p>
-</div>
-<p>Introduction to <em>tidyverse</em>: <a href="https://www.tidyverse.org/packages">https://www.tidyverse.org/packages</a></p>
-</section>
-<section id="first-exercises" class="slide level2">
-<h2>First exercises</h2>
-<ul>
-<li>Download file <strong>1_session_one.R</strong> from <a href="https://sebastianstier.com/ma_css24/material.html">https://sebastianstier.com/ma_css24/material.html</a></li>
-<li>Do the first exercises.</li>
-<li>I’ll answer questions and help.</li>
-</ul>
-</section>
-<section id="before-we-really-get-started-with-coding" class="slide level2">
-<h2>Before we really get started with coding…</h2>
-<p>A simple ggplot figure.</p>
-<div class="small-code">
-
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="6|7|8|9|10|11"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a><span class="in">```{r}</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#| output-location: column</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#| code-line-numbers: "6|7|8|9|10|11"</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-6"><a href="#cb2-6"></a>mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>  <span class="co"># ggplot(data = mtcars, aes(x = disp, y = mpg)) +    </span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y ~ x"</span>) <span class="sc">+</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<p><img data-src="01_introduction_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
-</div>
-</div>
-</div>
-</div></section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    mtcars <span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg))<span class="sc">+</span><span class="fu">geom_point</span>() <span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y ~ x"</span>)<span class="sc">+</span><span class="fu">theme_minimal</span>()</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment">
-
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(mtcars,<span class="fu">aes</span>(<span class="at">x=</span>disp, <span class="at">y=</span>mpg))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"loess"</span>,<span class="at">formula=</span><span class="st">"y~x"</span>)<span class="sc">+</span><span class="fu">theme_minimal</span>()</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment">
-
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| output-location: fragment</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">formula =</span> <span class="st">"y ~ x"</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment">
-
-</div>
-<div class="fragment">
-<p>Luckily, there is guidance: <a href="https://style.tidyverse.org/index.html">https://style.tidyverse.org/index.html</a></p>
-</div>
-</section></section>
-<section>
-<section id="introduction-to-computational-social-science" class="title-slide slide level1 center" data-background-color="#58748F">
-<h1>3. Introduction to Computational Social Science</h1>
-
-</section>
-<section id="section-2" class="slide level2 center">
-<h2></h2>
-<ol type="1">
-<li><p>What is Computational Social Science?</p></li>
-<li><p>And what is the scientific benefit of CSS?</p></li>
-</ol>
-</section>
-<section id="vast-amounts-of-data" class="slide level2">
-<h2>Vast amounts of data</h2>
-<div class="fragment">
-<p><img data-src="../material/img/one_minute_internet.png" style="width:68.0%"></p>
-<div style="font-size: 45%;">
-<p><a href="https://www.forbes.com/sites/bernardmarr/2018/05/21/how-much-data-do-we-create-every-day-the-mind-blowing-stats-everyone-should-read/#44598c0460ba">https://www.forbes.com/sites/bernardmarr/2018/05/21/how-much-data-do-we-create-every-day-the-mind-blowing-stats-everyone-should-read/#44598c0460ba</a></p>
-</div>
-</div>
-</section>
-<section id="section-3" class="slide level2">
-<h2></h2>
-
-<img data-src="../material/img/CSS_themes.png" class="figure r-stretch" width="300"></section>
-<section id="some-definitions-i" class="slide level2">
-<h2>Some definitions I</h2>
-<p>We define CSS as the development and application of computational methods to complex, typically large-scale, human (sometimes simulated) behavioral data (1). […] Whereas traditional quantitative social science has focused on rows of cases and columns of variables, typically with assumptions of independence among observations, CSS encompasses language, location and movement, networks, images, and video, with the application of statistical models that capture multifarious dependencies within data.</p>
-<div style="font-size: 50%;">
-<p>Lazer, D. M. J., et al.&nbsp;(2020). Computational social science: Obstacles and opportunities. <a href="https://doi.org/10.1126/science.aaz8170"><em>Science</em>, 369(6507), 1060–1062: 1060.</a></p>
-</div>
-</section>
-<section id="some-definitions-ii" class="slide level2">
-<h2>Some definitions II</h2>
-<p>Computational social science is an interdisciplinary field that advances theories of human behavior by applying computational techniques to large datasets from social media sites, the Internet, or other digitized archives such as administrative records. Our definition forefronts sociological theory because we believe the future of the field within sociology depends not only on novel data sources and methods, but also on its capacity to produce new theories of human behavior or elaborate on existing explanations of the social world.</p>
-<div style="font-size: 50%;">
-<p>Edelmann, A., Wolff, T., Montagne, D., &amp; Bail, C. A. (2020). Computational Social Science and Sociology. <a href="https://doi.org/10.1146/annurev-soc-121919-054621"><em>Annual Review of Sociology</em>, 46(1), 61–81: 62.</a></p>
-</div>
-</section>
-<section id="digital-behavioral-data" class="slide level2">
-<h2>Digital behavioral data</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p><img data-src="../material/img/platform_pics.png" class="figure" width="710"></p>
-</div><div class="column" style="width:40%;">
-<div style="font-size: 85%;">
-<p>“Records of activity (trace data) undertaken through an online information system (thus, digital)” (Howison et al., 2011: 769) that can be collected from a multitude of technical systems, such as websites, social media platforms, smartphone apps, or sensors.</p>
-</div>
+<div class="column" style="width:60%;">
+<p><img data-src="../material/img/report_SM_platforms.png" style="width:100.0%"></p>
 <div style="font-size: 40%;">
-<p>Howison, J., Wiggins, A., &amp; Crowston, K. (2011). Validity issues in the use of social network analysis with digital trace data. <a href="https://aisel.aisnet.org/cgi/viewcontent.cgi?article=1594&amp;context=jais"><em>Journal of the Association for Information Systems</em>, 12(12), 767–797, 769.</a></p>
-<p>Stier, S., Breuer, J., Siegers, P., &amp; Thorson, K. (2020). Integrating Survey Data and Digital Trace Data: Key Issues in Developing an Emerging Field. <a href="https://journals.sagepub.com/doi/epub/10.1177/0894439319843669"><em>Social Science Computer Review</em>, 38(5), 503–516, 504.</a></p>
+<p>Lukito, J., et al.&nbsp;(2023). <a href="https://mddatacoop.org/files/2023/State%20of%20Digital%20Media%20Data%20Research%202023.pdf">The State of Digital Media Data Research, 2023. Media and Democracy Data Cooperative.</a></p>
+</div>
+</div><div class="column" style="width:40%;">
+<p><img data-src="../material/img/number_twitter_studies.png" style="width:90.0%"></p>
+<div style="font-size: 40%;">
+<p>Yu, J., &amp; Muñoz-Justicia, J. (2020). A Bibliometric Overview of Twitter-Related Studies Indexed in Web of Science. <a href="https://doi.org/10.3390/fi12050091"><em>Future Internet</em>, 12(5), 91.</a></p>
 </div>
 </div>
 </div>
 </section>
-<section id="how-does-css-relate-to-established-social-science-methods" class="slide level2">
-<h2>How does CSS relate to established social science methods?</h2>
+<section id="legitimate-academic-interests" class="slide level2">
+<h2>Legitimate academic interests</h2>
+<p>There are legitimate academic interests for studying online platforms!</p>
 <div class="fragment">
-<p><img data-src="../material/img/CSS_intro_questions.png" style="width:80.0%"></p>
+<ul>
+<li>Understanding the impact of digital media on society and democracy</li>
+<li>Keeping online platforms accountable</li>
+<li>Mitigating “systemic risks” (see <a href="European Union, 2024">https://digital-strategy.ec.europa.eu/en/consultations/guidelines-providers-very-large-online-platforms-and-very-large-online-search-engines-mitigation</a>)</li>
+<li>Preserving historical material</li>
+<li>and more reasons…</li>
+</ul>
 </div>
 </section>
-<section id="measurement-problems-in-the-social-sciences" class="slide level2">
-<h2>Measurement problems in the social sciences</h2>
+<section id="what-can-we-do-to-ensure-the-integrity-of-our-css-research" class="slide level2">
+<h2>What can we do to ensure the integrity of our CSS research?</h2>
+<div class="fragment">
+<ul>
+<li>Keep the DBD safe and protected</li>
+<li>Analyzing at the group-/variable-level, avoid unnecessary “forensic analysis” of individual data patterns / users</li>
+<li>Not publishing/printing any personal information in a paper/thesis</li>
+</ul>
+</div>
+</section>
+<section id="collecting-digital-behavioral-data" class="slide level2">
+<h2>Collecting digital behavioral data</h2>
+<p>But first, we need to get some DBD for your research</p>
+<ul>
+<li>What research questions would you like to answer with DBD?</li>
+<li>What DBD would you need?</li>
+</ul>
+</section>
+<section id="how-to-collect-web-data" class="slide level2">
+<h2>How to collect web data</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="../material/img/scharkow.png" class="figure" width="710"></p>
-<div style="font-size: 70%;">
-<p>“This study compares self-reports of Internet use with client log files from a large household sample. Results show that the accuracy of self reported frequency and duration of Internet use is quite low, and that survey data are only moderately correlated with log file data.”</p>
+<p><strong>Application Programming Interfaces (APIs)</strong></p>
+<p><img data-src="../material/img/apis.webp" style="width:100.0%"></p>
+<div style="font-size: 20%;">
+<p><a href="https://ninetailed.io/blog/api-calls/">https://ninetailed.io/blog/api-calls/</a></p>
 </div>
-<div style="font-size: 26%;">
-<p>Scharkow, M. (2016). The Accuracy of Self-Reported Internet Use—A Validation Study Using Client Log Data. <a href="https://doi.org/10.1080/19312458.2015.1118446"><em>Communication Methods and Measures</em>, 10(1), 13–27.</a></p>
+<p><img data-src="../material/img/api_possibilities.png" style="width:70.0%"></p>
+</div><div class="column" style="width:50%;">
+<p><strong>Web scraping</strong></p>
+<p><img data-src="../material/img/scraping_example.png" style="width:90.0%"></p>
+<div style="font-size: 20%;">
+<p><a href="https://www.faz.net/aktuell/politik/inland/bayern-muenchen-will-kita-foerderung-umstellen-19549912.html">https://www.faz.net/aktuell/politik/inland/bayern-muenchen-will-kita-foerderung-umstellen-19549912.html</a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="how-does-it-look-like-in-r" class="slide level2">
+<h2>How does it look like in <em>R</em>?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>APIs</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(academictwitteR)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>tweets <span class="ot">&lt;-</span> <span class="fu">get_all_tweets</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">query =</span> <span class="st">"#BlackLivesMatter"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">start_tweets =</span> <span class="st">"2020-01-01T00:00:00Z"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">end_tweets =</span> <span class="st">"2020-01-05T00:00:00Z"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> <span class="st">"blmtweets"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img data-src="../material/img/tweets_example.png" style="width:100.0%"></p>
+</div><div class="column" style="width:50%;">
+<p><strong>Web scraping</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://rvest.tidyverse.org/articles/starwars.html"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>html <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>section <span class="ot">&lt;-</span> html <span class="sc">|&gt;</span> <span class="fu">html_elements</span>(<span class="st">"section"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(section, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{xml_nodeset (5)}
+[1] &lt;section&gt;&lt;h2 data-id="1"&gt;\nThe Phantom Menace\n&lt;/h2&gt;\n&lt;p&gt;\nReleased: 1999 ...
+[2] &lt;section&gt;&lt;h2 data-id="2"&gt;\nAttack of the Clones\n&lt;/h2&gt;\n&lt;p&gt;\nReleased: 20 ...
+[3] &lt;section&gt;&lt;h2 data-id="3"&gt;\nRevenge of the Sith\n&lt;/h2&gt;\n&lt;p&gt;\nReleased: 200 ...
+[4] &lt;section&gt;&lt;h2 data-id="4"&gt;\nA New Hope\n&lt;/h2&gt;\n&lt;p&gt;\nReleased: 1977-05-25\n ...
+[5] &lt;section&gt;&lt;h2 data-id="5"&gt;\nThe Empire Strikes Back\n&lt;/h2&gt;\n&lt;p&gt;\nReleased: ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="elon-we-have-a-problem" class="slide level2">
+<h2>Elon, we have a problem</h2>
+
+<img data-src="../material/img/elon_api_shutdowns.png" class="r-stretch quarto-figure-center"><div style="font-size: 20%;">
+<p><a href="https://aoir.org/facebook-shuts-the-gate-after-the-horse-has-bolted/">https://aoir.org/facebook-shuts-the-gate-after-the-horse-has-bolted/</a> <a href="https://www.forbes.com/sites/antoniopequenoiv/2023/06/30/these-popular-third-party-reddit-apps-will-disappear-saturday-as-api-changes-take-effect-despite-weeks-of-user-protest/">https://www.forbes.com/sites/antoniopequenoiv/2023/06/30/these-popular-third-party-reddit-apps-will-disappear-saturday-as-api-changes-take-effect-despite-weeks-of-user-protest/</a> <a href="https://www.theguardian.com/technology/2023/feb/07/techscape-elon-musk-twitter-api">https://www.theguardian.com/technology/2023/feb/07/techscape-elon-musk-twitter-api</a></p>
+</div>
+</section>
+<section id="how-to-still-collect-web-data" class="slide level2">
+<h2>How to (still) collect web data</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="../material/img/apis_bauer.png" style="width:115.0%"></p>
+<div style="font-size: 50%;">
+<p><a href="https://bookdown.org/paul/apis_for_social_scientists/">https://bookdown.org/paul/apis_for_social_scientists/</a></p>
 </div>
 </div><div class="column" style="width:50%;">
-<p><img data-src="../material/img/parry.png" style="width:85.0%"></p>
-<div style="font-size: 70%;">
-<p>“Based on 106 effect sizes, we found that self-reported media use correlates only moderately with logged measurements […] These findings raise concerns about the validity of findings relying solely on self-reported measures of media use.”</p>
-</div>
-<div style="font-size: 26%;">
-<p>Parry, D. A., Davidson, B. I., Sewall, C. J. R., Fisher, J. T., Mieczkowski, H., &amp; Quintana, D. S. (2021). A systematic review and meta-analysis of discrepancies between logged and self-reported digital media use. <a href="https://doi.org/10.1038/s41562-021-01117-5"><em>Nature Human Behaviour</em>, 5, 1535–154.</a></p>
+<p><img data-src="../material/img/munzert_etal.jpeg" style="width:70.0%"></p>
+<div style="font-size: 50%;">
+<p><a href="http://www.r-datacollection.com">http://www.r-datacollection.com</a></p>
 </div>
 </div>
 </div>
-</section>
-<section id="advantages-of-digital-behavioral-data" class="slide level2">
-<h2>Advantages of digital behavioral data</h2>
-<div>
-<p>Digital behavioral data capture human behavior…</p>
-<ul>
-<li class="fragment"><p>non-intrusively,</p></li>
-<li class="fragment"><p>reliably,</p></li>
-<li class="fragment"><p>with fine-grained and multi-dimensional features,</p></li>
-<li class="fragment"><p>across time and contexts.</p></li>
-</ul>
-</div>
-</section>
-<section id="downsides-of-digital-behavioral-data" class="slide level2">
-<h2>Downsides of digital behavioral data</h2>
-<div>
-<p>But, digital behavioral data…</p>
-<ul>
-<li class="fragment"><p>come in large volumes,</p></li>
-<li class="fragment"><p>are unstructured,</p></li>
-<li class="fragment"><p>are multi-dimensional (text, images, videos, audio, …),</p></li>
-<li class="fragment"><p>are often produced and provided with minimal or no information on the data generating process.</p></li>
-</ul>
-</div>
-<div class="fragment">
-<p><span class="math inline">\(\rightarrow\)</span> Analyzing digital behavioral data in a scientifically meaningful way is an immense challenge</p>
-</div>
-</section>
-<section id="the-role-of-theory-and-existing-knowledge" class="slide level2">
-<h2>The role of theory and existing knowledge</h2>
-<p>“Our definition forefronts sociological theory because we believe the future of the field within sociology depends not only on novel data sources and methods, but also on its capacity to produce new theories of human behavior or elaborate on existing explanations of the social world.” <span class="citation" data-cites="edelmann_computational_2020">(<a href="#/references" role="doc-biblioref" onclick="">Edelmann et al. 2020</a>: 62)</span></p>
-</section>
-<section id="explanation-vs.-description-i" class="slide level2">
-<h2>Explanation vs.&nbsp;description I</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<p><img data-src="../material/img/guess_quant_descr.png" style="width:80.0%"></p>
-<div style="font-size: 26%;">
-<p>Munger, K., Guess, A. M., &amp; Hargittai, E. (2021). Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing. <a href="https://doi.org/10.51685/jqd.2021.000"><em>Journal of Quantitative Description: Digital Media</em>, 1.</a></p>
-</div>
-</div><div class="column" style="width:60%;">
-<div style="font-size: 72%;">
-<p>“First and foremost, we respond to an undersupply of quantitative descriptive research in social science. Causal research that asks the question why has largely taken the place of descriptive research that asks the question what. Gerring (2012) diagnosed a general tendency to dismiss ‘Mere Description’ as a ‘mundane task … of little intrinsic scientific value,’ advocating instead that it be taken seriously as part of the general social scientific method.</p>
-<p>We firmly agree. However, critique alone does not change the material conditions and incentives of practicing academics; we see this journal as a practical step towards raising the status of description as a method.” <span class="citation" data-cites="munger_quantitative_2021">(<a href="#/references" role="doc-biblioref" onclick="">Munger, Guess, and Hargittai 2021</a>: 3-4)</span></p>
-</div>
-</div>
-</div>
-</section>
-<section id="explanation-vs.-description-ii" class="slide level2">
-<h2>Explanation vs.&nbsp;description II</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<p><img data-src="../material/img/guess_quant_descr.png" style="width:80.0%"></p>
-<div style="font-size: 26%;">
-<p>Munger, K., Guess, A. M., &amp; Hargittai, E. (2021). Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing. <a href="https://doi.org/10.51685/jqd.2021.000"><em>Journal of Quantitative Description: Digital Media</em>, 1.</a></p>
-</div>
-</div><div class="column" style="width:60%;">
-<div style="font-size: 72%;">
-<p>Second, rather than define our new venue in terms of existing disciplinary boundaries, we instead embrace a topical focus on digital media, broadly construed. We argue that the centrality and dynamism of digital media — information and communication technologies, including social media, that increasingly structure the way people interact with the world — necessitates increased scholarly energy devoted to sustained, continuous, quantitative description. […]</p>
-<p>Today, there are more hours of video uploaded to YouTube every day than were broadcast in the 1950s U.S. in a year. The daily content of Twitter is different (and different in unpredictable ways) than it was the day before.” <span class="citation" data-cites="munger_quantitative_2021">(<a href="#/references" role="doc-biblioref" onclick="">Munger, Guess, and Hargittai 2021</a>: 3-4)</span></p>
-</div>
-</div>
-</div>
-</section>
-<section id="examples-of-novel-sociotechnical-phenomena" class="slide level2">
-<h2>Examples of novel sociotechnical phenomena</h2>
-<ul>
-<li>Harmful online communication
-<ul>
-<li>E.g., misinformation and deception</li>
-<li>E.g., violent language, harassment, racism</li>
-</ul></li>
-<li>Algorithmic influence, bias and discrimination</li>
-<li>Filter bubbles and echo chambers</li>
-<li>Social bots</li>
-<li>Virality of online content and memes</li>
-<li>Online inequalities</li>
-</ul>
 </section></section>
 <section>
-<section id="first-exploration-of-digital-behavioral-data-and-data-visualization" class="title-slide slide level1 center" data-background-color="#58748F">
-<h1>4. First exploration of digital behavioral data and data visualization</h1>
+<section id="first-exploration-of-digital-behavioral-data" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>4. First exploration of digital behavioral data</h1>
 
+</section>
+<section id="the-data-we-will-be-using-today" class="slide level2">
+<h2>The data we will be using today</h2>
+
+<img data-src="../material/img/clemm_paper.png" style="width:150.0%" class="r-stretch"><div style="font-size: 50%;">
+<p>Wojcieszak, M., Clemm Von Hohenberg, B., Casas, A., Menchen-Trevino, E., De Leeuw, S., Gonçalves, A., &amp; Boon, M. (2022). Null effects of news exposure: A test of the (un)desirable effects of a ‘news vacation’ and ‘news binging’. <a href="https://doi.org/10.1057/s41599-022-01423-x"><em>Humanities and Social Sciences Communications</em>, 9(1), 413.</a></p>
+</div>
+<p><br></p>
+<p><em>A toy browsing data set from our OSF repository. It is based on a real data set collected from a US sample in 2019, but reduced to fewer participants and slightly modified for reasons of anonymity (n_subjects = 100; n_visits = 2 million).</em></p>
 </section>
 <section id="back-to-coding" class="slide level2">
 <h2>Back to coding</h2>
 <ul>
-<li>Go back to file <strong>1_session_one.R</strong> in <a href="https://sebastianstier.com/ma_css24/material.html">https://sebastianstier.com/ma_css24/material.html</a></li>
+<li>Go back to file <strong>2_session_two.R</strong> in <a href="https://sebastianstier.com/ma_css24/material.html">https://sebastianstier.com/ma_css24/material.html</a></li>
 </ul>
 </section></section>
 <section>
-<section id="thank-you-for-your-attention-see-you-on-february-28th" class="title-slide slide level1 center" data-background-color="#58748F">
-<h1>Thank you for your attention! See you on February 28th</h1>
+<section id="thank-you-for-your-attention-see-you-on-march-13th" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>Thank you for your attention! See you on March 13th</h1>
 
 </section>
 <section id="references" class="slide level2 smaller scrollable">
@@ -1426,11 +1372,17 @@ Nyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023).
 <p><a href="https://sebastianstier.com/ma_css24/">Computational Social Science and Digital Behavioral Data, University of Mannheim</a></p>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-boyd.2007" class="csl-entry" role="listitem">
+boyd, danah m., and Nicole B. Ellison. 2007. <span>“Social Network Sites: Definition, History, and Scholarship.”</span> <em>Journal of Computer-Mediated Communication</em> 13 (1): 210–30. https://doi.org/<a href="https://doi.org/10.1111/j.1083-6101.2007.00393.x">https://doi.org/10.1111/j.1083-6101.2007.00393.x</a>.
+</div>
 <div id="ref-edelmann_computational_2020" class="csl-entry" role="listitem">
 Edelmann, Achim, Tom Wolff, Danielle Montagne, and Christopher A. Bail. 2020. <span>“Computational <span>Social</span> <span>Science</span> and <span>Sociology</span>.”</span> <em>Annual Review of Sociology</em> 46 (1): 61–81. <a href="https://doi.org/10.1146/annurev-soc-121919-054621">https://doi.org/10.1146/annurev-soc-121919-054621</a>.
 </div>
 <div id="ref-munger_quantitative_2021" class="csl-entry" role="listitem">
 Munger, Kevin, Andrew M. Guess, and Eszter Hargittai. 2021. <span>“Quantitative <span>Description</span> of <span>Digital</span> <span>Media</span>: <span>A</span> <span>Modest</span> <span>Proposal</span> to <span>Disrupt</span> <span>Academic</span> <span>Publishing</span>.”</span> <em>Journal of Quantitative Description: Digital Media</em> 1. <a href="https://doi.org/10.51685/jqd.2021.000">https://doi.org/10.51685/jqd.2021.000</a>.
+</div>
+<div id="ref-neethling2005personality" class="csl-entry" role="listitem">
+Neethling, Johann. 2005. <span>“Personality Rights: A Comparative Overview.”</span> <em>Comparative and International Law Journal of Southern Africa</em> 38 (2): 210–45.
 </div>
 </div>
 </section></section>
