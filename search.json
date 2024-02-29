@@ -242,14 +242,14 @@
     "href": "material.html",
     "title": "Computational Social Science and Digital Behavioral Data",
     "section": "",
-    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/13/24, 10:46:52 PM\n\n\n\n\n1_session_one.R\n\n\n2/14/24, 10:03:03 PM\n\n\n\n\n2_session_two.R\n\n\n2/27/24, 7:02:33 PM\n\n\n\n\n\n\nNo matching items"
+    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/13/24, 10:46:52 PM\n\n\n\n\n1_session_one.R\n\n\n2/14/24, 10:03:03 PM\n\n\n\n\n2_session_two.R\n\n\n2/29/24, 11:02:25 AM\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "material.html#material-for-sessions",
     "href": "material.html#material-for-sessions",
     "title": "Computational Social Science and Digital Behavioral Data",
     "section": "",
-    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/13/24, 10:46:52 PM\n\n\n\n\n1_session_one.R\n\n\n2/14/24, 10:03:03 PM\n\n\n\n\n2_session_two.R\n\n\n2/27/24, 7:02:33 PM\n\n\n\n\n\n\nNo matching items"
+    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/13/24, 10:46:52 PM\n\n\n\n\n1_session_one.R\n\n\n2/14/24, 10:03:03 PM\n\n\n\n\n2_session_two.R\n\n\n2/29/24, 11:02:25 AM\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "slides/02_ethics_webdata.html#agenda-for-today",
@@ -308,11 +308,11 @@
     "text": "Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    14 February 2024\n\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n    28 February 2024\n\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n    13 March 2024\n\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14). \nSilber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n    20 March 2024\n\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n    10 April 2024\n\n\nLarge Language Models\nNetwork analysis\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n    17 April 2024\n\n\nOpen science and reproducibility in CSS\nData quality and validation in CSS\nCoding: open questions\n\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n    22 May 2024\n\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
   },
   {
-    "objectID": "slides/02_ethics_webdata.html#styleguide",
-    "href": "slides/02_ethics_webdata.html#styleguide",
+    "objectID": "slides/02_ethics_webdata.html#getting-back-to-coding",
+    "href": "slides/02_ethics_webdata.html#getting-back-to-coding",
     "title": "Research Ethics and Web Data",
-    "section": "Styleguide",
-    "text": "Styleguide\nGuidance for coding in R: https://style.tidyverse.org/index.html"
+    "section": "Getting back to coding",
+    "text": "Getting back to coding\nDo you have any R-related questions?\n\nStyleguide Guidance for coding in R: https://style.tidyverse.org/index.html"
   },
   {
     "objectID": "slides/02_ethics_webdata.html#research-ethics",
@@ -350,83 +350,6 @@
     "text": "Informed consent\n\n\nBridge between data protection and research ethics\n\n\n\nInformed consent means for example:\n\ninformation\ntransparency\nminimal requirement \\(\\rightarrow\\) chance not to consent\n\nStatus quo in social media research: lack of informed consent"
   },
   {
-    "objectID": "slides/02_ethics_webdata.html#social-networking-sites",
-    "href": "slides/02_ethics_webdata.html#social-networking-sites",
-    "title": "Research Ethics and Web Data",
-    "section": "Social networking sites",
-    "text": "Social networking sites\n“We define social network sites as web-based services that allow individuals to\n\nconstruct a public or semi-public profile within a bounded system,\narticulate a list of other users with whom they share a connection, and\nview and traverse their list of connections and those made by others within the system.\n\nThe nature and nomenclature of these connections may vary from site to site.” (boyd and Ellison 2007: 211)\n\\(\\rightarrow\\) widely differing platform affordances"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#our-two-required-readings",
-    "href": "slides/02_ethics_webdata.html#our-two-required-readings",
-    "title": "Research Ethics and Web Data",
-    "section": "Our two required readings",
-    "text": "Our two required readings\n\nGuiding questions:\n\n\n- Describe what problem or question these papers address and the main contributions that they make towards a solution or answer. \n\n- Reflect on the main strengths and weaknesses of these papers.\n\n- What are the concepts, assumed social mechanisms and operationalizations used in the papers?\n\n- What are the data in use? How are the data analyzed? Does this seem appropriate?\n\n- How convincing do you find the arguments presented by the authors? Are the conclusions backed up by the empirical results?\n\n- Do you see any ethical concerns?\n\n- If applicable, are there commonalities or differences between the two papers?"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#are-all-of-these-researchers-bad-people",
-    "href": "slides/02_ethics_webdata.html#are-all-of-these-researchers-bad-people",
-    "title": "Research Ethics and Web Data",
-    "section": "Are all of these researchers bad people?",
-    "text": "Are all of these researchers bad people?\n\n\n\n\nLukito, J., et al. (2023). The State of Digital Media Data Research, 2023. Media and Democracy Data Cooperative.\n\n\n\n\nYu, J., & Muñoz-Justicia, J. (2020). A Bibliometric Overview of Twitter-Related Studies Indexed in Web of Science. Future Internet, 12(5), 91."
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#legitimate-academic-interests",
-    "href": "slides/02_ethics_webdata.html#legitimate-academic-interests",
-    "title": "Research Ethics and Web Data",
-    "section": "Legitimate academic interests",
-    "text": "Legitimate academic interests\nThere are legitimate academic interests for studying online platforms!\n\n\nUnderstanding the impact of digital media on society and democracy\nKeeping online platforms accountable\nMitigating “systemic risks” (see https://digital-strategy.ec.europa.eu/en/consultations/guidelines-providers-very-large-online-platforms-and-very-large-online-search-engines-mitigation)\nPreserving historical material\nand more reasons…"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#what-can-we-do-to-ensure-the-integrity-of-our-css-research",
-    "href": "slides/02_ethics_webdata.html#what-can-we-do-to-ensure-the-integrity-of-our-css-research",
-    "title": "Research Ethics and Web Data",
-    "section": "What can we do to ensure the integrity of our CSS research?",
-    "text": "What can we do to ensure the integrity of our CSS research?\n\n\nKeep the DBD safe and protected\nAnalyzing at the group-/variable-level, avoid unnecessary “forensic analysis” of individual data patterns / users\nNot publishing/printing any personal information in a paper/thesis"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#collecting-digital-behavioral-data",
-    "href": "slides/02_ethics_webdata.html#collecting-digital-behavioral-data",
-    "title": "Research Ethics and Web Data",
-    "section": "Collecting digital behavioral data",
-    "text": "Collecting digital behavioral data\nBut first, we need to get some DBD for your research\n\nWhat research questions would you like to answer with DBD?\nWhat DBD would you need?"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#how-to-collect-web-data",
-    "href": "slides/02_ethics_webdata.html#how-to-collect-web-data",
-    "title": "Research Ethics and Web Data",
-    "section": "How to collect web data",
-    "text": "How to collect web data\n\n\nApplication Programming Interfaces (APIs)\n\n\nhttps://ninetailed.io/blog/api-calls/\n\n\n\nWeb scraping\n\n\nhttps://www.faz.net/aktuell/politik/inland/bayern-muenchen-will-kita-foerderung-umstellen-19549912.html"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#how-does-it-look-like-in-r",
-    "href": "slides/02_ethics_webdata.html#how-does-it-look-like-in-r",
-    "title": "Research Ethics and Web Data",
-    "section": "How does it look like in R?",
-    "text": "How does it look like in R?\n\n\nAPIs\n\nlibrary(academictwitteR)\ntweets &lt;- get_all_tweets(\n    query = \"#BlackLivesMatter\",\n    start_tweets = \"2020-01-01T00:00:00Z\",\n    end_tweets = \"2020-01-05T00:00:00Z\",\n    file = \"blmtweets\"\n  )\n\n\n\nWeb scraping\n\nlibrary(rvest)\nurl &lt;- \"https://rvest.tidyverse.org/articles/starwars.html\"\nhtml &lt;- read_html(url)\n\nsection &lt;- html |&gt; html_elements(\"section\")\nhead(section, 5)\n\n{xml_nodeset (5)}\n[1] &lt;section&gt;&lt;h2 data-id=\"1\"&gt;\\nThe Phantom Menace\\n&lt;/h2&gt;\\n&lt;p&gt;\\nReleased: 1999 ...\n[2] &lt;section&gt;&lt;h2 data-id=\"2\"&gt;\\nAttack of the Clones\\n&lt;/h2&gt;\\n&lt;p&gt;\\nReleased: 20 ...\n[3] &lt;section&gt;&lt;h2 data-id=\"3\"&gt;\\nRevenge of the Sith\\n&lt;/h2&gt;\\n&lt;p&gt;\\nReleased: 200 ...\n[4] &lt;section&gt;&lt;h2 data-id=\"4\"&gt;\\nA New Hope\\n&lt;/h2&gt;\\n&lt;p&gt;\\nReleased: 1977-05-25\\n ...\n[5] &lt;section&gt;&lt;h2 data-id=\"5\"&gt;\\nThe Empire Strikes Back\\n&lt;/h2&gt;\\n&lt;p&gt;\\nReleased: ..."
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#elon-we-have-a-problem",
-    "href": "slides/02_ethics_webdata.html#elon-we-have-a-problem",
-    "title": "Research Ethics and Web Data",
-    "section": "Elon, we have a problem",
-    "text": "Elon, we have a problem\n\n\nhttps://aoir.org/facebook-shuts-the-gate-after-the-horse-has-bolted/ https://www.forbes.com/sites/antoniopequenoiv/2023/06/30/these-popular-third-party-reddit-apps-will-disappear-saturday-as-api-changes-take-effect-despite-weeks-of-user-protest/ https://www.theguardian.com/technology/2023/feb/07/techscape-elon-musk-twitter-api"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#how-to-still-collect-web-data",
-    "href": "slides/02_ethics_webdata.html#how-to-still-collect-web-data",
-    "title": "Research Ethics and Web Data",
-    "section": "How to (still) collect web data",
-    "text": "How to (still) collect web data\n\n\n\n\nhttps://bookdown.org/paul/apis_for_social_scientists/\n\n\n\n\nhttp://www.r-datacollection.com"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#the-data-we-will-be-using-today",
-    "href": "slides/02_ethics_webdata.html#the-data-we-will-be-using-today",
-    "title": "Research Ethics and Web Data",
-    "section": "The data we will be using today",
-    "text": "The data we will be using today\n\n\nWojcieszak, M., Clemm Von Hohenberg, B., Casas, A., Menchen-Trevino, E., De Leeuw, S., Gonçalves, A., & Boon, M. (2022). Null effects of news exposure: A test of the (un)desirable effects of a ‘news vacation’ and ‘news binging’. Humanities and Social Sciences Communications, 9(1), 413.\n\n\nA toy browsing data set from our OSF repository. It is based on a real data set collected from a US sample in 2019, but reduced to fewer participants and slightly modified for reasons of anonymity (n_subjects = 100; n_visits = 2 million)."
-  },
-  {
     "objectID": "slides/02_ethics_webdata.html#back-to-coding",
     "href": "slides/02_ethics_webdata.html#back-to-coding",
     "title": "Research Ethics and Web Data",
@@ -438,6 +361,6 @@
     "href": "slides/02_ethics_webdata.html#references",
     "title": "Research Ethics and Web Data",
     "section": "References",
-    "text": "References\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\n\nboyd, danah m., and Nicole B. Ellison. 2007. “Social Network Sites: Definition, History, and Scholarship.” Journal of Computer-Mediated Communication 13 (1): 210–30. https://doi.org/https://doi.org/10.1111/j.1083-6101.2007.00393.x.\n\n\nEdelmann, Achim, Tom Wolff, Danielle Montagne, and Christopher A. Bail. 2020. “Computational Social Science and Sociology.” Annual Review of Sociology 46 (1): 61–81. https://doi.org/10.1146/annurev-soc-121919-054621.\n\n\nMunger, Kevin, Andrew M. Guess, and Eszter Hargittai. 2021. “Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing.” Journal of Quantitative Description: Digital Media 1. https://doi.org/10.51685/jqd.2021.000.\n\n\nNeethling, Johann. 2005. “Personality Rights: A Comparative Overview.” Comparative and International Law Journal of Southern Africa 38 (2): 210–45."
+    "text": "References\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\n\nEdelmann, Achim, Tom Wolff, Danielle Montagne, and Christopher A. Bail. 2020. “Computational Social Science and Sociology.” Annual Review of Sociology 46 (1): 61–81. https://doi.org/10.1146/annurev-soc-121919-054621.\n\n\nMunger, Kevin, Andrew M. Guess, and Eszter Hargittai. 2021. “Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing.” Journal of Quantitative Description: Digital Media 1. https://doi.org/10.51685/jqd.2021.000.\n\n\nNeethling, Johann. 2005. “Personality Rights: A Comparative Overview.” Comparative and International Law Journal of Southern Africa 38 (2): 210–45."
   }
 ]

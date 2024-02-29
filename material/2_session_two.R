@@ -1,5 +1,5 @@
 #' class: "Computational Social Science and Digital Behavioral Data, University of Mannheim"
-#' title: "Introduction"
+#' title: "Research ethics and web data"
 #' author: "Sebastian Stier"
 #' lesson: 2
 #' institute: University of Mannheim & GESIS
@@ -13,23 +13,37 @@ gapminder <- gapminder # pull the gapminder data to the R environment
 
 
 # Produce a data frame with the data for Germany and France
-
+gapminder %>% 
+    filter(country == "Germany" | country == "France")
     
 # How many countries do we have in the data? List them
-
+unique(gapminder$country)
 
 
 # Arrange the data according to population size, in decreasing order
-
+gapminder %>% 
+    arrange(desc(pop))
 
 
 # Create a dataset with the variables country, year and lifeExp 
+gapminder[1:22, 1:4]
+gapminder %>% 
+    select(country, year, lifeExp) %>% 
+    slice(20:30)
 
 # Rename all variables to variable names of your choice
+colnames(gapminder)
 names(gapminder)
+rownames(gapminder)
+gapminder %>% 
+    rename(gdp_cap = gdpPercap) %>% 
+    names()
 
 # Use mutate() to create a new variable where the population size is divided by 1 mil.
-
+range(gapminder$pop)
+gapminder %>% 
+    mutate(pop_mil = pop/1000000) %>% 
+    select(pop_mil, pop)
 
 # group_by() and summarize()
 
@@ -38,27 +52,70 @@ names(gapminder)
 # "summarize" consolidates the mentioned column based on the grouping variable
 # into a single row
 
-# Calculate the mean GPD/Capita and population size by content
+# Calculate the mean GPD/Capita and population size by continent
+gapminder %>% 
+    group_by(continent) %>% 
+    summarise(mean_gdp_cap = mean(gdpPercap, na.rm = TRUE),
+              mean_pop = mean(pop, na.rm = TRUE))
 
 
+table(gapminder$continent, gapminder$year, useNA = "a")
 
 # Exercise 2: Data visualization in ggplot2 ----
 library(ggplot2) # ggplot2 is part of the tidyverse and should already be loaded
 
 # Initializing a plot
-ggplot(gapminder, aes(x = lifeExp, y = gdpPercap))
-
-
-# Create a scatter plot of lifeExp and gdpPercap
+ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
+    geom_point() + 
+    geom_smooth(method = "loess")
 
 # Add a fit line (smoothed or linear fit)
+ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
+    geom_point() + 
+    geom_smooth(method = "loess")
 
 # Add self-explanatory labs() and show GDP/Capita as logged x axis
+gapminder %>% 
+    ggplot(aes(x = lifeExp, y = gdpPercap)) +
+    geom_point() +
+    geom_smooth() +
+    scale_y_log10() +
+    labs(y = "Life expectancy", x = "GDP per Capita", 
+         title = "Relationship between life expectancy and GDP per Capita",
+         subtitle = "interesting plot",
+         caption = "Data was taken from the gapminder dataset")
+
+plot1 <- gapminder %>% 
+    ggplot(aes(x = lifeExp, y = gdpPercap)) +
+    geom_point(aes(color = continent)) +
+    #ggplot2::scale_y_continuous(limits = c(0, 50)) +
+    geom_smooth() + #data = gapminder, aes(x = lifeExp, y = gdpPercap)
+    labs(x = "asdf", y = "GDP per Capita", 
+         title = "Relationship between life expectancy and GDP per Capita",
+         subtitle = "interesting plot",
+         caption = "Data was taken from the gapminder dataset") + 
+    theme_minimal() +
+    theme(legend.position = "bottom", axis.title.x = element_blank(),
+          plot.title = element_text(size = 10, hjust = 0.5),
+          panel.grid.minor = element_blank()) # the last command overwrite
+                                              # the previous specification
+    
+plot1
+?theme
 
 # Save the plot
 ## hint: ?ggsave
+ggsave(plot = plot1, "plots/gdp_lifeExp.png", height = 6, width = 7, bg = "white",
+       dpi = 1200)
+
 
 # Create a bar chart showing the GDP/Capita of European countries in the year 2007
+gapminder %>% 
+    filter(continent == "Europe" & year == 2007) %>% 
+    ggplot(aes(y = gdpPercap, x = reorder(country, gdpPercap,
+                                          decreasing = TRUE))) + #?fct_reorder
+    geom_col() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
 # Exercise 3: Gapminder and ggplot tasks ----
@@ -71,52 +128,3 @@ ggplot(gapminder, aes(x = lifeExp, y = gdpPercap))
 
 # 3) Sum the total world population per year. 
 #    Plot the results in a bar chart for the years 1992-2007
-
-
-# Exercise 4: Explore a toy web tracking dataset ----
-
-# Load the test browsing data
-filename <- "data/toydt_browsing.rda"
-download.file(url = "https://osf.io/download/wjd7g/", destfile = filename)
-load(filename) #remove the helper object
-
-# Load the test survey data
-filename <- "data/toydt_survey.rda"
-download.file(url = "https://osf.io/download/jyfru/", destfile = filename)
-load(filename)
-rm(filename) 
-
-
-# First, let's get a feeling for the data: How many participants are in the data?
-
-# What is the number of website visits per participant?
-    
-# How many of the visits happened on mobile and on desktop?  
-    
-# What is the time range of the data?
-
-# What are the top ten visited domains in the data?
-## Install the R package adaR: https://cran.r-project.org/web/packages/adaR/adaR.pdf
-## Apply the relevant function from the package to extract domains from URLs
-
-# Summarize the number of Facebook visits per person
-
-# Merge the web tracking data with the survey data
-
-# Plot the relation of Facebook visits and age
-
-# Exercise 5: Analysis of news website visits ----
-
-# Merge news domain information with the web browsing data
-## Load U.S. news domain list
-news_list <- read.csv("https://raw.githubusercontent.com/ercexpo/us-news-domains/main/us-news-domains-v2.0.0.csv")
-
-# Get a sample of the data to test our methods first before running them to the full dataset
-## hint: ?sample_n
-
-# List the most visited news domains by the number of visits, in decreasing order
-
-# Identify the visits whose URL contains "trump"
-## hint: ?str_detect
-
-
