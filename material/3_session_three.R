@@ -7,22 +7,43 @@
 
 
 # Exercise 1: Gapminder and ggplot tasks ----
-
+library(gapminder)
+library(tidyverse)
+gapminder <- gapminder
 # 1) Calculate the (worldwide) average GDP per capita per year 
 #    and plot this as a bar chart
+gapminder %>% 
+    group_by(year, continent) %>% 
+    summarise(mean_gdp = mean(gdpPercap)) %>% 
+    ggplot(aes(x = year, y = mean_gdp, fill = continent)) +
+    geom_col()
 
 # 2) Calculate the average life expectancy and the population size 
 #    for the year 2007
+gapminder %>% 
+    group_by(year) %>% 
+    summarise(mean_lifeExp = mean(lifeExp, na.rm = T),
+              mean_pop = mean(pop, na.rm = T))
+glimpse(gapminder)
 
 # 3) Sum the total world population per year. 
 #    Plot the results in a bar chart for the years 1992-2007
+library(scales) # we use this library to get comma-separation onto the y axis
+gapminder %>% 
+    group_by(year) %>% 
+    summarise(tot_pop = sum(pop)) %>% 
+    filter(year >= 1992) %>% 
+    #filter(year > 1991) %>% 
+    ggplot(aes(x = year, tot_pop)) +
+    geom_col() +
+    scale_y_continuous(labels = scales::comma_format()) 
 
 
 # Exercise 2: Explore a toy web tracking dataset ----
 
 # Load the test browsing data
 filename <- "data/toy_browsing.rda"
-download.file(url = "https://osf.io/download/52pqe/", destfile = filename)
+download.file(url = "https://osf.io/download/52pqe/", destfile = "data/toy_browsing.rda")
 load(filename)
 
 # Load the test survey data
@@ -31,53 +52,52 @@ download.file(url = "https://osf.io/download/jyfru/", destfile = filename)
 load(filename)
 rm(filename) 
 
+# Saving files and file formats
+getwd()
+list.files()
+# Native R format rda
+load("/Users/sebstier/Downloads/toy_browsing-2.rda")
+list.files("data")
+load("data/toy_browsing.rda")
+df <- toy_browsing
+save(toy_browsing, file = "data/toy_browsing.rda")
+# Tidyverse format rds
+write_rds(toy_browsing, "data/toy_browsing.rds")
+df <- read_rds("data/toy_browsing.rds")
+# csv
+write_csv(toy_browsing, file = "data/toy_browsing.csv")
+ls()
 
-# First, let's get a feeling for the data: How many participants are in the browsing data?
+# Some explorations
+nrow(toy_browsing)
+glimpse(toy_browsing)
+ls()
+
+# First, let's get a feeling for the data: How many participants are in the browsing dataset?
+length(unique(toy_browsing$panelist_id))
+n_distinct(toy_browsing$panelist_id)
 
 # Aggregate the number of website visits per participant
+df = toy_browsing
+df_aggregations <- df %>% 
+    group_by(panelist_id) %>% 
+    summarise(n_distinct_waves = n_distinct(wave),
+              n_distinct_device = n_distinct(device),
+              n_visits = n()) 
+df_aggregations %>% 
+    count(n_distinct_waves)
+df_aggregations %>% 
+    arrange(desc(n_visits))
     
-# How many of the visits happened on mobile and on desktop?  
+# How many of the visits happened on mobile and on desktop for each wave?
+df %>% 
+    group_by(device, wave) %>% 
+    summarise(n_visits = n())
     
 # What is the time range of the data?
+range(df$timestamp)
+df %>% 
+    mutate(day = as.Date(timestamp))
 
-# What are the top ten visited domains in the data?
-## Install the R package adaR: https://cran.r-project.org/web/packages/adaR/adaR.pdf
-## Apply the relevant function from the package to extract domains from URLs
-
-# Summarize the number of Facebook visits per person
-
-# Merge the web tracking data with the survey data
-
-# Plot the relation of Facebook visits and age
-
-
-# Exercise 3: Analysis of news website visits ----
-
-# Merge the news domain information with the web browsing data
-## Load U.S. news domain list
-news_list <- read.csv("https://raw.githubusercontent.com/ercexpo/us-news-domains/main/us-news-domains-v2.0.0.csv")
-
-# Get a sample of the data to test our methods first before running them on the full dataset
-## hint: ?sample_n
-
-# List the most visited news domains by the number of visits and 
-# the number of unique users, in decreasing order of number of unique users
-
-# Let's mark the most popular social network sites and search engines
-
-# Count the share of social network sites and search engines among all visits
-
-# Plot a time series of the daily number of visits over time
-
-# Plot a time series of the daily number of visits and unique users over time
-# in one plot with two facets/panels
-
-# Calculate for each user the average ideology of her/his website visit
-
-
-# Exercise 4: Getting started with text analysis ----
-
-# Identify the visits whose URL contains "trump"
-## hint: ?str_detect
 
 
