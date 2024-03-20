@@ -7,19 +7,59 @@
 
 library(tidyverse)
 
+# Set the working directory to the folder where the script is located
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
 # Exercise 1: Analysis of the web tracking data ----
+
+# Load the data
+list.files("data")
 load("data/toy_browsing.rda")
 load("data/toy_survey.rda")
 
 # What are the top ten visited domains in the data?
 ## Install the R package adaR: https://cran.r-project.org/web/packages/adaR/adaR.pdf
 ## Apply the relevant function from the package to extract domains from URLs
+library(adaR)
+df_webtrack <- toy_browsing %>% 
+    #sample_n(100) %>% 
+    mutate(domain = adaR::ada_get_domain(url))
+n_distinct(df_webtrack$url)
+nrow(df_webtrack)
+n_distinct(df_webtrack$domain)
 
-# Summarize the number of Facebook visits per person
+# look at domain NAs (produced by ada_get_domain since the URLs were not in a valid format)
+df_webtrack %>% 
+    filter(is.na(domain))
 
-# Merge the web tracking data with the survey data
+# Summarize the number of Facebook visits per person: approach 1
+df_webtrack %>% 
+    as_tibble() %>% 
+    group_by(panelist_id) %>% 
+    summarise(fb_visits = sum(domain == "facebook.com"))
+
+# Summarize the number of Facebook visits per person: approach 2
+df_fb <- df_webtrack %>% 
+    mutate(facebook = ifelse(domain == "facebook.com", 1, 0)) %>% # 2mil rows
+    filter(!is.na(domain)) %>% 
+    group_by(panelist_id) %>% # 100 persons
+    summarise(fb_visits = sum(facebook)) 
+
+# Plausibility checks of one panelist_id  
+df_webtrack %>% 
+    filter(panelist_id == "4HVpSqa344" & domain == "facebook.com")
+
+# Merge the (aggregated results) from the web tracking data with the survey data
+# Doe the IDs overlap?
+table(toy_browsing$panelist_id %in% toy_survey$panelist_id, useNA = "a")
+# Merge
+df_merged <- left_join(toy_survey, df_fb, by = "panelist_id")
 
 # Plot the relation of Facebook visits and age
+df_merged %>% 
+    filter(fb_visits < 50000) %>% 
+    ggplot(aes(x = edu, y = fb_visits)) +
+    geom_point()
 
 
 # Exercise 2: Analysis of news website visits ----
@@ -28,166 +68,80 @@ load("data/toy_survey.rda")
 ## Load U.S. news domain list
 news_list <- read.csv("https://raw.githubusercontent.com/ercexpo/us-news-domains/main/us-news-domains-v2.0.0.csv")
 
-# Get a sample of the data to test our methods first before running them on the full dataset
-## hint: ?sample_n
+# First, check whether there are duplicates in the data frame that we want to merge
+nrow(news_list)
+n_distinct(news_list$domain)
 
-# List the most visited news domains by the number of visits and 
-# the number of unique users, in decreasing order of number of unique users
+# What are the duplicated domain entries?
+news_list %>% 
+    group_by(domain) %>% 
+    count %>% 
+    arrange(desc(n))
+duplicates <- as.data.frame(table(news_list$domain))
 
-# Let's mark the most popular social network sites and search engines
+# Remove the duplicates (several approaches)
+news_list <- news_list %>% 
+    filter(domain %in% c("fox29.com", "nj.com"))
+news_list <- news_list %>% 
+    filter(!duplicated(domain))
+nrow(news_list)
 
-# Count the share of social network sites and search engines among all visits
-
-# Plot a time series of the daily number of visits over time
-
-# Plot a time series of the daily number of visits and unique users over time
-# in one plot with two facets/panels
-
-# Calculate for each user the average ideology of her/his website visit
+# Finally, join the web tracking data with the news lists
+nrow(df_webtrack)
+df_webtrack <- df_webtrack %>% 
+    left_join(news_list, by = "domain")
+nrow(df_webtrack)
 
 
 # Exercise 3: Preprocessing and preparing text for analysis ----
 
 # Identify the web tracking visits whose URL contains "trump"
 ## hint: ?str_detect
+df_webtrack <- df_webtrack %>% 
+    #sample_n(10) %>% 
+    mutate(trump = str_detect(url, "trump"))
 
+# Let's create a dummy for news websites
+df_webtrack <- df_webtrack %>% 
+    mutate(news = ifelse(!is.na(ideology) | !is.na(type), 1, 0) #based on the info from the news_list
+           )
+table(df_webtrack$trump)
+table(df_webtrack$trump, df_webtrack$news)
+
+# How does str_detect deal with lower/upper case words?
+text_vector <- c("Trump", "trump", "trumpasdffasdasf", "  Trump", "test")
+text_vector_lowered <- tolower(c("Trump", "trump", "trumpasdffasdasf", "  Trump", "test"))
+str_detect(text_vector, "trump")
+str_detect(text_vector_lowered, "trump")
+
+# Some more explorations of our new variables: where outside of news do the trump URLs reside?
+df_webtrack %>% 
+    filter(news == 0 & trump == 1) %>% 
+    count(domain) %>% 
+    arrange(desc(n))
+
+# Let's inspect some URLs on trump
+df_webtrack %>% 
+    filter(news == 0 & trump == 1) %>% 
+    select(url)
+
+    
 
 # Download the Trump Twitter Archive
 
 # Download all tweets from the Trump Twitter archive and save the file
 # in the folder "data"
 # https://drive.google.com/file/d/1xRKHaP-QwACMydlDnyFPEaFdtskJuBa6/view
+list.files("data")
+df_trump <- read_csv("data/tweets_01-08-2021.csv")
 
 # Check if the tweet IDs are unique
+nrow(df_trump)
+n_distinct(df_trump$id)
 
-
-# For more advanced text analysis, install the package quanteda
-
-library(quanteda)
-
-# Create a corpus of Trump tweets 
-corp_trump <- corpus(df_trump, text_field = "text")
-print(corp_trump)
-docvars(corp_trump)
-summary(corp_trump, 5)
-
-# Subset corpus to tweets in the years 2019 and 2020
-#corp_trump_subset <- 
-range(corp_trump$date)
-range(corp_trump_subset$date)
-
-# Subset corpus to tweets in the year 2020 and that have more than 200.000 retweets
-
-    
-# Reshape the corpus from document-level to sentence-level
-ndoc(corp_trump_subset)
-corp_sentences <- corpus_reshape(corp_trump_subset, to = "sentences")
-ndoc(corp_sentences)
-
-# Count the number of tokens / words for each document
-summary(corp_sentences, 5)
-ntoken(corp_sentences)[1:5]
-ntoken(corp_trump_subset)[1:5]
-corp_sentences$word_count <- ntoken(corp_sentences)
-summary(corp_sentences, 5)
-
-# Keep only sentences with at least 5 words
-
-
-# Next, we need to tokenize a corpus
-toks <- tokens(corp_trump_subset)
-print(toks)
-
-
-# Apply some of the preprocessing options in ?tokens
-
-
-# Keywords in context
-kw_fake <- kwic(toks, pattern =  "fake*")
-head(kw_fake, 15)
-
-# Even more context
-kw_fake2 <- kwic(toks, pattern = c("fake*", "democr*"), window = 7)
-head(kw_fake2, 15)
-
-# Sometimes we are looking for more than one word 
-kw_multiword <- kwic(toks, pattern = phrase(c("fake news", "crazy nancy")))
-head(kw_multiword, 15)
-
-# Remove stopwords
-toks_nostop <- tokens_select(toks, pattern = stopwords("en"), selection = "remove")
-toks[6]
-toks_nostop[6]
-
-# Create our first document feature matrix (dfm)
-dfm <- dfm(dict_toks)
-
-# Create a dfm of the full corpus
-dfm <- dfm(toks)
-
-# Which are the most frequent words?
-topfeatures(dfm, 10)
-
-# remove stop words and again show the top features
-
-# Use only words that appear at least 10 times
-ncol(dfm)
-dfm_trimmed <- dfm_trim(dfm, min_termfreq = 10)
-ncol(dfm_trimmed)
-
-
-# Exercise 4: Text analysis ----
-library(quanteda.textmodels)
-library(quanteda.textstats)
-library(quanteda.textplots)
-library(seededlda)
-
-# trim the dfm to make modeling more efficient
-#dfm_trimmed <- corp_trump %>% 
-
-
-#* Frequency counts ----
-?textstat_frequency
-
-
-#* Dictionary analysis ----
-?dictionary
-dict <- dictionary(list(fake = c("fake", "fake news"),
-                        democrats = c("democr*", "nancy"),
-                        republicans = c("repub*", "gop"))
-)
-dfm_dict <- dfm_lookup(dfm_trimmed, dictionary = dict) 
-dfm_dict <- dfm_lookup(dfm_trimmed, dictionary = dict, nomatch = "n_unmatched") %>% 
-    dfm_group(device) 
-
-# Plot on which device Trump talks about democrats and "fakes" 
-dfm_dict %>% 
-    convert("data.frame") %>%
-    dplyr::rename(device = doc_id) %>%
-    filter(n_unmatched > 1000) %>% 
-    pivot_longer(-c(device, n_unmatched), names_to = "Topic") %>%
-    mutate(Share = value / n_unmatched) %>% 
-    ggplot(aes(x = device, y = Share, colour = Topic, fill = Topic)) +
-    geom_bar(stat = "identity") +
-    xlab("") +
-    ylab("Share of words (%)")
-
-
-
-#* Keyness analysis ----
-dfm %>% 
-    dfm_group(groups = isRetweet) %>% 
-    textstat_keyness() %>% 
-    textplot_keyness()
-
-
-#* LDA topic model ----
-tmod_lda <- textmodel_lda(dfm_trimmed, k = 10)
-terms(tmod_lda, 10)
-
-# Assign topic as a new variable
-dfm_trimmed$topic <- topics(tmod_lda)
-
-# cross-table the topic frequency
-table(dfm_trimmed$topic)
+# Read in the file once more, specifying that "id" is a string
+glimpse(df_trump)
+df_trump <- read_csv("data/tweets_01-08-2021.csv", col_types = "ccllcddTl")
+nrow(df_trump)
+n_distinct(df_trump$id)
 
