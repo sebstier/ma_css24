@@ -2,30 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sebstier.github.io/ma_css24/slides/03_webdata_designed_digital_data.html</loc>
-    <lastmod>2024-03-20T21:14:03.891Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebstier.github.io/ma_css24/slides/01_introduction.html</loc>
-    <lastmod>2024-03-20T21:14:02.865Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebstier.github.io/ma_css24/index.html</loc>
-    <lastmod>2024-03-20T21:14:01.570Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebstier.github.io/ma_css24/slides.html</loc>
-    <lastmod>2024-03-20T21:14:00.996Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebstier.github.io/ma_css24/material.html</loc>
-    <lastmod>2024-03-20T21:14:01.255Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebstier.github.io/ma_css24/slides/02_ethics_webdata.html</loc>
-    <lastmod>2024-03-20T21:14:02.176Z</lastmod>
+    <lastmod>2024-04-09T20:54:22.855Z</lastmod>
   </url>
   <url>
     <loc>https://sebstier.github.io/ma_css24/slides/04_automated_textanalysis.html</loc>
-    <lastmod>2024-03-20T21:14:03.230Z</lastmod>
+    <lastmod>2024-04-09T20:54:21.213Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebstier.github.io/ma_css24/slides/02_ethics_webdata.html</loc>
+    <lastmod>2024-04-09T20:54:19.765Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebstier.github.io/ma_css24/material.html</loc>
+    <lastmod>2024-04-09T20:54:18.535Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebstier.github.io/ma_css24/slides.html</loc>
+    <lastmod>2024-04-09T20:54:18.261Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebstier.github.io/ma_css24/index.html</loc>
+    <lastmod>2024-04-09T20:54:18.985Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebstier.github.io/ma_css24/slides/01_introduction.html</loc>
+    <lastmod>2024-04-09T20:54:20.689Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebstier.github.io/ma_css24/slides/05_text_analysis_llms.html</loc>
+    <lastmod>2024-04-09T20:54:21.869Z</lastmod>
   </url>
 </urlset>
