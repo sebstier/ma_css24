@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://sebstier.github.io/ma_css24/slides/03_webdata_designed_digital_data.html</loc>
-    <lastmod>2024-04-10T11:28:44.901Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebstier.github.io/ma_css24/slides/04_automated_textanalysis.html</loc>
-    <lastmod>2024-04-10T11:28:43.686Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebstier.github.io/ma_css24/slides/02_ethics_webdata.html</loc>
-    <lastmod>2024-04-10T11:28:42.615Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebstier.github.io/ma_css24/material.html</loc>
-    <lastmod>2024-04-10T11:28:41.512Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebstier.github.io/ma_css24/slides.html</loc>
-    <lastmod>2024-04-10T11:28:41.252Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebstier.github.io/ma_css24/index.html</loc>
-    <lastmod>2024-04-10T11:28:41.915Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebstier.github.io/ma_css24/slides/01_introduction.html</loc>
-    <lastmod>2024-04-10T11:28:43.336Z</lastmod>
+    <loc>https://sebstier.github.io/ma_css24/slides/06_text_analysis_networks.html</loc>
+    <lastmod>2024-04-17T07:12:26.854Z</lastmod>
   </url>
   <url>
     <loc>https://sebstier.github.io/ma_css24/slides/05_text_analysis_llms.html</loc>
-    <lastmod>2024-04-10T11:28:44.105Z</lastmod>
+    <lastmod>2024-04-17T07:12:25.301Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebstier.github.io/ma_css24/slides/01_introduction.html</loc>
+    <lastmod>2024-04-17T07:12:24.463Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebstier.github.io/ma_css24/index.html</loc>
+    <lastmod>2024-04-17T07:12:23.048Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebstier.github.io/ma_css24/slides.html</loc>
+    <lastmod>2024-04-17T07:12:22.433Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebstier.github.io/ma_css24/material.html</loc>
+    <lastmod>2024-04-17T07:12:22.720Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebstier.github.io/ma_css24/slides/02_ethics_webdata.html</loc>
+    <lastmod>2024-04-17T07:12:23.686Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebstier.github.io/ma_css24/slides/04_automated_textanalysis.html</loc>
+    <lastmod>2024-04-17T07:12:24.845Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebstier.github.io/ma_css24/slides/03_webdata_designed_digital_data.html</loc>
+    <lastmod>2024-04-17T07:12:26.082Z</lastmod>
   </url>
 </urlset>
