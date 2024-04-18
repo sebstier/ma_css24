@@ -20,11 +20,18 @@ df_trump <- read_csv("data/tweets_01-08-2021.csv", col_types = "ccllcddTl")
 corp_trump <- corpus(df_trump, text_field = "text", docid_field = "id")
 
 # Subset trump corpus to year 2019
-# corp_trump_subset <- 
-toks <- tokens(corp_trump_subset)
+corp_trump_subset <- corpus_subset(corp_trump, date >= "2019-01-01" & date < "2020-01-01")
+
+# Check the date range
+range(corp_trump_subset$date)
+ndoc(corp_trump_subset)
+
+# Tokenize and create a dfm
+toks <- tokens(corp_trump)
 toks <- tokens(toks, remove_punct = TRUE, remove_numbers = TRUE)
 toks_nostop <- tokens_select(toks, pattern = c(stopwords("en"), "rt"), selection = "remove")
 dfm <- dfm(toks_nostop)
+
 
 # Exercise 1: Text analysis ----
 library(quanteda.textmodels)
@@ -33,11 +40,22 @@ library(quanteda.textplots)
 library(seededlda)
 
 # trim the dfm to make modeling more efficient
-#dfm_trimmed <- corp_trump %>% 
+dfm
+dfm_trimmed <- dfm %>% 
+    dfm_trim(min_termfreq = 20)
 
+# inspect all of the features via a helper data frame
+feature_table <- as.data.frame(topfeatures(dfm_trimmed, n = 10000))
+feature_table$feature <- row.names(feature_table)
 
 #* Frequency counts ----
-?textstat_frequency
+names(docvars(dfm_trimmed))
+feature_table <- textstat_frequency(dfm_trimmed)
+nrow(feature_table)
+table(feature_table$feature == "nancy")
+feature_table_grouped <- textstat_frequency(dfm_trimmed, groups = device)
+nrow(feature_table_grouped)
+table(feature_table_grouped$feature == "nancy")
 
 
 #* Dictionary analysis ----
@@ -45,9 +63,10 @@ library(seededlda)
 dict <- dictionary(list(fake = c("fake", "fake news"),
                         democrats = c("democr*", "nancy"),
                         republicans = c("repub*", "gop"))
-)
-dfm_dict <- dfm_lookup(dfm_trimmed, dictionary = dict) 
-dfm_dict <- dfm_lookup(dfm_trimmed, dictionary = dict, nomatch = "n_unmatched") %>% 
+                   )
+dfm_dict <- dfm_lookup(dfm, dictionary = dict)
+textstat_frequency(dfm_dict)
+dfm_dict <- dfm_lookup(dfm, dictionary = dict, nomatch = "n_unmatched") %>% 
     dfm_group(device) 
 
 # Plot on which device Trump talks about democrats and "fakes" 
@@ -62,18 +81,27 @@ dfm_dict %>%
     xlab("") +
     ylab("Share of words (%)")
 
+# Let's say we want to construct a dictionary; let's look at kwic
+head(kwic(toks, pattern = "nancy"), 10)
 
 
 #* Keyness analysis ----
-dfm %>% 
-    dfm_group(groups = isRetweet) %>% 
+dfm_trimmed %>% 
+    dfm_group(groups = device) %>% 
     textstat_keyness() %>% 
     textplot_keyness()
 
+# Let's look up the differences between normal tweets and RTs
+df_rts <- dfm_trimmed %>% 
+    dfm_group(groups = isRetweet) %>% 
+    textstat_keyness()
 
-#* LDA topic model ----
+
+#* LDA topic model (Latent Dirichlet Allocation) ----
 tmod_lda <- textmodel_lda(dfm_trimmed, k = 10)
 terms(tmod_lda, 10)
+df_terms <- terms(tmod_lda, 15)
+View(df_terms)
 
 # Assign topic as a new variable
 dfm_trimmed$topic <- topics(tmod_lda)
@@ -81,9 +109,14 @@ dfm_trimmed$topic <- topics(tmod_lda)
 # Cross-table the topic frequency
 table(dfm_trimmed$topic)
 
+# Turn dfm into data frame
+names(docvars(dfm_trimmed))
+test_df <- dfm_trimmed %>% convert("data.frame")
+
+
 #* Supervised machine learning ----
 
-# GOAL: we train and evaluate a Naive Bayes classifier 
+# GOAL: we train and evaluate a Naive Bayes classifier
 
 # Download the nytimes dataset from http://www.amber-boydstun.com/supplementary-information-for-making-the-news.html
 
@@ -96,86 +129,31 @@ df_nyt <- read_csv("data/boydstun_nyt_frontpage_dataset_1996-2006_0_pap2014_reco
 # Inspect the distribution of topics
 table(df_nyt$majortopic)
 
-# Turn the NY Times dataframe into a dfm
-
-# Trim the number of features to a manageable size
+# Turn the NY Times dataframe into a dfm and trim the number of features to a manageable size
+dfm <- df_nyt %>% 
+    mutate(title_summary = paste0(title, " ", summary)) %>% 
+    # create a corpus
+    corpus(text_field = "title_summary") %>% 
+    # create tokens
+    tokens(remove_punct = TRUE, remove_numbers = TRUE) %>% 
+    tokens_select(pattern = stopwords("en"), selection = "remove") %>% 
+    # create a dfm
+    dfm() %>% 
+    # trim the dfm
+    dfm_trim(min_termfreq = 20)
+dfm
 
 # Train the model and evaluate performance
-modell.NB <- textmodel_nb(dfm_trimmed, df_nyt$majortopic, prior = "docfreq")
+table(df_nyt$majortopic)
+nrow(df_nyt)
+modell.NB <- textmodel_nb(dfm, df_nyt$majortopic, prior = "docfreq")
 
-prop.table(table(predict(modell.NB) == df_nyt$majortopic))
-prop.table(table(sample(predict(modell.NB)) == df_nyt$majortopic))*100
+# Check the output
+df_nyt$predictions <- predict(modell.NB)
 
-
-
-# Exercise 2: Introduction to network analysis ----
-# install.packages("remotes")
-# remotes::install_github("schochastics/networkdata")
-library(networkdata)
-library(igraph)
-library(ggraph)
-library(graphlayouts)
-
-# Create our own network / graph
-# Adjacency matrix
-A <- matrix(c(0, 1, 1, 3, 0, 2, 1, 4, 0),
-            nrow = 3, ncol = 3, byrow = TRUE)
-rownames(A) <- colnames(A) <- c("Bob", "Ann", "Steve")
-A
-
-# Create an igraph object and plot for first inspection
-g1 <- graph_from_adjacency_matrix(A, mode = "undirected")
-g1
-plot(g1)
-
-# Load example datasets 
-data(package = "networkdata") # check out example network datasets 
-data("flo_marriage")
-data("got") # Game of Thrones dataset
-
-#* Network visualization ----
-# Choose one of the networks (Game of Thrones season 1)
-gotS1 <- got[[1]]
-
-# Compute a clustering for node colors
-V(gotS1)$clu <- as.character(membership(cluster_louvain(gotS1)))
-
-# Compute degree as node size
-V(gotS1)$size <- degree(gotS1)
-
-# Define colors
-# define a custom color palette
-got_palette <- c("#1A5878", "#C44237", "#AD8941", "#E99093",
-                 "#50594B", "#8968CD", "#9ACD32")
-
-# Plot
-ggraph(gotS1, layout = "stress") +
-    geom_edge_link0(aes(edge_linewidth = weight), edge_colour = "grey66") +
-    geom_node_point(aes(fill = clu, size = size), shape = 21) +
-    geom_node_text(aes(filter = size >= 26, label = name), family = "serif") +
-    scale_fill_manual(values = got_palette) +
-    scale_edge_width(range = c(0.2, 3)) +
-    scale_size(range = c(1, 6)) +
-    theme_graph() +
-    theme(legend.position = "none")
-
-
-
-# Exercise 3: Recap of data wrangling with some web tracking data ----
-list.files("data")
-load("data/toy_browsing.rda")
-load("data/toy_survey.rda")
-
-
-# Let's mark the most popular social network sites and search engines
-
-# Count the share of social network sites and search engines among all visits
-
-# Plot a time series of the daily number of visits over time
-
-# Plot a time series of the daily number of visits and unique users over time
-# in one plot with two facets/panels
-
-# Calculate for each user the average ideology of her/his website visit
+# Check the distribution of topics in original and predictions
+table(df_nyt$majortopic)
+table(df_nyt$predictions)
+prop.table(table(df_nyt$predictions == df_nyt$majortopic))
 
 
