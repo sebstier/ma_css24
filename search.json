@@ -1,5 +1,75 @@
 [
   {
+    "objectID": "Writing_a_reproducable_paper_with_quarto-main/paper.html",
+    "href": "Writing_a_reproducable_paper_with_quarto-main/paper.html",
+    "title": "Writing a reproducible paper with RStudio and Quarto",
+    "section": "",
+    "text": "Some arguments…\n\nAccess: Research is normally funded by taxpayers (researchers are also taxpayers). Hence, it should be freely accessible to everyone without any barriers, e.g., without requiring commercial software. Importantly, researchers from developing countries are even more dependent on free access to knowledge (Kirsop and Chan 2005).\nReproducibility: Even if you have written a study and analyzed the data yourself you will forget what you did after a few months. A fully reproducible setup will help you to trace back your own steps. Obviously, the same is true for other researchers who may want to understand your work and built on it. It may sound like a joke but why not aim for a document that can be used to reproduce your findings in 500 years.\nErrors: Manual steps in data analysis (e.g., manually copy/pasting values into a table etc.) may introduce errors. Quarto allows you to automatize such steps and/or avoid them.\nRevisions: Revising a paper takes much less time if you have all the code you need in one place, i.e., one .qmd file. For instance, if you decide to exclude a subset of your data you simply need to insert one line of your code at the beginning and everything is rebuilt/re-estimated automatically."
+  },
+  {
+    "objectID": "Writing_a_reproducable_paper_with_quarto-main/paper.html#import",
+    "href": "Writing_a_reproducable_paper_with_quarto-main/paper.html#import",
+    "title": "Writing a reproducible paper with RStudio and Quarto",
+    "section": "7.1 Import",
+    "text": "7.1 Import\nGenerally, code is evaluated by inserting regular code chunks.\n```{r}\nx &lt;- 1:10\nx\n```\n\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n\nBelow we import an exemplary dataset (you can find data.csv in the github repository.\n```{r}\n#| echo=T\n#| results=\"raw\"\ndata &lt;- read.csv(\"data.csv\")\nhead(data)\n```\n\n\n  Fertility Agriculture Examination Education Catholic Infant.Mortality\n1      80.2        17.0          15        12     9.96             22.2\n2      83.1        45.1           6         9    84.84             22.2\n3      92.5        39.7           5         5    93.40             20.2\n4      85.8        36.5          12         7    33.77             20.3\n5      76.9        43.5          17        15     5.16             20.6\n6      76.1        35.3           9         7    90.57             26.6"
+  },
+  {
+    "objectID": "Writing_a_reproducable_paper_with_quarto-main/paper.html#putting-your-entire-data-into-the-.qmd-file",
+    "href": "Writing_a_reproducable_paper_with_quarto-main/paper.html#putting-your-entire-data-into-the-.qmd-file",
+    "title": "Writing a reproducible paper with RStudio and Quarto",
+    "section": "7.2 Putting your entire data into the .qmd file",
+    "text": "7.2 Putting your entire data into the .qmd file\nApplying the function dput() to an object gives you the code needed to reproduce that object. So you could paste that code into your .qmd file if you don’t want to have extra data files. This makes sense where data files are small.\n```{r}\ndput(data[1:5,]) # here we only take a subset\n```\n\n\nstructure(list(Fertility = c(80.2, 83.1, 92.5, 85.8, 76.9), Agriculture = c(17, \n45.1, 39.7, 36.5, 43.5), Examination = c(15L, 6L, 5L, 12L, 17L\n), Education = c(12L, 9L, 5L, 7L, 15L), Catholic = c(9.96, 84.84, \n93.4, 33.77, 5.16), Infant.Mortality = c(22.2, 22.2, 20.2, 20.3, \n20.6)), row.names = c(NA, 5L), class = \"data.frame\")\n\n\nYou can then insert the dput output in an rchunk in your .qmd as below.\n```{r}\ndata &lt;- structure(list(Fertility = c(80.2, 83.1, 92.5, 85.8, 76.9), \n                       Agriculture = c(17, 45.1, 39.7, 36.5, 43.5), \n                       Examination = c(15L, 6L, 5L, 12L, 17L), \n                       Education = c(12L, 9L, 5L, 7L, 15L), \n                       Catholic = c(9.96, 84.84, 93.4, 33.77, 5.16), \n                       Infant.Mortality = c(22.2, 22.2, 20.2, 20.3, 20.6)), \n                       class = \"data.frame\", row.names = c(NA, -5L))\n```"
+  },
+  {
+    "objectID": "Writing_a_reproducable_paper_with_quarto-main/paper.html#tables-with-kable-and-kable_styling",
+    "href": "Writing_a_reproducable_paper_with_quarto-main/paper.html#tables-with-kable-and-kable_styling",
+    "title": "Writing a reproducible paper with RStudio and Quarto",
+    "section": "8.1 Tables with kable() and kable_styling()",
+    "text": "8.1 Tables with kable() and kable_styling()\nA great function is kable() from the knitr package in combination with kableExtra. Table 1 provides such an example. To reference the table produced by the chunk you need to add #| label: tbl-x at the start of the chunk, i.e., #| label: tbl-1 so that you can reference it by adding “@tbl-1” in your text. See below for the full chunk code.\n```{r}\n#| label: tbl-1\n#| tbl-cap: \"Summary: Numeric variables\"\nlibrary(knitr)\nlibrary(kableExtra)\n\nknitr::kable(swiss[1:5,], row.names = TRUE, \n      caption = 'Table with kable() and kablestyling()',\n      booktabs = T, format=\"simple\") %&gt;%\n        kableExtra::kable_styling(full_width = T, \n                      latex_options = c(\"striped\", \n                                        \"scale_down\",\n                                        \"HOLD_position\"),\n                      font_size = 11)\n```\n\n\n\n\nTable 1: Summary: Numeric variables\n\n\n\n\nTable with kable() and kablestyling()\n\n\n\nFertility\nAgriculture\nExamination\nEducation\nCatholic\nInfant.Mortality\n\n\n\n\nCourtelary\n80.2\n17.0\n15\n12\n9.96\n22.2\n\n\nDelemont\n83.1\n45.1\n6\n9\n84.84\n22.2\n\n\nFranches-Mnt\n92.5\n39.7\n5\n5\n93.40\n20.2\n\n\nMoutier\n85.8\n36.5\n12\n7\n33.77\n20.3\n\n\nNeuveville\n76.9\n43.5\n17\n15\n5.16\n20.6"
+  },
+  {
+    "objectID": "Writing_a_reproducable_paper_with_quarto-main/paper.html#tables-with-modelsummary",
+    "href": "Writing_a_reproducable_paper_with_quarto-main/paper.html#tables-with-modelsummary",
+    "title": "Writing a reproducible paper with RStudio and Quarto",
+    "section": "8.2 Tables with modelsummary",
+    "text": "8.2 Tables with modelsummary\nIf you want to create well-formatted HTML output, consider learning about the modelsummary R package. modelsummary provides a variety of tables and plots to summarize statistical models and data in R. modelsummary plots and tables are highly customizable and they can be saved to almost all formats, e.g., HTML, PDF and Markdown. This makes it especially easy to embed them in dynamic documents. Please look at the package’s extensive documentation where they also show examples for almost any plot or table you might be looking for. In this template we demonstrate an example for modelsummary’s datasummary function. Datasummary creates frequency tables, crosstab tables, correlation tables, balance tables and many more.\n\n8.2.1 Summarize numeric variables with modelsummary\nTable 2 shows a summary table for numeric variables.\n```{r}\n#| label: tbl-2\n#| tbl-cap: \"Summary: Numeric variables\"\nlibrary(modelsummary)\ndatasummary_skim(swiss, \n                 type=\"numeric\", \n                 histogram=F,\n                 output=\"flextable\") %&gt;% \n  # column widths\n  flextable::autofit()\n```\n\n\n\n\nTable 2: Summary: Numeric variables\n\n\n\n UniqueMissing Pct.MeanSDMinMedianMaxFertility46070.112.535.070.492.5Agriculture47050.722.71.254.189.7Examination22016.58.03.016.037.0Education19011.09.61.08.053.0Catholic46041.141.72.115.1100.0Infant.Mortality37019.92.910.820.026.6\n\n\n\n\n\n\n\n8.2.2 Summarize categorical variables with modelsummary\nTable 3 shows a summary table for categorical variables. Notice how for this table we also changed the font to be “Times New Roman”.\n```{r}\n#| label: tbl-3\n#| tbl-cap: \"Summary: Categorical variables\"\n# Create categorical variables\nswiss$Education_cat &lt;- cut(swiss$Education, \n                   breaks=c(-Inf, 6, 12, Inf), \n                   labels=c(\"low\",\"middle\",\"high\"))\nswiss$Infant.Mortality_cat &lt;- cut(swiss$Infant.Mortality, \n                   breaks=c(-Inf, 18.15, 21.70, Inf), \n                   labels=c(\"low\",\"middle\",\"high\"))\n\nlibrary(flextable)\ntab_cat &lt;- datasummary_skim(swiss, \n                            type=\"categorical\", \n                            output = 'flextable') \n\n# additionally we want to change the font, fontsize and spacing\nlibrary(\"gdtools\")\n\nlibrary(dplyr)\ntab_cat &lt;- tab_cat %&gt;%\n  font(fontname=\"Times New Roman\", part=\"header\") %&gt;%\n  font(fontname=\"Times New Roman\", j=1:4) %&gt;% \n  fontsize(size=12, part=\"header\") %&gt;%\n  fontsize(size=10, j=1:4) %&gt;% \n  line_spacing(space = 0.3, part = \"all\") %&gt;% \n  # column widths\n  flextable::autofit()\n\ntab_cat\n```\n\n\n\n\nTable 3: Summary: Categorical variables\n\n\n\n   N%Education_catlow1429.8middle2246.8high1123.4Infant.Mortality_catlow1225.5middle2348.9high1225.5\n\n\n\n\n\n\n\n8.2.3 Regression table with modelsummary\nTable 4 shows the output for a regression table. Make sure you name all the models you estimate with unique identifiers (even if its 50 models) and explicitly refer to model names (M1, M2 etc.) in the text.\n```{r}\n#| label: tbl-4\n#| tbl-cap: \"Linear regression with modelsummary\"\n#| results: \"asis\"\n\nlibrary(modelsummary)\nM1 &lt;- lm(Fertility ~ Education + Agriculture, data = swiss)\nM2 &lt;- lm(Fertility ~ Education + Catholic, data = swiss)\nM3 &lt;- lm(Fertility ~ Education + Infant.Mortality + Agriculture, data = swiss)\nmodels &lt;- list(\"M1\" = M1, \"M2\" =  M2, \"M3\" = M3)\n\n\nlibrary(gt)\nlibrary(gtsummary)\n# additionally we want to change the font, font size and spacing\nmodelsummary(models,\n             output = 'gt',\n             notes = \"Notes: some notes...\") %&gt;%\n    tab_spanner(label = 'Dependent variable: Fertility', columns = 2:4) %&gt;%\n  tab_options(\n    table.font.size = 10,\n    data_row.padding = px(1),\n    table.border.top.color = \"white\",\n    heading.border.bottom.color = \"black\",\n    row_group.border.top.color = \"black\",\n    row_group.border.bottom.color = \"white\",\n    table.border.bottom.color = \"white\",\n    column_labels.border.top.color = \"black\",\n    column_labels.border.bottom.color = \"black\",\n    table_body.border.bottom.color = \"black\",\n    table_body.hlines.color = \"white\"\n  )\n\n# Produce right output depending on format (html vs. latex)\nif(knitr::is_html_output()){table4}else\n    {table4 %&gt;% gt::as_latex() %&gt;% \n    as.character() %&gt;% \n    gsub(\"\\\\(Intercept\\\\)\", \"Intercept\", .) %&gt;% \n    cat()}\n```\n\n\n\nTable 4: Linear regression with modelsummary\n\n\n\n\n\n\n\n\n\n\nDependent variable: Fertility\n\n\nM1\nM2\nM3\n\n\n\n\n(Intercept)\n84.080***\n74.234***\n51.101***\n\n\n\n(5.782)\n(2.352)\n(10.995)\n\n\nEducation\n-0.963***\n-0.788***\n-0.857***\n\n\n\n(0.189)\n(0.129)\n(0.173)\n\n\nAgriculture\n-0.066\n\n-0.026\n\n\n\n(0.080)\n\n(0.073)\n\n\nCatholic\n\n0.111***\n\n\n\n\n\n(0.030)\n\n\n\nInfant.Mortality\n\n\n1.493**\n\n\n\n\n\n(0.439)\n\n\nNum.Obs.\n47\n47\n47\n\n\nR2\n0.449\n0.575\n0.566\n\n\nR2 Adj.\n0.424\n0.555\n0.536\n\n\nAIC\n349.7\n337.6\n340.5\n\n\nBIC\n357.1\n345.0\n349.7\n\n\nLog.Lik.\n-170.846\n-164.782\n-165.243\n\n\nRMSE\n9.17\n8.06\n8.14\n\n\n\n+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001\n\n\nNotes: put some notes here..."
+  },
+  {
+    "objectID": "Writing_a_reproducable_paper_with_quarto-main/paper.html#r-base-graphs",
+    "href": "Writing_a_reproducable_paper_with_quarto-main/paper.html#r-base-graphs",
+    "title": "Writing a reproducible paper with RStudio and Quarto",
+    "section": "10.1 R base graphs",
+    "text": "10.1 R base graphs\nA fully reproducible manuscript would create diagrams directly in the .qmd file and insert them in the appropriate place. It’s relatively simple to insert R base graphs as you can see in Figure 1.\n```{r}\n#| label: fig-1\n#| fig-cap: \"Scatterplot of Speed and Distance\"\nplot(swiss$Catholic, swiss$Fertility)\n```\n\n\n\n\n\n\n\n\nFigure 1: Scatterplot of Speed and Distance"
+  },
+  {
+    "objectID": "Writing_a_reproducable_paper_with_quarto-main/paper.html#ggplot2-graphs",
+    "href": "Writing_a_reproducable_paper_with_quarto-main/paper.html#ggplot2-graphs",
+    "title": "Writing a reproducible paper with RStudio and Quarto",
+    "section": "10.2 ggplot2 graphs",
+    "text": "10.2 ggplot2 graphs\nBelow in Figure 2 we also show a example with R’s ggplot2 package.\n```{r}\n#| label: fig-2\n#| fig-cap: \"Miles per gallon according to the weight\"\nlibrary(ggplot2)\nplot &lt;- ggplot(swiss, aes(x=Catholic, y=Fertility, shape=Education_cat)) +\n        geom_point() +\n        labs(x=\"Agriculture\", y = \"Fertility\", shape=\"Education\") +\n        theme_classic()\nplot\n```\n\n\n\n\n\n\n\n\nFigure 2: Fertility and Agriculture by Education"
+  },
+  {
+    "objectID": "Writing_a_reproducable_paper_with_quarto-main/paper.html#sec-rsessioninfo",
+    "href": "Writing_a_reproducable_paper_with_quarto-main/paper.html#sec-rsessioninfo",
+    "title": "Writing a reproducible paper with RStudio and Quarto",
+    "section": "14.1 Attach R session info in appendix",
+    "text": "14.1 Attach R session info in appendix\nSince R and R packages are constantly evolving you might want to add the R session info that contains information on the R version as well as the packages that are loaded.\n\n\nR version 4.4.0 (2024-04-24)\nPlatform: aarch64-apple-darwin20\nRunning under: macOS Sonoma 14.4.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0\n\nattached base packages:\n[1] stats     graphics  grDevices datasets  utils     methods   base     \n\nother attached packages:\n [1] ggplot2_3.5.1      dplyr_1.1.4        gdtools_0.3.7      flextable_0.9.6   \n [5] gtsummary_1.7.2    gt_0.10.1          knitr_1.46         modelsummary_2.1.0\n [9] kableExtra_1.4.0   rmarkdown_2.27     pacman_0.5.1      \n\nloaded via a namespace (and not attached):\n [1] gtable_0.3.5            bayestestR_0.13.2       xfun_0.44              \n [4] htmlwidgets_1.6.4       insight_0.19.11         vctrs_0.6.5            \n [7] tools_4.4.0             generics_0.1.3          datawizard_0.10.0      \n[10] curl_5.2.1              tibble_3.2.1            fansi_1.0.6            \n[13] pkgconfig_2.0.3         checkmate_2.3.1         data.table_1.15.4      \n[16] uuid_1.2-0              lifecycle_1.0.4         farver_2.1.2           \n[19] compiler_4.4.0          stringr_1.5.1           textshaping_0.3.7      \n[22] munsell_0.5.1           httpuv_1.6.15           fontquiver_0.2.1       \n[25] fontLiberation_0.1.0    sass_0.4.9              htmltools_0.5.8.1      \n[28] yaml_2.3.8              pillar_1.9.0            later_1.3.2            \n[31] crayon_1.5.2            tidyr_1.3.1             gfonts_0.2.0           \n[34] broom.helpers_1.15.0    openssl_2.2.0           mime_0.12              \n[37] fontBitstreamVera_0.1.1 zip_2.3.1               tidyselect_1.2.1       \n[40] digest_0.6.35           performance_0.11.0      stringi_1.8.4          \n[43] purrr_1.0.2             labeling_0.4.3          fastmap_1.2.0          \n[46] grid_4.4.0              colorspace_2.1-0        cli_3.6.2              \n[49] magrittr_2.0.3          crul_1.4.2              utf8_1.2.4             \n[52] withr_3.0.0             backports_1.4.1         scales_1.3.0           \n[55] promises_1.3.0          officer_0.6.6           askpass_1.2.0          \n[58] ragg_1.3.2              shiny_1.8.1.1           evaluate_0.23          \n[61] parameters_0.21.7       viridisLite_0.4.2       rlang_1.1.3            \n[64] Rcpp_1.0.12             xtable_1.8-4            glue_1.7.0             \n[67] httpcode_0.3.0          xml2_1.3.6              renv_0.16.0            \n[70] svglite_2.1.3           rstudioapi_0.16.0       jsonlite_1.8.8         \n[73] R6_2.5.1                tables_0.9.25           systemfonts_1.1.0"
+  },
+  {
+    "objectID": "Writing_a_reproducable_paper_with_quarto-main/paper.html#all-the-code-in-the-paper",
+    "href": "Writing_a_reproducable_paper_with_quarto-main/paper.html#all-the-code-in-the-paper",
+    "title": "Writing a reproducible paper with RStudio and Quarto",
+    "section": "14.2 All the code in the paper",
+    "text": "14.2 All the code in the paper\nTo simply attach all the code you used in the PDF file in the appendix see the R chunk in the underlying .qmd file:\n\nknitr::opts_chunk$set(cache = FALSE)\n# Use cache = TRUE if you want to speed up compilation\n\nknitr::opts_knit$set(output.format = \"html\")  # Set to \"html\" for HTML output\n\n# A function to allow for showing some of the inline code\nrinline &lt;- function(code){\n  html &lt;- '&lt;code  class=\"r\"&gt;``` `r CODE` ```&lt;/code&gt;'\n  sub(\"CODE\", code, html)\n}\ninstall.packages('tinytex')\ntinytex::install_tinytex()\n# Check if pacman is installed if not install\nif (!require(\"pacman\")) install.packages(\"pacman\")\n\n# Install/load packages if not present\npacman::p_load(\n  rmarkdown,\n  kableExtra,\n  modelsummary,\n  knitr,\n  gt,\n  gtsummary\n)\n#|label: fig-versioning\ncat(paste(\"#\", capture.output(sessionInfo()), \"\\n\", collapse =\"\")) \n  # or use message() instead of cat()\nx &lt;- 1:10\nx\ndata &lt;- read.csv(\"data.csv\")\nhead(data)\ndput(data[1:5,]) # here we only take a subset\ndata &lt;- structure(list(Fertility = c(80.2, 83.1, 92.5, 85.8, 76.9),\n                       Agriculture = c(17, 45.1, 39.7, 36.5, 43.5), \n                       Examination = c(15L, 6L, 5L, 12L, 17L), \n                       Education = c(12L, 9L, 5L, 7L, 15L), \n                       Catholic = c(9.96, 84.84, 93.4, 33.77, 5.16), \n                       Infant.Mortality = c(22.2, 22.2, 20.2, 20.3, 20.6)), \n                  class = \"data.frame\", row.names = c(NA, -5L))\nlibrary(knitr)\nlibrary(kableExtra)\n\nknitr::kable(swiss[1:5,], row.names = TRUE, \n      caption = 'Table with kable() and kablestyling()', \n      booktabs = T, format=\"simple\") %&gt;% \n        kableExtra::kable_styling(full_width = T, \n                      latex_options = c(\"striped\", \n                                        \"scale_down\",\n                                        \"HOLD_position\"),\n                      font_size = 11)\nlibrary(modelsummary)\ndatasummary_skim(swiss, \n                 type=\"numeric\", \n                 histogram=F, \n                 output= \"flextable\") %&gt;% \n  # column widths\n  flextable::width(1, width = 1) %&gt;% \n  flextable::width(2:8, width = 0.5)\n\n  \n\n\n# Create categorical variables\nswiss$Education_cat &lt;- cut(swiss$Education, \n                   breaks=c(-Inf, 6, 12, Inf), \n                   labels=c(\"low\",\"middle\",\"high\"))\nswiss$Infant.Mortality_cat &lt;- cut(swiss$Infant.Mortality, \n                   breaks=c(-Inf, 18.15, 21.70, Inf), \n                   labels=c(\"low\",\"middle\",\"high\"))\n\nlibrary(flextable)\ntab_cat &lt;- datasummary_skim(swiss, \n                            type=\"categorical\", \n                            output = 'flextable')\n\n#additionally we want to change the font, fontsize and spacing\nlibrary(\"gdtools\")\n\nlibrary(dplyr)\ntab_cat &lt;- tab_cat %&gt;%\n  font(fontname=\"Times New Roman\", part=\"header\") %&gt;%\n  font(fontname=\"Times New Roman\", j=1:4) %&gt;%\n  fontsize(size=12, part=\"header\") %&gt;%\n  fontsize(size=12, j=1:4) %&gt;%\n  line_spacing(space = 0.3, part = \"all\") %&gt;% \n  # column widths\n  flextable::autofit()\n  \n\ntab_cat\nlibrary(modelsummary)\nM1 &lt;- lm(Fertility ~ Education + Agriculture, data = swiss)\nM2 &lt;- lm(Fertility ~ Education + Catholic, data = swiss)\nM3 &lt;- lm(Fertility ~ Education + Infant.Mortality + Agriculture, data = swiss)\nmodels &lt;- list(\"M1\" = M1, \"M2\" =  M2, \"M3\" = M3)\n\nlibrary(gt)\nlibrary(gtsummary)\n# additionally we want to change the font, font size and spacing\ntable4 &lt;- modelsummary(models,\n             output = 'gt',\n             stars = TRUE,\n             notes = \"Notes: put some notes here...\",\n             threeparttable = TRUE) %&gt;%\n    tab_spanner(label = 'Dependent variable: Fertility', columns = 2:4)\n\nif(knitr::is_html_output()){table4}else\n    {table4 %&gt;% \n    gt::as_latex() %&gt;% \n    as.character() %&gt;% \n    gsub(\"\\\\(Intercept\\\\)\", \"Intercept\", .) %&gt;% \n    cat()}\nplot(swiss$Catholic, swiss$Fertility)\nlibrary(ggplot2)\nplot &lt;- ggplot(swiss, aes(x=Catholic, y=Fertility, shape=Education_cat)) +\n  geom_point() +\n  labs(x=\"Agriculture\", y = \"Fertility\", shape=\"Education\") +\n  theme_classic()\nplot\nquarto::quarto_render()\ninstall.packages(\"quarto\")\nquarto::quarto_render(\n  \"paper.qmd\", \n  output_format = c(\"pdf\", \"html\")\n)\nprint(sessionInfo(), local = FALSE)"
+  },
+  {
+    "objectID": "Writing_a_reproducable_paper_with_quarto-main/paper.html#footnotes",
+    "href": "Writing_a_reproducable_paper_with_quarto-main/paper.html#footnotes",
+    "title": "Writing a reproducible paper with RStudio and Quarto",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nYou can always check your working directory in R with getwd().↩︎\nAnother good folder setup would be to store all files needed as input files for the R Markdown manuscript in a subfolder called “input” and all output files that are produced apart from paper.html and paper.pdf in a subfolder called “output”.↩︎"
+  },
+  {
     "objectID": "slides/06_text_analysis_networks.html#agenda-for-today",
     "href": "slides/06_text_analysis_networks.html#agenda-for-today",
     "title": "Data Quality, Open Science and Reproducibility in CSS",
@@ -11,7 +81,7 @@
     "href": "slides/06_text_analysis_networks.html#section",
     "title": "Data Quality, Open Science and Reproducibility in CSS",
     "section": "",
-    "text": "Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    14 February 2024\n\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n    28 February 2024\n\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n    13 March 2024\n\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14). \nSilber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n    20 March 2024\n\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n    10 April 2024\n\n\nAutomated text analysis\nLarge Language Models\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n    17 April 2024\n\n\nNetwork analysis\nOpen science and reproducibility in CSS\nData quality and validation in CSS\n\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n    22 May 2024\n\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
+    "text": "Seminar dates and topics\n\n\nDate\nTopics\nRequired reading\n\n\n\n\n14 February 2024\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n\n28 February 2024\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1).  Freelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n\n13 March 2024\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14).  Silber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n\n20 March 2024\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n\n10 April 2024\n\nAutomated text analysis\nLarge Language Models\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30). \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n\n17 April 2024\n\nNetwork analysis\nOpen science and reproducibility in CSS\nData quality and validation in CSS\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n\n22 May 2024\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
   },
   {
     "objectID": "slides/06_text_analysis_networks.html#requirements-for-seminar-theses",
@@ -25,7 +95,7 @@
     "href": "slides/06_text_analysis_networks.html#criteria-for-grading-seminar-theses",
     "title": "Data Quality, Open Science and Reproducibility in CSS",
     "section": "Criteria for grading seminar theses",
-    "text": "Criteria for grading seminar theses\n\n\n\n\n\n\n  \n    \n    \n    \n    \n    \n    \n  \n  \n    \n      Grading scheme\n    \n    \n    \n       \n      Very good\n      Good\n      Satisfactory\n      Insufficient\n       \n    \n  \n  \n    Research question clear\n\n\n\n\n\nResearch question fuzzy/unclear\n\n    Clear structure\n\n\n\n\n\nFuzzy/unclear structure\n\n    Well-justfied theoretical foundations (and hypotheses)\n\n\n\n\n\nMissing link theory-analysis\n\n    Thorough review of state of research\n\n\n\n\n\nThesis is not embedded in literature\n\n    Clear justification of data and method\n\n\n\n\n\nUnclear why data and method was used\n\n    Clear, logical analysis\n\n\n\n\n\nUnclear order and execution of analysis steps\n\n    Computational reproducibility\n\n\n\n\n\nCode is breaking and cannot be easily fixed\n\n    Clear style of writing\n\n\n\n\n\nConfusing writing"
+    "text": "Criteria for grading seminar theses\n\n\n\n\n\n\n\n\n\nGrading scheme\n\n\n\nVery good\nGood\nSatisfactory\nInsufficient\n\n\n\n\n\nResearch question clear\n\n\n\n\nResearch question fuzzy/unclear\n\n\nClear structure\n\n\n\n\nFuzzy/unclear structure\n\n\nWell-justfied theoretical foundations (and hypotheses)\n\n\n\n\nMissing link theory-analysis\n\n\nThorough review of state of research\n\n\n\n\nThesis is not embedded in literature\n\n\nClear justification of data and method\n\n\n\n\nUnclear why data and method was used\n\n\nClear, logical analysis\n\n\n\n\nUnclear order and execution of analysis steps\n\n\nComputational reproducibility\n\n\n\n\nCode is breaking and cannot be easily fixed\n\n\nClear style of writing\n\n\n\n\nConfusing writing"
   },
   {
     "objectID": "slides/06_text_analysis_networks.html#data-quality",
@@ -179,196 +249,364 @@
     "href": "slides/06_text_analysis_networks.html#credit-where-credit-is-due",
     "title": "Data Quality, Open Science and Reproducibility in CSS",
     "section": "Credit where credit is due",
-    "text": "Credit where credit is due\nToday, I was drawing heavily on course material of my GESIS colleagues Arnim Bleier, Johannes Breuer David Schoc and Bernd Weiß. Their material is openly available on GitHub:\nhttps://github.com/jobreu/reproducible-research-gesis-2023\nhttps://schochastics.github.io/netAnaR2023"
+    "text": "Credit where credit is due\nToday, I was drawing heavily on course material of my GESIS colleagues Arnim Bleier, Johannes Breuer David Schoch and Bernd Weiß. Their material is openly available on GitHub:\nhttps://github.com/jobreu/reproducible-research-gesis-2023\nhttps://schochastics.github.io/netAnaR2023"
   },
   {
     "objectID": "slides/06_text_analysis_networks.html#references",
     "href": "slides/06_text_analysis_networks.html#references",
     "title": "Data Quality, Open Science and Reproducibility in CSS",
     "section": "References",
-    "text": "References\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\n\nChan, Chung-hong, Tim Schatto-Eckrodt, and Johannes B. Gruber. 2024. “What Makes Computational Communication Science (Ir)reproducible?” Computational Communication Research.\n\n\nKlein, Olivier, Tom E. Hardwicke, Frederik Aust, Johannes Breuer, Henrik Danielsson, Alicia Hofelich Mohr, Hans IJzerman, Gustav Nilsonne, Wolf Vanpaemel, and Michael C. Frank. 2018. “A Practical Guide for Transparency in Psychological Science.” Edited by Michéle Nuijten and Simine Vazire. Collabra: Psychology 4 (1). https://doi.org/10.1525/collabra.158."
+    "text": "References\n\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\n\n\nChan, Chung-hong, Tim Schatto-Eckrodt, and Johannes B. Gruber. 2024. “What Makes Computational Communication Science (Ir)reproducible?” Computational Communication Research.\n\n\nKlein, Olivier, Tom E. Hardwicke, Frederik Aust, Johannes Breuer, Henrik Danielsson, Alicia Hofelich Mohr, Hans IJzerman, Gustav Nilsonne, Wolf Vanpaemel, and Michael C. Frank. 2018. “A Practical Guide for Transparency in Psychological Science.” Edited by Michéle Nuijten and Simine Vazire. Collabra: Psychology 4 (1). https://doi.org/10.1525/collabra.158."
   },
   {
-    "objectID": "slides/05_text_analysis_llms.html#agenda-for-today",
-    "href": "slides/05_text_analysis_llms.html#agenda-for-today",
-    "title": "Automated Text Analysis and Large Language Models",
+    "objectID": "slides/07_final_session.html#agenda-for-today",
+    "href": "slides/07_final_session.html#agenda-for-today",
+    "title": "Presentation of Thesis Ideas",
     "section": "Agenda for today",
-    "text": "Agenda for today\n\nAutomated text analysis\nApplied text analysis in R\nLarge Language Models"
+    "text": "Agenda for today\n\nUpdate on seminar logistics\nWriting a reproducible paper in R\nYour presentations\nNetwork analysis in R"
   },
   {
-    "objectID": "slides/05_text_analysis_llms.html#section",
-    "href": "slides/05_text_analysis_llms.html#section",
-    "title": "Automated Text Analysis and Large Language Models",
+    "objectID": "slides/07_final_session.html#section",
+    "href": "slides/07_final_session.html#section",
+    "title": "Presentation of Thesis Ideas",
     "section": "",
-    "text": "Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    14 February 2024\n\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n    28 February 2024\n\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n    13 March 2024\n\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14). \nSilber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n    20 March 2024\n\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n    10 April 2024\n\n\nAutomated text analysis\nLarge Language Models\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n    17 April 2024\n\n\nNetwork analysis\nOpen science and reproducibility in CSS\nData quality and validation in CSS\n\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n    22 May 2024\n\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
+    "text": "Seminar dates and topics\n\n\nDate\nTopics\nRequired reading\n\n\n\n\n14 February 2024\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n\n28 February 2024\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1).  Freelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n\n13 March 2024\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14).  Silber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n\n20 March 2024\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n\n10 April 2024\n\nAutomated text analysis\nLarge Language Models\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30). \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n\n17 April 2024\n\nNetwork analysis\nOpen science and reproducibility in CSS\nData quality and validation in CSS\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n\n22 May 2024\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
   },
   {
-    "objectID": "slides/05_text_analysis_llms.html#collecting-dbd-via-apis",
-    "href": "slides/05_text_analysis_llms.html#collecting-dbd-via-apis",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Collecting DBD via APIs",
-    "text": "Collecting DBD via APIs\n\n\nhttps://bookdown.org/paul/apis_for_social_scientists/\n\n\n\nWhich APIs did you try out?\nWhich APIs/code still work?\nDid the data help shape your research ideas?"
+    "objectID": "slides/07_final_session.html#requirements-for-seminar-theses",
+    "href": "slides/07_final_session.html#requirements-for-seminar-theses",
+    "title": "Presentation of Thesis Ideas",
+    "section": "Requirements for seminar theses",
+    "text": "Requirements for seminar theses\n\nShould be based on content/methods covered in the seminar: collection and analysis of DBD, use of CSS methods\n3,500-5,000 words\nFully reproducible code, including narrative comments where you explain what you do in each step\nSubmission deadline 31 July 2024 (via email)"
   },
   {
-    "objectID": "slides/05_text_analysis_llms.html#automated-text-analysis-the-menu-of-options",
-    "href": "slides/05_text_analysis_llms.html#automated-text-analysis-the-menu-of-options",
-    "title": "Automated Text Analysis and Large Language Models",
+    "objectID": "slides/07_final_session.html#criteria-for-grading-seminar-theses",
+    "href": "slides/07_final_session.html#criteria-for-grading-seminar-theses",
+    "title": "Presentation of Thesis Ideas",
+    "section": "Criteria for grading seminar theses",
+    "text": "Criteria for grading seminar theses\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGrading scheme\n\n\n\nVery good\nGood\nSatisfactory\nInsufficient\n\n\n\n\n\nResearch question clear\n\n\n\n\nResearch question fuzzy/unclear\n\n\nClear structure\n\n\n\n\nFuzzy/unclear structure\n\n\nWell-justfied theoretical foundations (and hypotheses)\n\n\n\n\nMissing link theory-analysis\n\n\nThorough review of state of research\n\n\n\n\nThesis is not embedded in literature\n\n\nClear justification of data and method\n\n\n\n\nUnclear why data and method was used\n\n\nClear, logical analysis\n\n\n\n\nUnclear order and execution of analysis steps\n\n\nComputational reproducibility\n\n\n\n\nCode is breaking and cannot be easily fixed\n\n\nClear style of writing\n\n\n\n\nConfusing writing\n\n\nBonus: sophisticated, demanding data analysis"
+  },
+  {
+    "objectID": "slides/07_final_session.html#if-you-do-use-chatgpt-in-your-research-how-to-use-it-responsibly",
+    "href": "slides/07_final_session.html#if-you-do-use-chatgpt-in-your-research-how-to-use-it-responsibly",
+    "title": "Presentation of Thesis Ideas",
+    "section": "If you do use ChatGPT in your research, how to use it responsibly",
+    "text": "If you do use ChatGPT in your research, how to use it responsibly\n\n\n\n\n\n\n\n\n\nhttps://www.dfg.de/en/news/news-topics/announcements-proposals/2023/info-wissenschaft-23-72"
+  },
+  {
+    "objectID": "slides/07_final_session.html#computational-reproducibility",
+    "href": "slides/07_final_session.html#computational-reproducibility",
+    "title": "Presentation of Thesis Ideas",
+    "section": "Computational reproducibility",
+    "text": "Computational reproducibility\n\nAbility to recreate the same results as the original study (including tables, figures, and quantitative findings), using the same input data, computational methods, and conditions of analysis. The availability of code and data facilitates computational reproducibility, as does preparation of these materials (annotating data, delineating software versions used, sharing computational environments, etc). Ideally, computational reproducibility should be achievable by another second researcher (or the original researcher, at a future time), using only a set of files and written instructions.\n\n\nhttps://forrt.org/glossary/reproducibility"
+  },
+  {
+    "objectID": "slides/07_final_session.html#the-state-of-affairs",
+    "href": "slides/07_final_session.html#the-state-of-affairs",
+    "title": "Presentation of Thesis Ideas",
+    "section": "The state of affairs",
+    "text": "The state of affairs\n\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Computational Communication Research."
+  },
+  {
+    "objectID": "slides/07_final_session.html#fully-reproducible-documents-in-r",
+    "href": "slides/07_final_session.html#fully-reproducible-documents-in-r",
+    "title": "Presentation of Thesis Ideas",
+    "section": "Fully reproducible documents in R",
+    "text": "Fully reproducible documents in R\n\n\nDownload the template: https://github.com/paulcbauer/Writing_a_reproducable_paper_with_quarto"
+  },
+  {
+    "objectID": "slides/07_final_session.html#why-study-networks",
+    "href": "slides/07_final_session.html#why-study-networks",
+    "title": "Presentation of Thesis Ideas",
+    "section": "Why study networks?",
+    "text": "Why study networks?\nConventional research methods are often individual-based and our models tend to model relations between variables. Yet nature and culture are oftentimes structured as networks:\n\nsociety\nbrain (neural networks)\norganizations (who reports to whom)\neconomies (who sells to whom)\necologies (who eats whom)\nPosition within a network is important for predicting outcomes"
+  },
+  {
+    "objectID": "slides/07_final_session.html#dbd-and-networks",
+    "href": "slides/07_final_session.html#dbd-and-networks",
+    "title": "Presentation of Thesis Ideas",
+    "section": "DBD and networks",
+    "text": "DBD and networks\n\n\nLietz, H., Wagner, C., Bleier, A., & Strohmaier, M. (2014). When Politicians Talk: Assessing Online Conversational Practices of Political Parties on Twitter. In Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (pp. 285–294). AAAI Press."
+  },
+  {
+    "objectID": "slides/07_final_session.html#levels-of-analysis",
+    "href": "slides/07_final_session.html#levels-of-analysis",
+    "title": "Presentation of Thesis Ideas",
+    "section": "Levels of Analysis",
+    "text": "Levels of Analysis\nDyad level\nFundamental unit of network data collection\n(“Does sharing offices lead to friendship?”)\nNode level\nAggregation of dyad level measurement\n(“Do actors with more friends have a stronger immune system?”)\nNetwork level\nAssessing overall structure of a network\n(“Does information diffuse faster in well-connected networks?”)"
+  },
+  {
+    "objectID": "slides/07_final_session.html#relations-network-edges",
+    "href": "slides/07_final_session.html#relations-network-edges",
+    "title": "Presentation of Thesis Ideas",
+    "section": "Relations: network edges",
+    "text": "Relations: network edges\n\nRelational roles: family, coworkers, …\nInteractions: sold to, talked to, helped, …\nFlows: information, belief, money, …\n\n\n\nundirected\nsymmetric relation\n\n\ndirected\nasymmetric relation, but can be bi-directional\n\n\nvalued/weighted\nstrength of relation, frequency of contact, etc.\n\n\nsigned\npositive and negative relations\n\n\nor a mixture thereof"
+  },
+  {
+    "objectID": "slides/07_final_session.html#goals-of-analysis",
+    "href": "slides/07_final_session.html#goals-of-analysis",
+    "title": "Presentation of Thesis Ideas",
+    "section": "Goals of analysis",
+    "text": "Goals of analysis\n\nNetwork variables as independent variable / explanatory\n\nUsing network theory to explain the consequences of network properties\n\nsocial capital, brokerage, adoption of innovation\n\n\nNetwork variables as dependent variable / outcomes\n\nUsing ______ theory to explain the antecendents of a network\n\nhomophily, balance theory"
+  },
+  {
+    "objectID": "slides/07_final_session.html#credit-where-credit-is-due",
+    "href": "slides/07_final_session.html#credit-where-credit-is-due",
+    "title": "Presentation of Thesis Ideas",
+    "section": "Credit where credit is due",
+    "text": "Credit where credit is due\nToday, I was drawing heavily on course material of my GESIS colleagues Arnim Bleier, Johannes Breuer David Schoc and Bernd Weiß. Their material is openly available on GitHub:\nhttps://github.com/jobreu/reproducible-research-gesis-2023\nhttps://schochastics.github.io/netAnaR2023"
+  },
+  {
+    "objectID": "slides/07_final_session.html#references",
+    "href": "slides/07_final_session.html#references",
+    "title": "Presentation of Thesis Ideas",
+    "section": "References",
+    "text": "References\n\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim"
+  },
+  {
+    "objectID": "slides/04_automated_textanalysis.html#agenda-for-today",
+    "href": "slides/04_automated_textanalysis.html#agenda-for-today",
+    "title": "Automated Text Analysis",
+    "section": "Agenda for today",
+    "text": "Agenda for today\n\nData sources and getting data from APIs in R\nAutomated text analysis\nApplied text analysis in R"
+  },
+  {
+    "objectID": "slides/04_automated_textanalysis.html#section",
+    "href": "slides/04_automated_textanalysis.html#section",
+    "title": "Automated Text Analysis",
+    "section": "",
+    "text": "Seminar dates and topics\n\n\nDate\nTopics\nRequired reading\n\n\n\n\n14 February 2024\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n\n28 February 2024\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1).  Freelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n\n13 March 2024\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14).  Silber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n\n20 March 2024\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n\n10 April 2024\n\nLarge Language Models\nNetwork analysis\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30). \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n\n17 April 2024\n\nOpen science and reproducibility in CSS\nData quality and validation in CSS\nCoding: open questions\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n\n22 May 2024\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
+  },
+  {
+    "objectID": "slides/04_automated_textanalysis.html#the-state-of-api-based-research",
+    "href": "slides/04_automated_textanalysis.html#the-state-of-api-based-research",
+    "title": "Automated Text Analysis",
+    "section": "The state of API-based research",
+    "text": "The state of API-based research\n\n\n\n\nLukito, J., et al. (2023). The State of Digital Media Data Research, 2023. Media and Democracy Data Cooperative.\n\n\n\n\nYu, J., & Muñoz-Justicia, J. (2020). A Bibliometric Overview of Twitter-Related Studies Indexed in Web of Science. Future Internet, 12(5), 91."
+  },
+  {
+    "objectID": "slides/04_automated_textanalysis.html#trump-twitter-archive",
+    "href": "slides/04_automated_textanalysis.html#trump-twitter-archive",
+    "title": "Automated Text Analysis",
+    "section": "Trump Twitter Archive",
+    "text": "Trump Twitter Archive\n\n\nhttps://www.thetrumparchive.com"
+  },
+  {
+    "objectID": "slides/04_automated_textanalysis.html#homework",
+    "href": "slides/04_automated_textanalysis.html#homework",
+    "title": "Automated Text Analysis",
+    "section": "Homework",
+    "text": "Homework\nBrowse through Bauer et al. and explore the options for collecting DBD. If you find the time, try a few of the proposed APIs and code snippets.\n\nhttps://bookdown.org/paul/apis_for_social_scientists/\n\n\n\nWhich APIs did you try out?\nWhich APIs/code still work?\nDid the data help shape your research ideas?"
+  },
+  {
+    "objectID": "slides/04_automated_textanalysis.html#automated-text-analysis-the-menu-of-options",
+    "href": "slides/04_automated_textanalysis.html#automated-text-analysis-the-menu-of-options",
+    "title": "Automated Text Analysis",
     "section": "Automated text analysis: The menu of options",
-    "text": "Automated text analysis: The menu of options\n\n\nGrimmer, J., & Stewart, B. M. (2013). Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts. Political Analysis, 21(3), 267–297."
+    "text": "Automated text analysis: The menu of options\n\n\nGrimmer, J., & Stewart, B. M. (2013). Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts. Political Analysis, 21(3), 267–297.\n\n\n\nLocate our two required readings on this map."
   },
   {
-    "objectID": "slides/05_text_analysis_llms.html#important-terms",
-    "href": "slides/05_text_analysis_llms.html#important-terms",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Important terms",
-    "text": "Important terms\n\nDocument: the main unit of analysis containing the text\n\nThere might be document-level variables like an author, time, source, etc.\n\nCorpus: a collection of several documents\nToken: converting a sequence of text into smaller parts, e.g., words\nDocument-Feature Matrix (DFM): a matrix of documents and features (tokens)\nStopwords: commonly used words in a language (e.g., the, a, are) that do not carry much useful information when you want to classify text"
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#automated-text-analysis-in-r",
-    "href": "slides/05_text_analysis_llms.html#automated-text-analysis-in-r",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Automated text analysis in R",
-    "text": "Automated text analysis in R\n\n\nBenoit, K., Watanabe, K., Wang, H., Nulty, P., Obeng, A., Müller, S., Matsuo, A., Perry, P. O., Kuha, J., & Lauderdale, B. (2018). quanteda: An R package for the quantitative analysis of textual data. Journal of Open Source Software, 3(30), 774."
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#from-text-to-numbers-a-document-feature-matrix",
-    "href": "slides/05_text_analysis_llms.html#from-text-to-numbers-a-document-feature-matrix",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "From text to numbers: a document-feature matrix",
-    "text": "From text to numbers: a document-feature matrix\n\n\n\n\n\nBag-of-words representation of text"
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#word-to-word-matrix",
-    "href": "slides/05_text_analysis_llms.html#word-to-word-matrix",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Word-to-word matrix",
-    "text": "Word-to-word matrix"
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#distributional-semantics",
-    "href": "slides/05_text_analysis_llms.html#distributional-semantics",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Distributional semantics",
-    "text": "Distributional semantics\n\nA word’s meaning is given by the words that frequently appear close by\n\\(\\rightarrow\\) One of the most successful ideas in Natural Language Processing\nContext\n\\(\\rightarrow\\) When a word appears in a text, its context is a set of words that appear nearby (within a fixed window): car, street, traffic"
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#topic-models",
-    "href": "slides/05_text_analysis_llms.html#topic-models",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Topic models",
-    "text": "Topic models\n\n\nBlei, D. M. (2012). Probabilistic topic models. Communications of the ACM, 55(4), 77–84."
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#topic-models-an-application",
-    "href": "slides/05_text_analysis_llms.html#topic-models-an-application",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Topic models: an application",
-    "text": "Topic models: an application\n\n\nStier, S., Posch, L., Bleier, A., & Strohmaier, M. (2017). When populists become popular: Comparing Facebook use by the right-wing movement Pegida and German political parties. Information, Communication & Society, 20(9), 1365–1388."
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#topic-models-validate-validate-grimmer_text_2013",
-    "href": "slides/05_text_analysis_llms.html#topic-models-validate-validate-grimmer_text_2013",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Topic models: validate, validate! (Grimmer and Stewart 2013)",
-    "text": "Topic models: validate, validate! (Grimmer and Stewart 2013)\nSemantic validity"
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#topic-models-validate-validate-grimmer_text_2013-1",
-    "href": "slides/05_text_analysis_llms.html#topic-models-validate-validate-grimmer_text_2013-1",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Topic models: validate, validate! (Grimmer and Stewart 2013)",
-    "text": "Topic models: validate, validate! (Grimmer and Stewart 2013)\nPredictive validity"
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#word-embeddings-extracting-meaning-from-a-word-to-word-matrix",
-    "href": "slides/05_text_analysis_llms.html#word-embeddings-extracting-meaning-from-a-word-to-word-matrix",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Word embeddings: extracting meaning from a word-to-word matrix",
-    "text": "Word embeddings: extracting meaning from a word-to-word matrix\n\n\nhttps://www.scaler.com/topics/tensorflow/tensorflow-word2vwc/"
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#word-embeddings",
-    "href": "slides/05_text_analysis_llms.html#word-embeddings",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Word embeddings",
-    "text": "Word embeddings\n\n\nhttps://nlp.stanford.edu/projects/histwords/"
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#word-embeddings-1",
-    "href": "slides/05_text_analysis_llms.html#word-embeddings-1",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Word embeddings",
-    "text": "Word embeddings\n\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787."
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#results",
-    "href": "slides/05_text_analysis_llms.html#results",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Results",
-    "text": "Results\n\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787."
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#we-will-use-quanteda",
-    "href": "slides/05_text_analysis_llms.html#we-will-use-quanteda",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "We will use quanteda",
-    "text": "We will use quanteda\n\nGo to file 5_session_five.R in https://sebastianstier.com/ma_css24/material.html"
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#what-are-large-language-models",
-    "href": "slides/05_text_analysis_llms.html#what-are-large-language-models",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "What are (Large) Language Models?",
-    "text": "What are (Large) Language Models?\n\nLanguage models consist of a neural network with many parameters (typically billions of weights), trained on large quantities of unlabeled text using self-supervised learning\nExamples: BERT, GPT 2/3/4, (Google) Gemini"
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#the-basis-of-llms-neural-networks",
-    "href": "slides/05_text_analysis_llms.html#the-basis-of-llms-neural-networks",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "The basis of LLMs: neural networks",
-    "text": "The basis of LLMs: neural networks"
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#this-field-is-evolving-quickly",
-    "href": "slides/05_text_analysis_llms.html#this-field-is-evolving-quickly",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "This field is evolving quickly",
-    "text": "This field is evolving quickly\n\n\nhttps://github.com/Mooler0410/LLMsPracticalGuide"
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#neural-networks-in-action",
-    "href": "slides/05_text_analysis_llms.html#neural-networks-in-action",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Neural networks in action",
-    "text": "Neural networks in action\n\n\nhttps://ronxin.github.io/wevi"
-  },
-  {
-    "objectID": "slides/05_text_analysis_llms.html#our-two-required-readings",
-    "href": "slides/05_text_analysis_llms.html#our-two-required-readings",
-    "title": "Automated Text Analysis and Large Language Models",
+    "objectID": "slides/04_automated_textanalysis.html#our-two-required-readings",
+    "href": "slides/04_automated_textanalysis.html#our-two-required-readings",
+    "title": "Automated Text Analysis",
     "section": "Our two required readings",
     "text": "Our two required readings\n\nGuiding questions:\n\n\n- Describe what problem or question these papers address and the main contributions that they make towards a solution or answer. \n\n- Reflect on the main strengths and weaknesses of these papers.\n\n- What are the concepts, assumed social mechanisms and operationalizations used in the papers?\n\n- What are the data in use? How are the data analyzed? Does this seem appropriate?\n\n- How convincing do you find the arguments presented by the authors? Are the conclusions backed up by the empirical results?\n\n- Do you see any ethical concerns?\n\n- If applicable, are there commonalities or differences between the two papers?"
   },
   {
-    "objectID": "slides/05_text_analysis_llms.html#main-results-from-gilardi.-et-al.",
-    "href": "slides/05_text_analysis_llms.html#main-results-from-gilardi.-et-al.",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "Main results from Gilardi. et al.",
-    "text": "Main results from Gilardi. et al.\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. Proceedings of the National Academy of Sciences, 120(30)"
+    "objectID": "slides/04_automated_textanalysis.html#the-state-of-sociology-according-to-schwemmer-et-al.",
+    "href": "slides/04_automated_textanalysis.html#the-state-of-sociology-according-to-schwemmer-et-al.",
+    "title": "Automated Text Analysis",
+    "section": "The state of sociology (according to Schwemmer et al.)",
+    "text": "The state of sociology (according to Schwemmer et al.)\n\n\n\n\nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21."
   },
   {
-    "objectID": "slides/05_text_analysis_llms.html#how-to-interact-with-llms",
-    "href": "slides/05_text_analysis_llms.html#how-to-interact-with-llms",
-    "title": "Automated Text Analysis and Large Language Models",
-    "section": "How to interact with LLMs",
-    "text": "How to interact with LLMs\n\nZero shot learning: the user writes a natural language instruction (commonly called “prompt”) for the LLM that instructs it to perform a certain task\nFew shot learning: the user writes a prompt for the LLM that instructs it to perform a certain task + provides some examples\nInstruction tuning: the user trains a pre-trained model on task-related data. During fine tuning, model parameters are updated. A medium to large amount of labelled training data (i.e., examples that are annotated with the desired model output) is required."
+    "objectID": "slides/04_automated_textanalysis.html#topic-models",
+    "href": "slides/04_automated_textanalysis.html#topic-models",
+    "title": "Automated Text Analysis",
+    "section": "Topic models",
+    "text": "Topic models\n\n\nBlei, D. M. (2012). Probabilistic topic models. Communications of the ACM, 55(4), 77–84."
   },
   {
-    "objectID": "slides/05_text_analysis_llms.html#references",
-    "href": "slides/05_text_analysis_llms.html#references",
-    "title": "Automated Text Analysis and Large Language Models",
+    "objectID": "slides/04_automated_textanalysis.html#topic-models-an-application",
+    "href": "slides/04_automated_textanalysis.html#topic-models-an-application",
+    "title": "Automated Text Analysis",
+    "section": "Topic models: an application",
+    "text": "Topic models: an application\n\n\nStier, S., Posch, L., Bleier, A., & Strohmaier, M. (2017). When populists become popular: Comparing Facebook use by the right-wing movement Pegida and German political parties. Information, Communication & Society, 20(9), 1365–1388."
+  },
+  {
+    "objectID": "slides/04_automated_textanalysis.html#topic-models-validate-validate-grimmer_text_2013",
+    "href": "slides/04_automated_textanalysis.html#topic-models-validate-validate-grimmer_text_2013",
+    "title": "Automated Text Analysis",
+    "section": "Topic models: validate, validate! (Grimmer and Stewart 2013)",
+    "text": "Topic models: validate, validate! (Grimmer and Stewart 2013)\nSemantic validity"
+  },
+  {
+    "objectID": "slides/04_automated_textanalysis.html#topic-models-validate-validate-grimmer_text_2013-1",
+    "href": "slides/04_automated_textanalysis.html#topic-models-validate-validate-grimmer_text_2013-1",
+    "title": "Automated Text Analysis",
+    "section": "Topic models: validate, validate! (Grimmer and Stewart 2013)",
+    "text": "Topic models: validate, validate! (Grimmer and Stewart 2013)\nPredictive validity"
+  },
+  {
+    "objectID": "slides/04_automated_textanalysis.html#we-will-use-quanteda",
+    "href": "slides/04_automated_textanalysis.html#we-will-use-quanteda",
+    "title": "Automated Text Analysis",
+    "section": "We will use quanteda",
+    "text": "We will use quanteda\n\nGo to file 4_session_four.R in https://sebastianstier.com/ma_css24/material.html"
+  },
+  {
+    "objectID": "slides/04_automated_textanalysis.html#references",
+    "href": "slides/04_automated_textanalysis.html#references",
+    "title": "Automated Text Analysis",
     "section": "References",
-    "text": "References\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\n\nGrimmer, Justin, and Brandon M. Stewart. 2013. “Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts.” Political Analysis 21 (3): 267–97. https://doi.org/10.1093/pan/mps028."
+    "text": "References\n\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\n\n\nGrimmer, Justin, and Brandon M. Stewart. 2013. “Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts.” Political Analysis 21 (3): 267–97. https://doi.org/10.1093/pan/mps028."
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#agenda-for-today",
+    "href": "slides/02_ethics_webdata.html#agenda-for-today",
+    "title": "Research Ethics and Web Data",
+    "section": "Agenda for today",
+    "text": "Agenda for today\n\nRecap\nWarmup session in R\nResearch ethics and web data\nR: First exploration of digital behavioral data"
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#what-are-digital-behavioral-data",
+    "href": "slides/02_ethics_webdata.html#what-are-digital-behavioral-data",
+    "title": "Research Ethics and Web Data",
+    "section": "What are digital behavioral data?",
+    "text": "What are digital behavioral data?\n\n\n\n\n\n\n“Records of activity (trace data) undertaken through an online information system (thus, digital)” (Howison et al., 2011: 769) that can be collected from a multitude of technical systems, such as websites, social media platforms, smartphone apps, or sensors.\n\n\nHowison, J., Wiggins, A., & Crowston, K. (2011). Validity issues in the use of social network analysis with digital trace data. Journal of the Association for Information Systems, 12(12), 767–797, 769.\nStier, S., Breuer, J., Siegers, P., & Thorson, K. (2020). Integrating Survey Data and Digital Trace Data: Key Issues in Developing an Emerging Field. Social Science Computer Review, 38(5), 503–516, 504."
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#what-is-computational-social-science",
+    "href": "slides/02_ethics_webdata.html#what-is-computational-social-science",
+    "title": "Research Ethics and Web Data",
+    "section": "What is computational social science?",
+    "text": "What is computational social science?\n\nComputational social science is an interdisciplinary field that advances theories of human behavior by applying computational techniques to large datasets from social media sites, the Internet, or other digitized archives such as administrative records. Our definition forefronts sociological theory because we believe the future of the field within sociology depends not only on novel data sources and methods, but also on its capacity to produce new theories of human behavior or elaborate on existing explanations of the social world.\n\nEdelmann, A., Wolff, T., Montagne, D., & Bail, C. A. (2020). Computational Social Science and Sociology. Annual Review of Sociology, 46(1), 61–81: 62."
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#the-role-of-theory-and-existing-knowledge",
+    "href": "slides/02_ethics_webdata.html#the-role-of-theory-and-existing-knowledge",
+    "title": "Research Ethics and Web Data",
+    "section": "The role of theory and existing knowledge",
+    "text": "The role of theory and existing knowledge\n“Our definition forefronts sociological theory because we believe the future of the field within sociology depends not only on novel data sources and methods, but also on its capacity to produce new theories of human behavior or elaborate on existing explanations of the social world.” (Edelmann et al. 2020: 62)"
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#explanation-vs.-description-i",
+    "href": "slides/02_ethics_webdata.html#explanation-vs.-description-i",
+    "title": "Research Ethics and Web Data",
+    "section": "Explanation vs. description I",
+    "text": "Explanation vs. description I\n\n\n\n\nMunger, K., Guess, A. M., & Hargittai, E. (2021). Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing. Journal of Quantitative Description: Digital Media, 1.\n\n\n\n“First and foremost, we respond to an undersupply of quantitative descriptive research in social science. Causal research that asks the question why has largely taken the place of descriptive research that asks the question what. Gerring (2012) diagnosed a general tendency to dismiss ‘Mere Description’ as a ‘mundane task … of little intrinsic scientific value,’ advocating instead that it be taken seriously as part of the general social scientific method.\nWe firmly agree. However, critique alone does not change the material conditions and incentives of practicing academics; we see this journal as a practical step towards raising the status of description as a method.” (Munger, Guess, and Hargittai 2021: 3-4)"
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#explanation-vs.-description-ii",
+    "href": "slides/02_ethics_webdata.html#explanation-vs.-description-ii",
+    "title": "Research Ethics and Web Data",
+    "section": "Explanation vs. description II",
+    "text": "Explanation vs. description II\n\n\n\n\nMunger, K., Guess, A. M., & Hargittai, E. (2021). Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing. Journal of Quantitative Description: Digital Media, 1.\n\n\n\nSecond, rather than define our new venue in terms of existing disciplinary boundaries, we instead embrace a topical focus on digital media, broadly construed. We argue that the centrality and dynamism of digital media — information and communication technologies, including social media, that increasingly structure the way people interact with the world — necessitates increased scholarly energy devoted to sustained, continuous, quantitative description. […]\nToday, there are more hours of video uploaded to YouTube every day than were broadcast in the 1950s U.S. in a year. The daily content of Twitter is different (and different in unpredictable ways) than it was the day before.” (Munger, Guess, and Hargittai 2021: 3-4)"
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#examples-of-novel-sociotechnical-phenomena",
+    "href": "slides/02_ethics_webdata.html#examples-of-novel-sociotechnical-phenomena",
+    "title": "Research Ethics and Web Data",
+    "section": "Examples of novel sociotechnical phenomena",
+    "text": "Examples of novel sociotechnical phenomena\n\n\nHarmful online communication\n\nE.g., misinformation and deception\nE.g., violent language, harassment, racism\n\nAlgorithmic influence, bias and discrimination\nFilter bubbles and echo chambers\nSocial bots\nVirality of online content and memes\nOnline inequalities"
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#section",
+    "href": "slides/02_ethics_webdata.html#section",
+    "title": "Research Ethics and Web Data",
+    "section": "",
+    "text": "Seminar dates and topics\n\n\nDate\nTopics\nRequired reading\n\n\n\n\n14 February 2024\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n\n28 February 2024\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1).  Freelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n\n13 March 2024\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14).  Silber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n\n20 March 2024\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n\n10 April 2024\n\nLarge Language Models\nNetwork analysis\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30). \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n\n17 April 2024\n\nOpen science and reproducibility in CSS\nData quality and validation in CSS\nCoding: open questions\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n\n22 May 2024\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#getting-back-to-coding",
+    "href": "slides/02_ethics_webdata.html#getting-back-to-coding",
+    "title": "Research Ethics and Web Data",
+    "section": "Getting back to coding",
+    "text": "Getting back to coding\nDo you have any R-related questions?\n\nStyleguide Guidance for coding in R: https://style.tidyverse.org/index.html"
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#research-ethics",
+    "href": "slides/02_ethics_webdata.html#research-ethics",
+    "title": "Research Ethics and Web Data",
+    "section": "Research ethics?",
+    "text": "Research ethics?\n\nResearch ethics\n\nMoral principles and actions guiding and shaping research\n\nfrom inception to completion,\nthrough dissemination and sharing of findings,\nincluding archiving and future use.\n\n\n\n\n\nResearch ethics in the social sciences\n\nInitially “patient protection” model of medical research\nToday broader scope including consideration of benefits, risks and harms to all persons connected with the research\nIncluding social responsibilities of researchers"
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#who-are-the-relevant-actors",
+    "href": "slides/02_ethics_webdata.html#who-are-the-relevant-actors",
+    "title": "Research Ethics and Web Data",
+    "section": "Who are the relevant actors?",
+    "text": "Who are the relevant actors?"
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#data-protection",
+    "href": "slides/02_ethics_webdata.html#data-protection",
+    "title": "Research Ethics and Web Data",
+    "section": "Data protection",
+    "text": "Data protection\n\nData protection\n\nPart of fundamental right to privacy (or “informational freedom”)\n\n\n\n\n“Privacy is a personal condition of life characterised by seclusion from, and therefore absence of acquaintance by, the public” (Neethling 2005: 233)\nPrevention of unwanted disclosure of personal information or the misuse of such information"
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#data-protection-legal-foundations",
+    "href": "slides/02_ethics_webdata.html#data-protection-legal-foundations",
+    "title": "Research Ethics and Web Data",
+    "section": "Data protection: legal foundations",
+    "text": "Data protection: legal foundations\n\nPrevention of unwanted disclosure of personal information or the misuse of such information\n\nCore of data protection\n\nLegal framework in the European Union\n\nCharter of Fundamental Rights of the EU (Art. 8)\nGeneral Data Protection Regulation (GDPR)\nNational and sub-national data protection acts\nSpecialized laws"
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#informed-consent",
+    "href": "slides/02_ethics_webdata.html#informed-consent",
+    "title": "Research Ethics and Web Data",
+    "section": "Informed consent",
+    "text": "Informed consent\n\n\nBridge between data protection and research ethics\n\n\n\nInformed consent means for example:\n\ninformation\ntransparency\nminimal requirement \\(\\rightarrow\\) chance not to consent\n\nStatus quo in social media research: lack of informed consent"
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#back-to-coding",
+    "href": "slides/02_ethics_webdata.html#back-to-coding",
+    "title": "Research Ethics and Web Data",
+    "section": "Back to coding",
+    "text": "Back to coding\n\nGo back to file 2_session_two.R in https://sebastianstier.com/ma_css24/material.html"
+  },
+  {
+    "objectID": "slides/02_ethics_webdata.html#references",
+    "href": "slides/02_ethics_webdata.html#references",
+    "title": "Research Ethics and Web Data",
+    "section": "References",
+    "text": "References\n\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\n\n\nEdelmann, Achim, Tom Wolff, Danielle Montagne, and Christopher A. Bail. 2020. “Computational Social Science and Sociology.” Annual Review of Sociology 46 (1): 61–81. https://doi.org/10.1146/annurev-soc-121919-054621.\n\n\nMunger, Kevin, Andrew M. Guess, and Eszter Hargittai. 2021. “Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing.” Journal of Quantitative Description: Digital Media 1. https://doi.org/10.51685/jqd.2021.000.\n\n\nNeethling, Johann. 2005. “Personality Rights: A Comparative Overview.” Comparative and International Law Journal of Southern Africa 38 (2): 210–45."
+  },
+  {
+    "objectID": "material.html",
+    "href": "material.html",
+    "title": "Computational Social Science and Digital Behavioral Data",
+    "section": "",
+    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/13/24, 10:46:52 PM\n\n\n\n\n1_session_one.R\n\n\n3/12/24, 10:13:37 PM\n\n\n\n\n2_session_two.R\n\n\n3/12/24, 10:13:42 PM\n\n\n\n\n3_session_three.R\n\n\n3/13/24, 9:42:51 PM\n\n\n\n\n4_session_four.R\n\n\n3/20/24, 10:12:29 PM\n\n\n\n\n5_session_five.R\n\n\n4/10/24, 1:25:23 PM\n\n\n\n\n6_session_six.R\n\n\n4/18/24, 9:49:33 PM\n\n\n\n\n7_session_seven.R\n\n\n5/22/24, 8:46:18 AM\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "material.html#material-for-sessions",
+    "href": "material.html#material-for-sessions",
+    "title": "Computational Social Science and Digital Behavioral Data",
+    "section": "",
+    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/13/24, 10:46:52 PM\n\n\n\n\n1_session_one.R\n\n\n3/12/24, 10:13:37 PM\n\n\n\n\n2_session_two.R\n\n\n3/12/24, 10:13:42 PM\n\n\n\n\n3_session_three.R\n\n\n3/13/24, 9:42:51 PM\n\n\n\n\n4_session_four.R\n\n\n3/20/24, 10:12:29 PM\n\n\n\n\n5_session_five.R\n\n\n4/10/24, 1:25:23 PM\n\n\n\n\n6_session_six.R\n\n\n4/18/24, 9:49:33 PM\n\n\n\n\n7_session_seven.R\n\n\n5/22/24, 8:46:18 AM\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "slides.html",
+    "href": "slides.html",
+    "title": "Computational Social Science and Digital Behavioral Data",
+    "section": "",
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 14, 2024\n\n\nIntroduction\n\n\nSebastian Stier\n\n\n\n\nFeb 28, 2024\n\n\nResearch Ethics and Web Data\n\n\nSebastian Stier\n\n\n\n\nMar 13, 2024\n\n\nWeb Data and Designed Digital Data\n\n\nSebastian Stier\n\n\n\n\nMar 20, 2024\n\n\nAutomated Text Analysis\n\n\nSebastian Stier\n\n\n\n\nApr 10, 2024\n\n\nAutomated Text Analysis and Large Language Models\n\n\nSebastian Stier\n\n\n\n\nApr 17, 2024\n\n\nData Quality, Open Science and Reproducibility in CSS\n\n\nSebastian Stier\n\n\n\n\nMay 22, 2024\n\n\nPresentation of Thesis Ideas\n\n\nSebastian Stier\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "slides.html#slides",
+    "href": "slides.html#slides",
+    "title": "Computational Social Science and Digital Behavioral Data",
+    "section": "",
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 14, 2024\n\n\nIntroduction\n\n\nSebastian Stier\n\n\n\n\nFeb 28, 2024\n\n\nResearch Ethics and Web Data\n\n\nSebastian Stier\n\n\n\n\nMar 13, 2024\n\n\nWeb Data and Designed Digital Data\n\n\nSebastian Stier\n\n\n\n\nMar 20, 2024\n\n\nAutomated Text Analysis\n\n\nSebastian Stier\n\n\n\n\nApr 10, 2024\n\n\nAutomated Text Analysis and Large Language Models\n\n\nSebastian Stier\n\n\n\n\nApr 17, 2024\n\n\nData Quality, Open Science and Reproducibility in CSS\n\n\nSebastian Stier\n\n\n\n\nMay 22, 2024\n\n\nPresentation of Thesis Ideas\n\n\nSebastian Stier\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Computational Social Science Methods and Digital Behavioral Data",
+    "section": "",
+    "text": "Lecturer\nSebastian Stier\nProfessor @ University of Mannheim & Scientific Director Department Computational Social Science @ GESIS\n\nAbout the course\nComputational Social Science (CSS) is a young research field at the intersection of various social science disciplines, data science and computer science. The goal is to gain new insights into society through large amounts of data and the direct observation of human behavior. CSS relies on two cornerstones: digital behavioral data, which can be collected from online platforms or sensors like smartphones, and computer science methods such as automated text analysis to create appropriate measures for social science research questions. In the course, students will get to know foundational studies, theories and methods used in the field of CSS. We will discuss infrastructural, ethical and legal challenges and how to navigate these to devise appropriate research designs in CSS.\nThe course will be application oriented. Students will familiarize themselves with the main applications of CSS methods and implement them in R. The range of applications will cover data management and preprocessing, the application of machine learning, data and results visualization, statistical data analysis and the validation of results. The hands-on application examples will cover questions from various research fields and different data types like social media data or web browsing histories. Equipped with this theoretical and methodological toolkit, students will develop their own CSS research projects.\nSchedule\n\n\n\n\n\n\n\n\n\nSeminar dates and topics\n\n\nDate\nTopics\nRequired reading\n\n\n\n\n14 February 2024\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n\n28 February 2024\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1).  Freelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n\n13 March 2024\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14).  Silber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n\n20 March 2024\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n\n10 April 2024\n\nLarge Language Models\nNetwork analysis\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30). \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n\n17 April 2024\n\nOpen science and reproducibility in CSS\nData quality and validation in CSS\nCoding: open questions\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n\n22 May 2024\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint.\n\n\n\n\n\n\n\n\nSoftware\n\nR\nA text editor, e.g. RStudio\nQuarto"
   },
   {
     "objectID": "slides/01_introduction.html#about-me",
@@ -403,7 +641,7 @@
     "href": "slides/01_introduction.html#section",
     "title": "Introduction",
     "section": "",
-    "text": "Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    14 February 2024\n\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n    28 February 2024\n\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n    13 March 2024\n\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14). \nSilber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n    20 March 2024\n\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n    10 April 2024\n\n\nLarge Language Models\nNetwork analysis\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n    17 April 2024\n\n\nOpen science and reproducibility in CSS\nData quality and validation in CSS\nCoding: open questions\n\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n    22 May 2024\n\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
+    "text": "Seminar dates and topics\n\n\nDate\nTopics\nRequired reading\n\n\n\n\n14 February 2024\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n\n28 February 2024\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1).  Freelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n\n13 March 2024\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14).  Silber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n\n20 March 2024\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n\n10 April 2024\n\nLarge Language Models\nNetwork analysis\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30). \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n\n17 April 2024\n\nOpen science and reproducibility in CSS\nData quality and validation in CSS\nCoding: open questions\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n\n22 May 2024\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
   },
   {
     "objectID": "slides/01_introduction.html#learning-objectives",
@@ -585,252 +823,189 @@
     "href": "slides/01_introduction.html#references",
     "title": "Introduction",
     "section": "References",
-    "text": "References\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\n\nEdelmann, Achim, Tom Wolff, Danielle Montagne, and Christopher A. Bail. 2020. “Computational Social Science and Sociology.” Annual Review of Sociology 46 (1): 61–81. https://doi.org/10.1146/annurev-soc-121919-054621.\n\n\nMunger, Kevin, Andrew M. Guess, and Eszter Hargittai. 2021. “Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing.” Journal of Quantitative Description: Digital Media 1. https://doi.org/10.51685/jqd.2021.000."
+    "text": "References\n\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\n\n\nEdelmann, Achim, Tom Wolff, Danielle Montagne, and Christopher A. Bail. 2020. “Computational Social Science and Sociology.” Annual Review of Sociology 46 (1): 61–81. https://doi.org/10.1146/annurev-soc-121919-054621.\n\n\nMunger, Kevin, Andrew M. Guess, and Eszter Hargittai. 2021. “Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing.” Journal of Quantitative Description: Digital Media 1. https://doi.org/10.51685/jqd.2021.000."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Computational Social Science Methods and Digital Behavioral Data",
-    "section": "",
-    "text": "Lecturer\nSebastian Stier\nProfessor @ University of Mannheim & Scientific Director Department Computational Social Science @ GESIS\n\nAbout the course\nComputational Social Science (CSS) is a young research field at the intersection of various social science disciplines, data science and computer science. The goal is to gain new insights into society through large amounts of data and the direct observation of human behavior. CSS relies on two cornerstones: digital behavioral data, which can be collected from online platforms or sensors like smartphones, and computer science methods such as automated text analysis to create appropriate measures for social science research questions. In the course, students will get to know foundational studies, theories and methods used in the field of CSS. We will discuss infrastructural, ethical and legal challenges and how to navigate these to devise appropriate research designs in CSS.\nThe course will be application oriented. Students will familiarize themselves with the main applications of CSS methods and implement them in R. The range of applications will cover data management and preprocessing, the application of machine learning, data and results visualization, statistical data analysis and the validation of results. The hands-on application examples will cover questions from various research fields and different data types like social media data or web browsing histories. Equipped with this theoretical and methodological toolkit, students will develop their own CSS research projects.\nSchedule\n\n\n\n\n\n\n  \n    \n    \n    \n  \n  \n    \n      Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    14 February 2024\n\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n    28 February 2024\n\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n    13 March 2024\n\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14). \nSilber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n    20 March 2024\n\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n    10 April 2024\n\n\nLarge Language Models\nNetwork analysis\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n    17 April 2024\n\n\nOpen science and reproducibility in CSS\nData quality and validation in CSS\nCoding: open questions\n\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n    22 May 2024\n\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint.\n\n  \n  \n  \n\n\n\n\nSoftware\n\nR\nA text editor, e.g. RStudio\nQuarto"
-  },
-  {
-    "objectID": "slides.html",
-    "href": "slides.html",
-    "title": "Computational Social Science and Digital Behavioral Data",
-    "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 14, 2024\n\n\nIntroduction\n\n\nSebastian Stier\n\n\n\n\nFeb 28, 2024\n\n\nResearch Ethics and Web Data\n\n\nSebastian Stier\n\n\n\n\nMar 13, 2024\n\n\nWeb Data and Designed Digital Data\n\n\nSebastian Stier\n\n\n\n\nMar 20, 2024\n\n\nAutomated Text Analysis\n\n\nSebastian Stier\n\n\n\n\nApr 10, 2024\n\n\nAutomated Text Analysis and Large Language Models\n\n\nSebastian Stier\n\n\n\n\nApr 17, 2024\n\n\nData Quality, Open Science and Reproducibility in CSS\n\n\nSebastian Stier\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "slides.html#slides",
-    "href": "slides.html#slides",
-    "title": "Computational Social Science and Digital Behavioral Data",
-    "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 14, 2024\n\n\nIntroduction\n\n\nSebastian Stier\n\n\n\n\nFeb 28, 2024\n\n\nResearch Ethics and Web Data\n\n\nSebastian Stier\n\n\n\n\nMar 13, 2024\n\n\nWeb Data and Designed Digital Data\n\n\nSebastian Stier\n\n\n\n\nMar 20, 2024\n\n\nAutomated Text Analysis\n\n\nSebastian Stier\n\n\n\n\nApr 10, 2024\n\n\nAutomated Text Analysis and Large Language Models\n\n\nSebastian Stier\n\n\n\n\nApr 17, 2024\n\n\nData Quality, Open Science and Reproducibility in CSS\n\n\nSebastian Stier\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "material.html",
-    "href": "material.html",
-    "title": "Computational Social Science and Digital Behavioral Data",
-    "section": "",
-    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/13/24, 10:46:52 PM\n\n\n\n\n1_session_one.R\n\n\n3/12/24, 10:13:37 PM\n\n\n\n\n2_session_two.R\n\n\n3/12/24, 10:13:42 PM\n\n\n\n\n3_session_three.R\n\n\n3/13/24, 9:42:51 PM\n\n\n\n\n4_session_four.R\n\n\n3/20/24, 10:12:29 PM\n\n\n\n\n5_session_five.R\n\n\n4/10/24, 1:25:23 PM\n\n\n\n\n6_session_six.R\n\n\n4/18/24, 9:49:33 PM\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "material.html#material-for-sessions",
-    "href": "material.html#material-for-sessions",
-    "title": "Computational Social Science and Digital Behavioral Data",
-    "section": "",
-    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/13/24, 10:46:52 PM\n\n\n\n\n1_session_one.R\n\n\n3/12/24, 10:13:37 PM\n\n\n\n\n2_session_two.R\n\n\n3/12/24, 10:13:42 PM\n\n\n\n\n3_session_three.R\n\n\n3/13/24, 9:42:51 PM\n\n\n\n\n4_session_four.R\n\n\n3/20/24, 10:12:29 PM\n\n\n\n\n5_session_five.R\n\n\n4/10/24, 1:25:23 PM\n\n\n\n\n6_session_six.R\n\n\n4/18/24, 9:49:33 PM\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#agenda-for-today",
-    "href": "slides/02_ethics_webdata.html#agenda-for-today",
-    "title": "Research Ethics and Web Data",
+    "objectID": "slides/05_text_analysis_llms.html#agenda-for-today",
+    "href": "slides/05_text_analysis_llms.html#agenda-for-today",
+    "title": "Automated Text Analysis and Large Language Models",
     "section": "Agenda for today",
-    "text": "Agenda for today\n\nRecap\nWarmup session in R\nResearch ethics and web data\nR: First exploration of digital behavioral data"
+    "text": "Agenda for today\n\nAutomated text analysis\nApplied text analysis in R\nLarge Language Models"
   },
   {
-    "objectID": "slides/02_ethics_webdata.html#what-are-digital-behavioral-data",
-    "href": "slides/02_ethics_webdata.html#what-are-digital-behavioral-data",
-    "title": "Research Ethics and Web Data",
-    "section": "What are digital behavioral data?",
-    "text": "What are digital behavioral data?\n\n\n\n\n\n\n“Records of activity (trace data) undertaken through an online information system (thus, digital)” (Howison et al., 2011: 769) that can be collected from a multitude of technical systems, such as websites, social media platforms, smartphone apps, or sensors.\n\n\nHowison, J., Wiggins, A., & Crowston, K. (2011). Validity issues in the use of social network analysis with digital trace data. Journal of the Association for Information Systems, 12(12), 767–797, 769.\nStier, S., Breuer, J., Siegers, P., & Thorson, K. (2020). Integrating Survey Data and Digital Trace Data: Key Issues in Developing an Emerging Field. Social Science Computer Review, 38(5), 503–516, 504."
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#what-is-computational-social-science",
-    "href": "slides/02_ethics_webdata.html#what-is-computational-social-science",
-    "title": "Research Ethics and Web Data",
-    "section": "What is computational social science?",
-    "text": "What is computational social science?\n\nComputational social science is an interdisciplinary field that advances theories of human behavior by applying computational techniques to large datasets from social media sites, the Internet, or other digitized archives such as administrative records. Our definition forefronts sociological theory because we believe the future of the field within sociology depends not only on novel data sources and methods, but also on its capacity to produce new theories of human behavior or elaborate on existing explanations of the social world.\n\nEdelmann, A., Wolff, T., Montagne, D., & Bail, C. A. (2020). Computational Social Science and Sociology. Annual Review of Sociology, 46(1), 61–81: 62."
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#the-role-of-theory-and-existing-knowledge",
-    "href": "slides/02_ethics_webdata.html#the-role-of-theory-and-existing-knowledge",
-    "title": "Research Ethics and Web Data",
-    "section": "The role of theory and existing knowledge",
-    "text": "The role of theory and existing knowledge\n“Our definition forefronts sociological theory because we believe the future of the field within sociology depends not only on novel data sources and methods, but also on its capacity to produce new theories of human behavior or elaborate on existing explanations of the social world.” (Edelmann et al. 2020: 62)"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#explanation-vs.-description-i",
-    "href": "slides/02_ethics_webdata.html#explanation-vs.-description-i",
-    "title": "Research Ethics and Web Data",
-    "section": "Explanation vs. description I",
-    "text": "Explanation vs. description I\n\n\n\n\nMunger, K., Guess, A. M., & Hargittai, E. (2021). Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing. Journal of Quantitative Description: Digital Media, 1.\n\n\n\n“First and foremost, we respond to an undersupply of quantitative descriptive research in social science. Causal research that asks the question why has largely taken the place of descriptive research that asks the question what. Gerring (2012) diagnosed a general tendency to dismiss ‘Mere Description’ as a ‘mundane task … of little intrinsic scientific value,’ advocating instead that it be taken seriously as part of the general social scientific method.\nWe firmly agree. However, critique alone does not change the material conditions and incentives of practicing academics; we see this journal as a practical step towards raising the status of description as a method.” (Munger, Guess, and Hargittai 2021: 3-4)"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#explanation-vs.-description-ii",
-    "href": "slides/02_ethics_webdata.html#explanation-vs.-description-ii",
-    "title": "Research Ethics and Web Data",
-    "section": "Explanation vs. description II",
-    "text": "Explanation vs. description II\n\n\n\n\nMunger, K., Guess, A. M., & Hargittai, E. (2021). Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing. Journal of Quantitative Description: Digital Media, 1.\n\n\n\nSecond, rather than define our new venue in terms of existing disciplinary boundaries, we instead embrace a topical focus on digital media, broadly construed. We argue that the centrality and dynamism of digital media — information and communication technologies, including social media, that increasingly structure the way people interact with the world — necessitates increased scholarly energy devoted to sustained, continuous, quantitative description. […]\nToday, there are more hours of video uploaded to YouTube every day than were broadcast in the 1950s U.S. in a year. The daily content of Twitter is different (and different in unpredictable ways) than it was the day before.” (Munger, Guess, and Hargittai 2021: 3-4)"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#examples-of-novel-sociotechnical-phenomena",
-    "href": "slides/02_ethics_webdata.html#examples-of-novel-sociotechnical-phenomena",
-    "title": "Research Ethics and Web Data",
-    "section": "Examples of novel sociotechnical phenomena",
-    "text": "Examples of novel sociotechnical phenomena\n\n\nHarmful online communication\n\nE.g., misinformation and deception\nE.g., violent language, harassment, racism\n\nAlgorithmic influence, bias and discrimination\nFilter bubbles and echo chambers\nSocial bots\nVirality of online content and memes\nOnline inequalities"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#section",
-    "href": "slides/02_ethics_webdata.html#section",
-    "title": "Research Ethics and Web Data",
+    "objectID": "slides/05_text_analysis_llms.html#section",
+    "href": "slides/05_text_analysis_llms.html#section",
+    "title": "Automated Text Analysis and Large Language Models",
     "section": "",
-    "text": "Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    14 February 2024\n\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n    28 February 2024\n\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n    13 March 2024\n\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14). \nSilber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n    20 March 2024\n\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n    10 April 2024\n\n\nLarge Language Models\nNetwork analysis\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n    17 April 2024\n\n\nOpen science and reproducibility in CSS\nData quality and validation in CSS\nCoding: open questions\n\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n    22 May 2024\n\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
+    "text": "Seminar dates and topics\n\n\nDate\nTopics\nRequired reading\n\n\n\n\n14 February 2024\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n\n28 February 2024\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1).  Freelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n\n13 March 2024\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14).  Silber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n\n20 March 2024\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n\n10 April 2024\n\nAutomated text analysis\nLarge Language Models\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30). \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n\n17 April 2024\n\nNetwork analysis\nOpen science and reproducibility in CSS\nData quality and validation in CSS\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n\n22 May 2024\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
   },
   {
-    "objectID": "slides/02_ethics_webdata.html#getting-back-to-coding",
-    "href": "slides/02_ethics_webdata.html#getting-back-to-coding",
-    "title": "Research Ethics and Web Data",
-    "section": "Getting back to coding",
-    "text": "Getting back to coding\nDo you have any R-related questions?\n\nStyleguide Guidance for coding in R: https://style.tidyverse.org/index.html"
+    "objectID": "slides/05_text_analysis_llms.html#collecting-dbd-via-apis",
+    "href": "slides/05_text_analysis_llms.html#collecting-dbd-via-apis",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "Collecting DBD via APIs",
+    "text": "Collecting DBD via APIs\n\n\nhttps://bookdown.org/paul/apis_for_social_scientists/\n\n\n\nWhich APIs did you try out?\nWhich APIs/code still work?\nDid the data help shape your research ideas?"
   },
   {
-    "objectID": "slides/02_ethics_webdata.html#research-ethics",
-    "href": "slides/02_ethics_webdata.html#research-ethics",
-    "title": "Research Ethics and Web Data",
-    "section": "Research ethics?",
-    "text": "Research ethics?\n\nResearch ethics\n\nMoral principles and actions guiding and shaping research\n\nfrom inception to completion,\nthrough dissemination and sharing of findings,\nincluding archiving and future use.\n\n\n\n\n\nResearch ethics in the social sciences\n\nInitially “patient protection” model of medical research\nToday broader scope including consideration of benefits, risks and harms to all persons connected with the research\nIncluding social responsibilities of researchers"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#who-are-the-relevant-actors",
-    "href": "slides/02_ethics_webdata.html#who-are-the-relevant-actors",
-    "title": "Research Ethics and Web Data",
-    "section": "Who are the relevant actors?",
-    "text": "Who are the relevant actors?"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#data-protection",
-    "href": "slides/02_ethics_webdata.html#data-protection",
-    "title": "Research Ethics and Web Data",
-    "section": "Data protection",
-    "text": "Data protection\n\nData protection\n\nPart of fundamental right to privacy (or “informational freedom”)\n\n\n\n\n“Privacy is a personal condition of life characterised by seclusion from, and therefore absence of acquaintance by, the public” (Neethling 2005: 233)\nPrevention of unwanted disclosure of personal information or the misuse of such information"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#data-protection-legal-foundations",
-    "href": "slides/02_ethics_webdata.html#data-protection-legal-foundations",
-    "title": "Research Ethics and Web Data",
-    "section": "Data protection: legal foundations",
-    "text": "Data protection: legal foundations\n\nPrevention of unwanted disclosure of personal information or the misuse of such information\n\nCore of data protection\n\nLegal framework in the European Union\n\nCharter of Fundamental Rights of the EU (Art. 8)\nGeneral Data Protection Regulation (GDPR)\nNational and sub-national data protection acts\nSpecialized laws"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#informed-consent",
-    "href": "slides/02_ethics_webdata.html#informed-consent",
-    "title": "Research Ethics and Web Data",
-    "section": "Informed consent",
-    "text": "Informed consent\n\n\nBridge between data protection and research ethics\n\n\n\nInformed consent means for example:\n\ninformation\ntransparency\nminimal requirement \\(\\rightarrow\\) chance not to consent\n\nStatus quo in social media research: lack of informed consent"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#back-to-coding",
-    "href": "slides/02_ethics_webdata.html#back-to-coding",
-    "title": "Research Ethics and Web Data",
-    "section": "Back to coding",
-    "text": "Back to coding\n\nGo back to file 2_session_two.R in https://sebastianstier.com/ma_css24/material.html"
-  },
-  {
-    "objectID": "slides/02_ethics_webdata.html#references",
-    "href": "slides/02_ethics_webdata.html#references",
-    "title": "Research Ethics and Web Data",
-    "section": "References",
-    "text": "References\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\n\nEdelmann, Achim, Tom Wolff, Danielle Montagne, and Christopher A. Bail. 2020. “Computational Social Science and Sociology.” Annual Review of Sociology 46 (1): 61–81. https://doi.org/10.1146/annurev-soc-121919-054621.\n\n\nMunger, Kevin, Andrew M. Guess, and Eszter Hargittai. 2021. “Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing.” Journal of Quantitative Description: Digital Media 1. https://doi.org/10.51685/jqd.2021.000.\n\n\nNeethling, Johann. 2005. “Personality Rights: A Comparative Overview.” Comparative and International Law Journal of Southern Africa 38 (2): 210–45."
-  },
-  {
-    "objectID": "slides/04_automated_textanalysis.html#agenda-for-today",
-    "href": "slides/04_automated_textanalysis.html#agenda-for-today",
-    "title": "Automated Text Analysis",
-    "section": "Agenda for today",
-    "text": "Agenda for today\n\nData sources and getting data from APIs in R\nAutomated text analysis\nApplied text analysis in R"
-  },
-  {
-    "objectID": "slides/04_automated_textanalysis.html#section",
-    "href": "slides/04_automated_textanalysis.html#section",
-    "title": "Automated Text Analysis",
-    "section": "",
-    "text": "Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    14 February 2024\n\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n    28 February 2024\n\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n    13 March 2024\n\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14). \nSilber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n    20 March 2024\n\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n    10 April 2024\n\n\nLarge Language Models\nNetwork analysis\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n    17 April 2024\n\n\nOpen science and reproducibility in CSS\nData quality and validation in CSS\nCoding: open questions\n\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n    22 May 2024\n\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
-  },
-  {
-    "objectID": "slides/04_automated_textanalysis.html#the-state-of-api-based-research",
-    "href": "slides/04_automated_textanalysis.html#the-state-of-api-based-research",
-    "title": "Automated Text Analysis",
-    "section": "The state of API-based research",
-    "text": "The state of API-based research\n\n\n\n\nLukito, J., et al. (2023). The State of Digital Media Data Research, 2023. Media and Democracy Data Cooperative.\n\n\n\n\nYu, J., & Muñoz-Justicia, J. (2020). A Bibliometric Overview of Twitter-Related Studies Indexed in Web of Science. Future Internet, 12(5), 91."
-  },
-  {
-    "objectID": "slides/04_automated_textanalysis.html#trump-twitter-archive",
-    "href": "slides/04_automated_textanalysis.html#trump-twitter-archive",
-    "title": "Automated Text Analysis",
-    "section": "Trump Twitter Archive",
-    "text": "Trump Twitter Archive\n\n\nhttps://www.thetrumparchive.com"
-  },
-  {
-    "objectID": "slides/04_automated_textanalysis.html#homework",
-    "href": "slides/04_automated_textanalysis.html#homework",
-    "title": "Automated Text Analysis",
-    "section": "Homework",
-    "text": "Homework\nBrowse through Bauer et al. and explore the options for collecting DBD. If you find the time, try a few of the proposed APIs and code snippets.\n\nhttps://bookdown.org/paul/apis_for_social_scientists/\n\n\n\nWhich APIs did you try out?\nWhich APIs/code still work?\nDid the data help shape your research ideas?"
-  },
-  {
-    "objectID": "slides/04_automated_textanalysis.html#automated-text-analysis-the-menu-of-options",
-    "href": "slides/04_automated_textanalysis.html#automated-text-analysis-the-menu-of-options",
-    "title": "Automated Text Analysis",
+    "objectID": "slides/05_text_analysis_llms.html#automated-text-analysis-the-menu-of-options",
+    "href": "slides/05_text_analysis_llms.html#automated-text-analysis-the-menu-of-options",
+    "title": "Automated Text Analysis and Large Language Models",
     "section": "Automated text analysis: The menu of options",
-    "text": "Automated text analysis: The menu of options\n\n\nGrimmer, J., & Stewart, B. M. (2013). Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts. Political Analysis, 21(3), 267–297.\n\n\n\nLocate our two required readings on this map."
+    "text": "Automated text analysis: The menu of options\n\n\nGrimmer, J., & Stewart, B. M. (2013). Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts. Political Analysis, 21(3), 267–297."
   },
   {
-    "objectID": "slides/04_automated_textanalysis.html#our-two-required-readings",
-    "href": "slides/04_automated_textanalysis.html#our-two-required-readings",
-    "title": "Automated Text Analysis",
-    "section": "Our two required readings",
-    "text": "Our two required readings\n\nGuiding questions:\n\n\n- Describe what problem or question these papers address and the main contributions that they make towards a solution or answer. \n\n- Reflect on the main strengths and weaknesses of these papers.\n\n- What are the concepts, assumed social mechanisms and operationalizations used in the papers?\n\n- What are the data in use? How are the data analyzed? Does this seem appropriate?\n\n- How convincing do you find the arguments presented by the authors? Are the conclusions backed up by the empirical results?\n\n- Do you see any ethical concerns?\n\n- If applicable, are there commonalities or differences between the two papers?"
+    "objectID": "slides/05_text_analysis_llms.html#important-terms",
+    "href": "slides/05_text_analysis_llms.html#important-terms",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "Important terms",
+    "text": "Important terms\n\nDocument: the main unit of analysis containing the text\n\nThere might be document-level variables like an author, time, source, etc.\n\nCorpus: a collection of several documents\nToken: converting a sequence of text into smaller parts, e.g., words\nDocument-Feature Matrix (DFM): a matrix of documents and features (tokens)\nStopwords: commonly used words in a language (e.g., the, a, are) that do not carry much useful information when you want to classify text"
   },
   {
-    "objectID": "slides/04_automated_textanalysis.html#the-state-of-sociology-according-to-schwemmer-et-al.",
-    "href": "slides/04_automated_textanalysis.html#the-state-of-sociology-according-to-schwemmer-et-al.",
-    "title": "Automated Text Analysis",
-    "section": "The state of sociology (according to Schwemmer et al.)",
-    "text": "The state of sociology (according to Schwemmer et al.)\n\n\n\n\nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21."
+    "objectID": "slides/05_text_analysis_llms.html#automated-text-analysis-in-r",
+    "href": "slides/05_text_analysis_llms.html#automated-text-analysis-in-r",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "Automated text analysis in R",
+    "text": "Automated text analysis in R\n\n\nBenoit, K., Watanabe, K., Wang, H., Nulty, P., Obeng, A., Müller, S., Matsuo, A., Perry, P. O., Kuha, J., & Lauderdale, B. (2018). quanteda: An R package for the quantitative analysis of textual data. Journal of Open Source Software, 3(30), 774."
   },
   {
-    "objectID": "slides/04_automated_textanalysis.html#topic-models",
-    "href": "slides/04_automated_textanalysis.html#topic-models",
-    "title": "Automated Text Analysis",
+    "objectID": "slides/05_text_analysis_llms.html#from-text-to-numbers-a-document-feature-matrix",
+    "href": "slides/05_text_analysis_llms.html#from-text-to-numbers-a-document-feature-matrix",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "From text to numbers: a document-feature matrix",
+    "text": "From text to numbers: a document-feature matrix\n\n\n\n\n\nBag-of-words representation of text"
+  },
+  {
+    "objectID": "slides/05_text_analysis_llms.html#word-to-word-matrix",
+    "href": "slides/05_text_analysis_llms.html#word-to-word-matrix",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "Word-to-word matrix",
+    "text": "Word-to-word matrix"
+  },
+  {
+    "objectID": "slides/05_text_analysis_llms.html#distributional-semantics",
+    "href": "slides/05_text_analysis_llms.html#distributional-semantics",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "Distributional semantics",
+    "text": "Distributional semantics\n\nA word’s meaning is given by the words that frequently appear close by\n\\(\\rightarrow\\) One of the most successful ideas in Natural Language Processing\nContext\n\\(\\rightarrow\\) When a word appears in a text, its context is a set of words that appear nearby (within a fixed window): car, street, traffic"
+  },
+  {
+    "objectID": "slides/05_text_analysis_llms.html#topic-models",
+    "href": "slides/05_text_analysis_llms.html#topic-models",
+    "title": "Automated Text Analysis and Large Language Models",
     "section": "Topic models",
     "text": "Topic models\n\n\nBlei, D. M. (2012). Probabilistic topic models. Communications of the ACM, 55(4), 77–84."
   },
   {
-    "objectID": "slides/04_automated_textanalysis.html#topic-models-an-application",
-    "href": "slides/04_automated_textanalysis.html#topic-models-an-application",
-    "title": "Automated Text Analysis",
+    "objectID": "slides/05_text_analysis_llms.html#topic-models-an-application",
+    "href": "slides/05_text_analysis_llms.html#topic-models-an-application",
+    "title": "Automated Text Analysis and Large Language Models",
     "section": "Topic models: an application",
     "text": "Topic models: an application\n\n\nStier, S., Posch, L., Bleier, A., & Strohmaier, M. (2017). When populists become popular: Comparing Facebook use by the right-wing movement Pegida and German political parties. Information, Communication & Society, 20(9), 1365–1388."
   },
   {
-    "objectID": "slides/04_automated_textanalysis.html#topic-models-validate-validate-grimmer_text_2013",
-    "href": "slides/04_automated_textanalysis.html#topic-models-validate-validate-grimmer_text_2013",
-    "title": "Automated Text Analysis",
+    "objectID": "slides/05_text_analysis_llms.html#topic-models-validate-validate-grimmer_text_2013",
+    "href": "slides/05_text_analysis_llms.html#topic-models-validate-validate-grimmer_text_2013",
+    "title": "Automated Text Analysis and Large Language Models",
     "section": "Topic models: validate, validate! (Grimmer and Stewart 2013)",
     "text": "Topic models: validate, validate! (Grimmer and Stewart 2013)\nSemantic validity"
   },
   {
-    "objectID": "slides/04_automated_textanalysis.html#topic-models-validate-validate-grimmer_text_2013-1",
-    "href": "slides/04_automated_textanalysis.html#topic-models-validate-validate-grimmer_text_2013-1",
-    "title": "Automated Text Analysis",
+    "objectID": "slides/05_text_analysis_llms.html#topic-models-validate-validate-grimmer_text_2013-1",
+    "href": "slides/05_text_analysis_llms.html#topic-models-validate-validate-grimmer_text_2013-1",
+    "title": "Automated Text Analysis and Large Language Models",
     "section": "Topic models: validate, validate! (Grimmer and Stewart 2013)",
     "text": "Topic models: validate, validate! (Grimmer and Stewart 2013)\nPredictive validity"
   },
   {
-    "objectID": "slides/04_automated_textanalysis.html#we-will-use-quanteda",
-    "href": "slides/04_automated_textanalysis.html#we-will-use-quanteda",
-    "title": "Automated Text Analysis",
-    "section": "We will use quanteda",
-    "text": "We will use quanteda\n\nGo to file 4_session_four.R in https://sebastianstier.com/ma_css24/material.html"
+    "objectID": "slides/05_text_analysis_llms.html#word-embeddings-extracting-meaning-from-a-word-to-word-matrix",
+    "href": "slides/05_text_analysis_llms.html#word-embeddings-extracting-meaning-from-a-word-to-word-matrix",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "Word embeddings: extracting meaning from a word-to-word matrix",
+    "text": "Word embeddings: extracting meaning from a word-to-word matrix\n\n\nhttps://www.scaler.com/topics/tensorflow/tensorflow-word2vwc/"
   },
   {
-    "objectID": "slides/04_automated_textanalysis.html#references",
-    "href": "slides/04_automated_textanalysis.html#references",
-    "title": "Automated Text Analysis",
+    "objectID": "slides/05_text_analysis_llms.html#word-embeddings",
+    "href": "slides/05_text_analysis_llms.html#word-embeddings",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "Word embeddings",
+    "text": "Word embeddings\n\n\nhttps://nlp.stanford.edu/projects/histwords/"
+  },
+  {
+    "objectID": "slides/05_text_analysis_llms.html#word-embeddings-1",
+    "href": "slides/05_text_analysis_llms.html#word-embeddings-1",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "Word embeddings",
+    "text": "Word embeddings\n\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787."
+  },
+  {
+    "objectID": "slides/05_text_analysis_llms.html#results",
+    "href": "slides/05_text_analysis_llms.html#results",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "Results",
+    "text": "Results\n\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787."
+  },
+  {
+    "objectID": "slides/05_text_analysis_llms.html#we-will-use-quanteda",
+    "href": "slides/05_text_analysis_llms.html#we-will-use-quanteda",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "We will use quanteda",
+    "text": "We will use quanteda\n\nGo to file 5_session_five.R in https://sebastianstier.com/ma_css24/material.html"
+  },
+  {
+    "objectID": "slides/05_text_analysis_llms.html#what-are-large-language-models",
+    "href": "slides/05_text_analysis_llms.html#what-are-large-language-models",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "What are (Large) Language Models?",
+    "text": "What are (Large) Language Models?\n\nLanguage models consist of a neural network with many parameters (typically billions of weights), trained on large quantities of unlabeled text using self-supervised learning\nExamples: BERT, GPT 2/3/4, (Google) Gemini"
+  },
+  {
+    "objectID": "slides/05_text_analysis_llms.html#the-basis-of-llms-neural-networks",
+    "href": "slides/05_text_analysis_llms.html#the-basis-of-llms-neural-networks",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "The basis of LLMs: neural networks",
+    "text": "The basis of LLMs: neural networks"
+  },
+  {
+    "objectID": "slides/05_text_analysis_llms.html#this-field-is-evolving-quickly",
+    "href": "slides/05_text_analysis_llms.html#this-field-is-evolving-quickly",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "This field is evolving quickly",
+    "text": "This field is evolving quickly\n\n\nhttps://github.com/Mooler0410/LLMsPracticalGuide"
+  },
+  {
+    "objectID": "slides/05_text_analysis_llms.html#neural-networks-in-action",
+    "href": "slides/05_text_analysis_llms.html#neural-networks-in-action",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "Neural networks in action",
+    "text": "Neural networks in action\n\n\nhttps://ronxin.github.io/wevi"
+  },
+  {
+    "objectID": "slides/05_text_analysis_llms.html#our-two-required-readings",
+    "href": "slides/05_text_analysis_llms.html#our-two-required-readings",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "Our two required readings",
+    "text": "Our two required readings\n\nGuiding questions:\n\n\n- Describe what problem or question these papers address and the main contributions that they make towards a solution or answer. \n\n- Reflect on the main strengths and weaknesses of these papers.\n\n- What are the concepts, assumed social mechanisms and operationalizations used in the papers?\n\n- What are the data in use? How are the data analyzed? Does this seem appropriate?\n\n- How convincing do you find the arguments presented by the authors? Are the conclusions backed up by the empirical results?\n\n- Do you see any ethical concerns?\n\n- If applicable, are there commonalities or differences between the two papers?"
+  },
+  {
+    "objectID": "slides/05_text_analysis_llms.html#main-results-from-gilardi.-et-al.",
+    "href": "slides/05_text_analysis_llms.html#main-results-from-gilardi.-et-al.",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "Main results from Gilardi. et al.",
+    "text": "Main results from Gilardi. et al.\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. Proceedings of the National Academy of Sciences, 120(30)"
+  },
+  {
+    "objectID": "slides/05_text_analysis_llms.html#how-to-interact-with-llms",
+    "href": "slides/05_text_analysis_llms.html#how-to-interact-with-llms",
+    "title": "Automated Text Analysis and Large Language Models",
+    "section": "How to interact with LLMs",
+    "text": "How to interact with LLMs\n\nZero shot learning: the user writes a natural language instruction (commonly called “prompt”) for the LLM that instructs it to perform a certain task\nFew shot learning: the user writes a prompt for the LLM that instructs it to perform a certain task + provides some examples\nInstruction tuning: the user trains a pre-trained model on task-related data. During fine tuning, model parameters are updated. A medium to large amount of labelled training data (i.e., examples that are annotated with the desired model output) is required."
+  },
+  {
+    "objectID": "slides/05_text_analysis_llms.html#references",
+    "href": "slides/05_text_analysis_llms.html#references",
+    "title": "Automated Text Analysis and Large Language Models",
     "section": "References",
-    "text": "References\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\n\nGrimmer, Justin, and Brandon M. Stewart. 2013. “Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts.” Political Analysis 21 (3): 267–97. https://doi.org/10.1093/pan/mps028."
+    "text": "References\n\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\n\n\nGrimmer, Justin, and Brandon M. Stewart. 2013. “Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts.” Political Analysis 21 (3): 267–97. https://doi.org/10.1093/pan/mps028."
   },
   {
     "objectID": "slides/03_webdata_designed_digital_data.html#agenda-for-today",
@@ -844,7 +1019,7 @@
     "href": "slides/03_webdata_designed_digital_data.html#section",
     "title": "Web Data and Designed Digital Data",
     "section": "",
-    "text": "Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    14 February 2024\n\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n    28 February 2024\n\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n    13 March 2024\n\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14). \nSilber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n    20 March 2024\n\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n    10 April 2024\n\n\nLarge Language Models\nNetwork analysis\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n    17 April 2024\n\n\nOpen science and reproducibility in CSS\nData quality and validation in CSS\nCoding: open questions\n\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n    22 May 2024\n\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
+    "text": "Seminar dates and topics\n\n\nDate\nTopics\nRequired reading\n\n\n\n\n14 February 2024\n\nIntroduction\nFoundations of CSS\nThe tidyverse\nData visualization\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n\n28 February 2024\n\nResearch ethics in CSS\nSocial media and web data\nAPIs\nWeb scraping\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1).  Freelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n\n\n13 March 2024\n\nDesigned digital data\nWeb tracking data\nSmartphone-based data collection\nLinked surveys and DBD\n\nGuess, A. M., Barberá, P., Munzert, S., & Yang, J. (2021). The consequences of online partisan media. PNAS, 118(14).  Silber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n\n\n20 March 2024\n\nAutomated text analysis\nSupervised and unsupervised models\nMachine learning\n\nBonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. Sociological Methods & Research, 51(4), 1721–1787. \nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21.\n\n\n10 April 2024\n\nLarge Language Models\nNetwork analysis\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30). \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n\n\n17 April 2024\n\nOpen science and reproducibility in CSS\nData quality and validation in CSS\nCoding: open questions\n\nChan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Working Paper. \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n\n\n22 May 2024\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint."
   },
   {
     "objectID": "slides/03_webdata_designed_digital_data.html#research-ethics-in-css",
@@ -1012,6 +1187,6 @@
     "href": "slides/03_webdata_designed_digital_data.html#references",
     "title": "Web Data and Designed Digital Data",
     "section": "References",
-    "text": "References\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\n\nboyd, danah m., and Nicole B. Ellison. 2007. “Social Network Sites: Definition, History, and Scholarship.” Journal of Computer-Mediated Communication 13 (1): 210–30. https://doi.org/https://doi.org/10.1111/j.1083-6101.2007.00393.x.\n\n\nFiesler, Casey, and Nicholas Proferes. 2018. “\"Participant\"\" Perceptions of Twitter Research Ethics.” Social Media + Society 4 (1): 205630511876336. https://doi.org/10.1177/2056305118763366."
+    "text": "References\n\n\n\n\nComputational Social Science and Digital Behavioral Data, University of Mannheim\n\n\n\n\nboyd, danah m., and Nicole B. Ellison. 2007. “Social Network Sites: Definition, History, and Scholarship.” Journal of Computer-Mediated Communication 13 (1): 210–30. https://doi.org/https://doi.org/10.1111/j.1083-6101.2007.00393.x.\n\n\nFiesler, Casey, and Nicholas Proferes. 2018. “\"Participant\"\" Perceptions of Twitter Research Ethics.” Social Media + Society 4 (1): 205630511876336. https://doi.org/10.1177/2056305118763366."
   }
 ]
