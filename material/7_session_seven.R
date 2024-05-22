@@ -11,6 +11,8 @@ library(tidyverse)
 # Set the WD to the folder where the script is located
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
+# Show all used R packages and R version
+getS3method("print","sessionInfo")(sessionInfo()[-8])
 
 # Exercise 1: Brief introduction to network analysis ----
 
